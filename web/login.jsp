@@ -1,8 +1,9 @@
+<%--suppress ReferencesToClassesFromDefaultPackagesInJSPFile --%>
 <%@ page pageEncoding="UTF-8"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 
 <%@page import="java.util.Arrays"%>
-<%@ page import="request.form.post.Person"%>
+<%@ page import="main.Person"%>
 
 
 <!--   Burada 3 faklı sekilde veriler cekilmistir.
@@ -29,7 +30,7 @@ Name,email,password ve job bölümleri bu sekilde yapilmistir.(Kullanilabilir)
 </head>
 <body>
 
-<jsp:useBean id="myPerson" class="request.form.post.Person"
+<jsp:useBean id="myPerson" class="main.Person"
              scope="request"></jsp:useBean>
 
 <%
