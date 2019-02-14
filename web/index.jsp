@@ -1,16 +1,12 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Žaibas Makvynas
-  Date: 2019-02-14
-  Time: 13:01
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.time.LocalDateTime" %>
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
+<head>
+  <title>Simple JSP Application</title>
+</head>
+<body>
+<h1>Hello world!</h1>
+<h2>Current time is <%= LocalDateTime.now() %></h2>
+</body>
 </html>
