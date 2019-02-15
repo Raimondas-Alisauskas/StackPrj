@@ -1,8 +1,7 @@
-package main;
+package models;
 
 import java.util.List;
 
-//Bean Class
 public class Person {
 
     private String name;

@@ -3,7 +3,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 
 <%@page import="java.util.Arrays"%>
-<%@ page import="main.Person"%>
+<%@ page import="models.Person"%>
+
 
 
 <!--   Burada 3 faklı sekilde veriler cekilmistir.
@@ -30,7 +31,7 @@ Name,email,password ve job bölümleri bu sekilde yapilmistir.(Kullanilabilir)
 </head>
 <body>
 
-<jsp:useBean id="myPerson" class="main.Person"
+<jsp:useBean id="myPerson" class="models.Person"
              scope="request"></jsp:useBean>
 
 <%
@@ -86,5 +87,8 @@ Name,email,password ve job bölümleri bu sekilde yapilmistir.(Kullanilabilir)
 
 </form>
 
-</body>
+
+
+
+        </body>
 </html>
