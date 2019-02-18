@@ -1,20 +1,8 @@
 <%--suppress ReferencesToClassesFromDefaultPackagesInJSPFile --%>
-<%@ page pageEncoding="UTF-8"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ page pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
 
-<%@page import="java.util.Arrays"%>
-<%@ page import="models.Person"%>
-
-
-
-<!--   Burada 3 faklı sekilde veriler cekilmistir.
-1) Temel metot yöntemi ile :  Person sinifindan referans alinarak yapilmistir.
-interest bölümü böyle yapilmistir.(Tavsiye edilmez)
-2) Action tags kullanilarak :  bu yapida usebean taniplanip daha sonra
-hangi bölüm için yapilacaksa getproperty kullanilarak cagirilir.
-Name,email,password ve job bölümleri bu sekilde yapilmistir.(Kullanilabilir)
-3) expression language kullanilarak : Bu yapida age ve biography kisimlari kullanilarak yapilmistir.(Tavsiye Edilir.)
--->
+<%@ page import="models.Person" %>
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -37,14 +25,6 @@ Name,email,password ve job bölümleri bu sekilde yapilmistir.(Kullanilabilir)
 <%
     Person person = (Person) request.getAttribute("myPerson");
 %>
-
-<%
-    //gelen liste list<String> şeklindeyse asagidaki uygulanir.
-    //java.util.List interest = java.util.Arrays.asList(person.getInterest());
-%>
-
-
-
 
 <form>
 
@@ -87,8 +67,5 @@ Name,email,password ve job bölümleri bu sekilde yapilmistir.(Kullanilabilir)
 
 </form>
 
-
-
-
-        </body>
+</body>
 </html>

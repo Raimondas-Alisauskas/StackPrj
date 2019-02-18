@@ -18,7 +18,6 @@ public class RequestPostForm extends HttpServlet {
             throws ServletException, java.io.IOException {
 
 
-
         req.setCharacterEncoding("UTF-8");
 
         String name = req.getParameter("user_name");
@@ -34,6 +33,7 @@ public class RequestPostForm extends HttpServlet {
         List<String> interest1 = Arrays.asList(interest);
 
         Person person = new Person(name, email, password, age, bio, job, interest1);
+
         req.setAttribute("myPerson", person);
 
         RequestDispatcher res = req.getRequestDispatcher("login.jsp");

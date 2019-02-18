@@ -12,6 +12,7 @@ public class Person {
     private String job;
     private List<String> interest;
 
+
     public Person() {
         super();
         // TODO Auto-generated constructor stub
