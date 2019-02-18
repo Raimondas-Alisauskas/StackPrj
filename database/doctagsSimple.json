@@ -1,0 +1,82 @@
+[
+  {
+    "Id": 1,
+    "Tag": "stackexchange.redis",
+    "Title": "StackExchange.Redis",
+    "CreationDate": "\/Date(1446695335230-0500)\/",
+    "HelloWorldDocTopicId": 1,
+    "TopicCount": 6
+  },
+  {
+    "Id": 2,
+    "Tag": "dapper",
+    "Title": "Dapper.NET",
+    "CreationDate": "\/Date(1446695376637-0500)\/",
+    "HelloWorldDocTopicId": 2,
+    "TopicCount": 14
+  },
+  {
+    "Id": 3,
+    "Tag": ".net",
+    "Title": ".NET Framework",
+    "CreationDate": "\/Date(1447273894907-0500)\/",
+    "HelloWorldDocTopicId": 14,
+    "TopicCount": 59
+  },
+  {
+    "Id": 4,
+    "Tag": "c#",
+    "Title": "C# Language",
+    "CreationDate": "\/Date(1447278164623-0500)\/",
+    "HelloWorldDocTopicId": 15,
+    "TopicCount": 165
+  },
+  {
+    "Id": 5,
+    "Tag": "java",
+    "Title": "Java Language",
+    "CreationDate": "\/Date(1452665923283-0500)\/",
+    "HelloWorldDocTopicId": 84,
+    "TopicCount": 185
+  },
+  {
+    "Id": 6,
+    "Tag": "android",
+    "Title": "Android",
+    "CreationDate": "\/Date(1452666151370-0500)\/",
+    "HelloWorldDocTopicId": 85,
+    "TopicCount": 268
+  },
+  {
+    "Id": 7,
+    "Tag": "sql",
+    "Title": "SQL",
+    "CreationDate": "\/Date(1458762931693-0400)\/",
+    "HelloWorldDocTopicId": 184,
+    "TopicCount": 64
+  },
+  {
+    "Id": 8,
+    "Tag": "javascript",
+    "Title": "JavaScript",
+    "CreationDate": "\/Date(1458772734700-0400)\/",
+    "HelloWorldDocTopicId": 185,
+    "TopicCount": 106
+  },
+  {
+    "Id": 9,
+    "Tag": "php",
+    "Title": "PHP",
+    "CreationDate": "\/Date(1458774142997-0400)\/",
+    "HelloWorldDocTopicId": 189,
+    "TopicCount": 109
+  },
+  {
+    "Id": 10,
+    "Tag": "ios",
+    "Title": "iOS",
+    "CreationDate": "\/Date(1458775724033-0400)\/",
+    "HelloWorldDocTopicId": 191,
+    "TopicCount": 210
+  }
+]
