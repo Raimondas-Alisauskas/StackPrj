@@ -1,12 +1,5 @@
 
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -15,9 +8,7 @@ import org.json.simple.parser.ParseException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.sql.*;
 
 
 
@@ -33,7 +24,7 @@ public class App {
 	    try
 	    {
 	      // create a database connection
-	      connection = DriverManager.getConnection("jdbc:sqlite:stackoverflow.db");
+	      connection = DriverManager.getConnection("jdbc:sqlite:./database/stackoverflow.db");
 	    
 	      createTableDocTags(connection);
 	      
@@ -94,7 +85,7 @@ public class App {
 
 	        try {
 
-	        	JSONArray jsons = (JSONArray) parser.parse(new FileReader("doctags.json"));
+	        	JSONArray jsons = (JSONArray) parser.parse(new FileReader("./database/doctagsSimple.json"));
 
 	        	  for (Object ojson : jsons)
 	        	  {
