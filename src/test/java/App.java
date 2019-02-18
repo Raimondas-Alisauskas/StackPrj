@@ -24,7 +24,7 @@ public class App {
 	    try
 	    {
 	      // create a database connection
-	      connection = DriverManager.getConnection("jdbc:sqlite:stackoverflow.db");
+	      connection = DriverManager.getConnection("jdbc:sqlite:./database/stackoverflow.db");
 	    
 	      createTableDocTags(connection);
 	      
@@ -85,7 +85,7 @@ public class App {
 
 	        try {
 
-	        	JSONArray jsons = (JSONArray) parser.parse(new FileReader("doctags.json"));
+	        	JSONArray jsons = (JSONArray) parser.parse(new FileReader("./database/doctagsSimple.json"));
 
 	        	  for (Object ojson : jsons)
 	        	  {
