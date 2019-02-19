@@ -21,6 +21,7 @@ body {
 }
 
 .mid{
+    margin-top: 10px;
     width: 60%;
 }
 
@@ -54,6 +55,7 @@ h2 {
 }
 
 .middle{
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;

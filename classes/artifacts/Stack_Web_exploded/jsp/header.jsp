@@ -1,15 +1,9 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Gintare
-  Date: 2019-02-19
-  Time: 13:43
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
 </head>
 <body>
+
 <div class="header">
     <div class="drop">
         <select id="lang" name="lang_name">
@@ -27,14 +21,10 @@
         </select>
     </div>
     <div class="searchField">
-        <form class="example" action="action_page.php">
-            <input type="text" placeholder="Search.." name="search">
-        </form>
+            <input type="text" placeholder="Search.." name="search_field">
     </div>
     <div class="searchButton">
-        <form class="button">
-            <button type="submit"><i class="fa fa-search"></i></button>
-        </form>
+            <button type="submit" name="search_button"><i class="fa fa-search"></i></button>
     </div>
 </div>
 </body>
