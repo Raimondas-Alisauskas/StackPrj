@@ -1,0 +1,39 @@
+package controllers;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+
+//Singelton or not?
+public class DBconnection {
+
+    public static Connection getConnection() {
+
+        Connection connection = null;
+        try {
+
+            Class.forName("org.sqlite.JDBC");
+
+            // create a database connection
+            connection = DriverManager.getConnection("jdbc:sqlite:C://StackPrj/database/stackoverflow.db");
+
+
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return connection;
+    }
+
+    public static void closeConnection(Connection connection) {
+        try {
+            if(connection != null)
+                connection.close();
+
+        } catch(SQLException e) {
+            // connection close failed.
+            System.err.println(e);
+        }
+    }
+}
