@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/search")
+@WebServlet("/index")
 public class SearchController extends HttpServlet {
 
     @Override
@@ -21,7 +21,7 @@ public class SearchController extends HttpServlet {
         search.setSearchInput(req.getParameter("search_field"));
 
         req.setAttribute("mySearch", search);
-        req.getRequestDispatcher("search.jsp").forward(req, resp);
+        req.getRequestDispatcher("index.jsp").forward(req, resp);
 
 
     }
