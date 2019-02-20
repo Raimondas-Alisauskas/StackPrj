@@ -8,16 +8,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
+<jsp:useBean id="search" class="models.Search"
+             scope="request"></jsp:useBean>
 <body>
-    <div class="main">
-        <div class="mid">
-            <form  method="get">
-                <jsp:include page="jsp/header.jsp" />
-                <jsp:include page="jsp/main.jsp" />
-            </form>
-                <jsp:include page="jsp/footer.jsp" />
-
-        </div>
-</div>
+<p><%=request.getParameter("lang_name")%></p>
+<p><%=request.getParameter("search_field")%></p>
 </body>
 </html>

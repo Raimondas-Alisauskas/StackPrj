@@ -11,7 +11,7 @@
 <body>
     <div class="main">
         <div class="mid">
-            <form  method="get">
+            <form action="search" method="get">
                 <jsp:include page="jsp/header.jsp" />
                 <jsp:include page="jsp/main.jsp" />
             </form>

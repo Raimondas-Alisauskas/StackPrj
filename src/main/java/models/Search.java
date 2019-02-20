@@ -10,26 +10,29 @@ public class Search {
         // TODO Auto-generated constructor stub
     }
 
-    public Search(String searchInput, String dropdownValue) {
+    public Search(String s, String d) {
         super();
-        this.searchInput = searchInput;
-        this.dropdownValue = dropdownValue;
+        searchInput = s;
+        dropdownValue = d;
     }
 
     public String getSearchInput() {
+
         return searchInput;
     }
 
-    public void setSearchInput(String searchInput) {
-        this.searchInput = searchInput;
+    public void setSearchInput(String s) {
+
+        searchInput = s;
     }
 
     public String getDropdownValue() {
         return dropdownValue;
     }
 
-    public void setDropdownValue(String dropdownValue) {
-        this.dropdownValue = dropdownValue;
+    public void setDropdownValue(String d) {
+
+        dropdownValue = d;
     }
 }
 
