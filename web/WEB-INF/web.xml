@@ -21,6 +21,14 @@
 
 
     </servlet-mapping>
+    <servlet>
+        <servlet-name>PaginationServlet</servlet-name>
+        <servlet-class>controllers.DropdownServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PaginationServlet</servlet-name>
+        <url-pattern>/pagination</url-pattern>
+    </servlet-mapping>
+
+
 </web-app>
-
-
