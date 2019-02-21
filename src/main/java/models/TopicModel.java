@@ -21,7 +21,7 @@ public class TopicModel {
                 Statement statement = con.createStatement();
                 statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
-                ResultSet rs = statement.executeQuery("select Id, Title from Topics limit 5");
+                ResultSet rs = statement.executeQuery("select Id, Title from Topics limit 8");
                 while (rs.next()) {
                     TopicBin topic = new TopicBin();
                     topic.setId(rs.getInt("Id"));

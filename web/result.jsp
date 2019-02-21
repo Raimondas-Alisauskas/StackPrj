@@ -13,7 +13,7 @@
     <div class="mid">
         <form action="result" method="get">
             <jsp:include page="jsp/header.jsp"/>
-            <jsp:include page="jsp/main.jsp"/>
+            <jsp:include page="jsp/mainResult.jsp"/>
         </form>
         <jsp:include page="jsp/footer.jsp"/>
 

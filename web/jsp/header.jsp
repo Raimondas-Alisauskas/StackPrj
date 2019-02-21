@@ -9,21 +9,15 @@
     <div class="drop">
         <select id="lang" name="lang_name">
             <optgroup label="select language">
-                <%--<%ArrayList list = new ArrayList();%>--%>
-                <%--for(String row:list) {--%>
-
-                <%--<option value="row"><%=row%></option>--%>
-
-                <%--}--%>
-                <%--<option value="Java">Java</option>--%>
-                <%--<option value="php">PHP</option>--%>
-                <%--<option value="HTML">HTML</option>--%>
-                <%--<option value="CSS">CSS</option>--%>
-                <%--<option value="JavaScript">JavaScript</option>--%>
-                <%--<option value="Rails">Rails</option>--%>
-                <%--<option value="WordPress">WordPress</option>--%>
-                <%--<option value="Android">Androild</option>--%>
-                <%--<option value="iOS">iOS</option>--%>
+                <option value="Java">Java</option>
+                <option value="php">PHP</option>
+                <option value="HTML">HTML</option>
+                <option value="CSS">CSS</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="Rails">Rails</option>
+                <option value="WordPress">WordPress</option>
+                <option value="Android">Android</option>
+                <option value="iOS">iOS</option>
             </optgroup>
         </select>
     </div>

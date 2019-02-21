@@ -55,8 +55,7 @@ h2 {
 }
 
 .middle{
-    margin-top: 10px;
-    display: flex;
+    margin-top: 6em;
     flex-direction: column;
     justify-content: center;
     align-content: center;
@@ -66,9 +65,8 @@ h2 {
 }
 
 .article{
-    border: 2px solid black;
-    border-radius: 5px;
     margin-top: 5px;
+    margin: auto;
 }
 
 .footer{
