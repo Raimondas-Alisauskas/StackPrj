@@ -23,7 +23,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>PaginationServlet</servlet-name>
-        <servlet-class>controllers.PaginationServlet</servlet-class>
+        <servlet-class>controllers.DropdownServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>PaginationServlet</servlet-name>
