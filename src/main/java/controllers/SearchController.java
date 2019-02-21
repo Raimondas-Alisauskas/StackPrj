@@ -26,7 +26,7 @@ public class SearchController extends HttpServlet {
 
 
 
-        List<Result> results = SearchModel.getResults(search);
+        List<Result> results = SearchModel.getResults(search, 1, 10);
         req.setAttribute("results", results);
         req.getRequestDispatcher("result.jsp").forward(req, resp);
 

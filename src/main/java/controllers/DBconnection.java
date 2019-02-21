@@ -16,7 +16,7 @@ public class DBconnection {
             Class.forName("org.sqlite.JDBC");
 
             // create a database connection
-            connection = DriverManager.getConnection("jdbc:sqlite:C://StackPrj/database/stackoverflow.db");
+            connection = DriverManager.getConnection("jdbc:sqlite:/home/namai/Desktop/CodeBakers/Mokymasis/StackOverflowProject/StackPrj3/database/stackoverflow.db");
 
 
         } catch (SQLException | ClassNotFoundException e) {
