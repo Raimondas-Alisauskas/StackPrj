@@ -26,5 +26,61 @@
 
 </div>
 
+=======
+<body>
+<div class="middle">
+
+    <div class="article">
+        <div>
+            <a href="#" name="article_name"><h2><%=request.getParameter("lang_name")%>
+            </h2></a>
+        </div>
+        <div>
+            <p><%=request.getParameter("search_field")%>
+            </p>
+        </div>
+    </div>
+    <div class="article">
+        <div>
+            <a href="#" name="article_name"><h2>Title</h2></a>
+        </div>
+        <div>
+            <p>18-Feb-2019 21:30:59.414 INFOfig.deployDirectory Deploying web </p>
+        </div>
+    </div>
+    <div class="article">
+        <div>
+            <a href="#" name="article_name"><h2>Title</h2></a>
+        </div>
+        <div>
+            <p>18-Feb-2019 21:30:59.414 INFOfig.deployDirectory Deploying web </p>
+        </div>
+    </div>
+    <div class="article">
+        <div>
+            <a href="#" name="article_name"><h2>Title</h2></a>
+        </div>
+        <div>
+            <p>18-Feb-2019 21:30:59.414 INFOfig.deployDirectory Deploying web </p>
+        </div>
+    </div>
+    <div class="article">
+        <div>
+            <a href="#" name="article_name"><h2>Title</h2></a>
+        </div>
+        <div>
+            <p>18-Feb-2019 21:30:59.414 INFOfig.deployDirectory Deploying web </p>
+        </div>
+    </div>
+    <div class="article">
+        <div>
+            <a href="#" name="article_name"><h2>Title</h2></a>
+        </div>
+        <div>
+            <p>18-Feb-2019 21:30:59.414 INFOfig.deployDirectory Deploying web </p>
+        </div>
+    </div>
+</div>
+>>>>>>> 0730cff21551fbcfc576ed3cc3f80e53433be7d4
 </body>
 </html>
