@@ -9,15 +9,15 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="main">
-        <div class="mid">
-            <form  method="get">
-                <jsp:include page="jsp/header.jsp" />
-                <jsp:include page="jsp/main.jsp" />
-            </form>
-                <jsp:include page="jsp/footer.jsp" />
+<div class="main">
+    <div class="mid">
+        <form action="index" method="get">
+            <jsp:include page="jsp/header.jsp"/>
+            <jsp:include page="jsp/main.jsp"/>
+        </form>
+        <jsp:include page="jsp/footer.jsp"/>
 
-        </div>
+    </div>
 </div>
 </body>
 </html>
