@@ -1,20 +1,21 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="models.Result" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="models.TopicBin" %>
+<%@ page import="java.util.List" %>
 <html>
 <head>
 </head>
-<jsp:useBean id="search" class="models.Search"
+<jsp:useBean id="result1" class="models.Result"
              scope="request"></jsp:useBean>
 
 <body>
 
 <div class="middle">
-    <% ArrayList<TopicBin> topics = (ArrayList) request.getAttribute("Topics");
-        for (TopicBin topic : topics) { %>
+    <% List<Result> results = (ArrayList) request.getAttribute("results");
+        for (Result result : results) { %>
     <div class="article">
         <div>
-            <a href="#" name="article_name"><h2><%=topic.getTitle()%>
+            <a href="#" name="article_name"><h2><%=result.getTitle()%>
             </h2></a>
         </div>
     </div>

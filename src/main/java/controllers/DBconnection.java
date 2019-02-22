@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 
-//Singelton or not?
+
 public class DBconnection {
 
     public static Connection getConnection() {
