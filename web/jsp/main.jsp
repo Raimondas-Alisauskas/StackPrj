@@ -10,14 +10,18 @@
 <body>
 
 <div class="middle">
-    <% ArrayList<TopicBin> topics = (ArrayList) request.getAttribute("Topics");
-        for (TopicBin topic : topics) { %>
-    <div class="article">
-        <div>
-            <a href="#" name="article_name"><h2><%=topic.getTitle()%>
-            </h2></a>
+    <form method="get" id="article" action="article.jsp">
+        <% ArrayList<TopicBin> topics = (ArrayList) request.getAttribute("Topics");
+            for (TopicBin topic : topics) { %>
+        <div class="article">
+            <div>
+                <Input type="Hidden" name="id"  id="id" value="<%=topic.getId()%>">
+                <Input type="Hidden" name="title"  id="title" value="<%=topic.getTitle()%>">
+                <a href="article.jsp" name="article_name"><h2><%=topic.getTitle()%>
+                </h2></a>
+            </div>
         </div>
-    </div>
+    </form>
     <% } %>
 
 </div>
