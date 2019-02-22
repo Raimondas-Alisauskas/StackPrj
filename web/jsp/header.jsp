@@ -24,8 +24,8 @@
     <div class="searchField">
         <input type="text" placeholder="Search.." name="search_field">
     </div>
-    <div class="searchButton">
-        <button type="submit" name="search_button"><i class="fa fa-search"></i></button>
+    <div >
+        <button type="submit" name="search_button" class="searchButton">Search <i class="fa fa-search"></i></button>
     </div>
 </div>
 </body>
