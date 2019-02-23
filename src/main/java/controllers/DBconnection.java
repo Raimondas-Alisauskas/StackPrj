@@ -1,9 +1,5 @@
 package controllers;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -12,10 +8,6 @@ import java.sql.SQLException;
 
 public class DBconnection {
 
-
-
-
-
     public static Connection getConnection() {
 
         Connection connection = null;
@@ -23,34 +15,15 @@ public class DBconnection {
 
             Class.forName("org.sqlite.JDBC");
 
-
             // create a database connection
-
-//            InputStream inputStream = DBconnection.class.getResourceAsStream("database/dbpath.txt");
-//            System.out.println("inputStream= " + inputStream);
-//            String path = readFromInputStream(inputStream);
-
-
-            connection = DriverManager.getConnection("jdbc:sqlite:../../../database/stackoverflow.db");
+            connection = DriverManager.getConnection("jdbc:sqlite:/home/namai/Desktop/CodeBakers/Mokymasis/StackOverflowProject/StackPrj3/database/stackoverflow.db");
 
 
         } catch (SQLException | ClassNotFoundException e) {
-           e.printStackTrace();
+            System.out.println(e.getMessage());
         }
 
         return connection;
-    }
-
-    private static String readFromInputStream(InputStream inputStream) throws IOException {
-        StringBuilder resultStringBuilder = new StringBuilder();
-        try (BufferedReader br
-                     = new BufferedReader(new InputStreamReader(inputStream))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                resultStringBuilder.append(line).append("\n");
-            }
-        }
-        return resultStringBuilder.toString();
     }
 
     public static void closeConnection(Connection connection) {

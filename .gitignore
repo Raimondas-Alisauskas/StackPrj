@@ -3,5 +3,4 @@
 *.iml
 /target
 /classes
-/apache-tomcat-9.0.16
 /database

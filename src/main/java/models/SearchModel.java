@@ -1,5 +1,6 @@
 package models;
 
+import com.sun.org.apache.bcel.internal.classfile.SourceFile;
 import controllers.DBconnection;
 
 import java.sql.*;
@@ -8,11 +9,11 @@ import java.util.List;
 
 public class SearchModel {
 
-    public static List<Result> getResults(Search search, int start,int total) {
+    public static List<Result> getResults(Search search) {
 
         List<Result> results = new ArrayList<>();
-//        String lastTitle;
         int limitOfResults = 10;
+        int pageNumber = search.getPageNumb();
 
         Connection con = DBconnection.getConnection();
         if (con != null) {
@@ -22,17 +23,36 @@ public class SearchModel {
                 Statement statement = con.createStatement();
                 statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
-                String sql = "SELECT Title FROM Topics WHERE Title like '%'||?||'%' order by ViewCount desc limit "+(start-1)+","+total;
-                PreparedStatement ps;
-                ps = con.prepareStatement(sql);
-                ps.setString(1, search.getSearchInput());
+                String sql1 = "SELECT count(*) FROM Topics WHERE Title like '%'||?||'%'";
 
-                ResultSet rs;
-                rs = ps.executeQuery();
+                PreparedStatement ps1;
+                ps1= con.prepareStatement(sql1);
+                ps1.setString(1, search.getSearchInput());
 
-                while (rs.next()) {
+
+                ResultSet rs1 = ps1.executeQuery();
+                rs1.next();
+                int numbOfRecords = rs1.getInt(1);
+                System.out.printf("numbOfRecords= " + numbOfRecords);
+
+
+                String sql2 = "SELECT Title FROM Topics WHERE Title like '%'||?||'%' order by ViewCount desc limit ?,"+limitOfResults;
+
+                PreparedStatement ps2;
+                ps2 = con.prepareStatement(sql2);
+                ps2.setString(1, search.getSearchInput());
+                ps2.setString(2, String.valueOf((pageNumber - 1) * limitOfResults));
+
+
+
+                ResultSet rs2;
+                rs2 = ps2.executeQuery();
+
+                while (rs2.next()) {
                     Result result = new Result();
-                    result.setTitle(rs.getString("Title"));
+                    result.setSearchInput(search.getSearchInput());
+                    result.setTitle(rs2.getString("Title"));
+                    result.setPageNumb(pageNumber);
 
                     results.add(result);
                 }

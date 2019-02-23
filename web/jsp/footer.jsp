@@ -1,19 +1,32 @@
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
+<%@ page import="models.Result" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <%
+        List<Result> results = (ArrayList) request.getAttribute("results");
+        int pageNumb = results.get(0).getPageNumb();
+        String searchInput =results.get(0).getSearchInput();
+    %>
 </head>
 <body>
     <div class="footer">
         <div id="container">
             <div class="pagination">
-                <a href="#" class="page">first</a>
-                <a href="#" class="page">2</a>
-                <a href="#" class="page">3</a>
-                <span class="page active">4</span>
-                <a href="#" class="page">5</a>
-                <a href="#" class="page">6</a>
-                <a href="#" class="page">last</a>
-            </div>
+                <a
+                    href="/Stack_war_exploded/result?lang_name=android&search_field=<%=searchInput%>&pageNum=<%=pageNumb-1%>"
+                   class="page">Previos
+                </a>
+                <span
+                    class="page">
+                    <%=pageNumb%>
+                </span>
+                <a
+                    href="/Stack_war_exploded/result?lang_name=android&search_field=<%=searchInput%>&pageNum=<%=pageNumb+1%>"
+                    class="page">Next
+                </a>
+              </div>
         </div>
     </div>
 </body>
