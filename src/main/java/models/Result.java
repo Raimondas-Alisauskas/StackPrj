@@ -5,6 +5,7 @@ public class Result {
     private String searchInput;
     private String title;
     private int pageNumb;
+    private int numbOfRecords;
 
     public Result() {
     }
@@ -35,5 +36,13 @@ public class Result {
 
     public void setSearchInput(String searchInput) {
         this.searchInput = searchInput;
+    }
+
+    public int getNumbOfRecords() {
+        return numbOfRecords;
+    }
+
+    public void setNumbOfRecords(int numbOfRecords) {
+        this.numbOfRecords = numbOfRecords;
     }
 }

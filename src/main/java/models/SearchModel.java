@@ -53,6 +53,7 @@ public class SearchModel {
                     result.setSearchInput(search.getSearchInput());
                     result.setTitle(rs2.getString("Title"));
                     result.setPageNumb(pageNumber);
+                    result.setNumbOfRecords(numbOfRecords);
 
                     results.add(result);
                 }

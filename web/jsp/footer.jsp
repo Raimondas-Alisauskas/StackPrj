@@ -7,6 +7,7 @@
     <%
         List<Result> results = (ArrayList) request.getAttribute("results");
         int pageNumb = results.get(0).getPageNumb();
+        int getNumbOfRecords = results.get(0).getNumbOfRecords();
         String searchInput =results.get(0).getSearchInput();
     %>
 </head>
@@ -14,18 +15,22 @@
     <div class="footer">
         <div id="container">
             <div class="pagination">
-                <a
-                    href="/Stack_war_exploded/result?lang_name=android&search_field=<%=searchInput%>&pageNum=<%=pageNumb-1%>"
-                   class="page">Previos
-                </a>
+                <% if(pageNumb > 1 ){%>
+                    <a
+                        href="/Stack_war_exploded/result?lang_name=android&search_field=<%=searchInput%>&pageNum=<%=pageNumb-1%>"
+                       class="page">Previos
+                    </a>
+                <% } %>
                 <span
                     class="page">
                     <%=pageNumb%>
                 </span>
+                <% if(pageNumb <= getNumbOfRecords/10 ){%>
                 <a
                     href="/Stack_war_exploded/result?lang_name=android&search_field=<%=searchInput%>&pageNum=<%=pageNumb+1%>"
                     class="page">Next
                 </a>
+                <% } %>
               </div>
         </div>
     </div>
