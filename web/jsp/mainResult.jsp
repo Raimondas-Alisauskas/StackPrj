@@ -5,8 +5,8 @@
 <html>
 <head>
 </head>
-<jsp:useBean id="result1" class="models.Result"
-             scope="request"></jsp:useBean>
+<%--<jsp:useBean id="result1" class="models.Result"--%>
+             <%--scope="request"></jsp:useBean>--%>
 
 <body>
 

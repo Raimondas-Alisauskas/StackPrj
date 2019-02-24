@@ -15,7 +15,7 @@
             <jsp:include page="jsp/header.jsp"/>
             <jsp:include page="jsp/main.jsp"/>
         </form>
-        <jsp:include page="jsp/footer.jsp"/>
+        <%--<jsp:include page="jsp/footer.jsp"/>--%>
 
     </div>
 </div>

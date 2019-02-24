@@ -4,6 +4,7 @@ public class Search {
 
     private String searchInput;
     private String dropdownValue;
+    private int pageNumb;
 
     public Search() {
         super();
@@ -33,6 +34,14 @@ public class Search {
     public void setDropdownValue(String d) {
 
         dropdownValue = d;
+    }
+
+    public int getPageNumb() {
+        return pageNumb;
+    }
+
+    public void setPageNumb(int pageNumb) {
+        this.pageNumb = pageNumb;
     }
 }
 
