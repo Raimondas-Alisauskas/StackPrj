@@ -7,6 +7,11 @@
 <body>
 
 <div class="header">
+
+    <div>
+        <img name="logo" src="/logo_1.png" alt="Logo image">
+    </div>
+
     <div class="drop">
         <select id="lang" name="lang_name" class="drop">
             <optgroup label="select language">
