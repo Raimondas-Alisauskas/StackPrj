@@ -3,13 +3,13 @@
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    /*border: 1px solid #ff0202;*/
+    border: 1px solid #ff0202;
 }
 
 body {
     font-family: 'Roboto', sans-serif;
     color: #384047;
-    background-color: bisque;
+    background-color: #F5F8F8;
 }
 
 .main{
@@ -31,6 +31,10 @@ body {
     justify-content: space-between;
 }
 
+.searchWrapper {
+    display: flex;
+}
+
 h2 {
     margin-bottom: 0;
     text-effect: none;
@@ -38,6 +42,8 @@ h2 {
 .searchField{
     display: flex;
     align-items: center;
+    width: 400px;
+    height: 50px;
 }
 
 .searchButton{
@@ -52,6 +58,7 @@ h2 {
 .drop{
     display: flex;
     align-content: center;
+    width:150px;
 }
 
 .middle{
