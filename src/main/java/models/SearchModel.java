@@ -33,8 +33,6 @@ public class SearchModel {
                 ResultSet rs1 = ps1.executeQuery();
                 rs1.next();
                 int numbOfRecords = rs1.getInt(1);
-                System.out.printf("numbOfRecords= " + numbOfRecords);
-
 
                 String sql2 = "SELECT Title FROM Topics WHERE Title like '%'||?||'%' order by ViewCount desc limit ?,"+limitOfResults;
 

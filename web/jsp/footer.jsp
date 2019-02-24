@@ -17,7 +17,7 @@
             <div class="pagination">
                 <% if(pageNumb > 1 ){%>
                     <a
-                        href="/Stack_war_exploded/result?lang_name=android&search_field=<%=searchInput%>&pageNum=<%=pageNumb-1%>"
+                        href="<%=request.getContextPath()%>/result?lang_name=android&search_field=<%=searchInput%>&pageNum=<%=pageNumb-1%>"
                        class="page">Previos
                     </a>
                 <% } %>
@@ -27,7 +27,7 @@
                 </span>
                 <% if(pageNumb <= getNumbOfRecords/10 ){%>
                 <a
-                    href="/Stack_war_exploded/result?lang_name=android&search_field=<%=searchInput%>&pageNum=<%=pageNumb+1%>"
+                    href="<%=request.getContextPath()%>/result?lang_name=android&search_field=<%=searchInput%>&pageNum=<%=pageNumb+1%>"
                     class="page">Next
                 </a>
                 <% } %>
