@@ -4,13 +4,11 @@
 <html>
 <head>
 </head>
-<%--<jsp:useBean id="search" class="models.Search"--%>
-             <%--scope="request"></jsp:useBean>--%>
 
 <body>
 
 <div class="middle">
-    <% ArrayList<TopicBin> topics = (ArrayList) request.getAttribute("Topics");
+    <% ArrayList<TopicBin> topics = (ArrayList) request.getAttribute("topicsList");
         for (TopicBin topic : topics) { %>
     <div class="article">
         <div>

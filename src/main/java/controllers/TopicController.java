@@ -45,7 +45,10 @@ public class TopicController extends HttpServlet {
         TopicResults topicResult = TopicModel.getTopicsFromDB(search);
 
         //ArrayList<TopicBin> topics = TopicModel.getTopicsFromDB(search);
-        req.setAttribute("Topics", topicResult.getTopicsList());
+        req.setAttribute("topicsList", topicResult.getTopicsList());
+        req.setAttribute("numbOfRecords", topicResult.getNumbOfRecords());
+        req.setAttribute("pageNumb", topicResult.getPageNumb());
+        req.setAttribute("searchInput", topicResult.getSearchInput());
 
         DropdownBL dropdownBL = new DropdownBL();
         List<DocTagDAL> tagList = dropdownBL.getLimitedResult();
