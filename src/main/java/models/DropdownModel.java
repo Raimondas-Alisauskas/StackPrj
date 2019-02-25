@@ -1,6 +1,6 @@
-package controllers;
+package models;
 
-import models.DocTagDAL;
+import controllers.DBconnection;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -9,15 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class DropdownBL {
+public class DropdownModel {
     Connection currentCon = null;
     ResultSet rs = null;
-    int limitOfResults = 10;
-    String tag = "java";
-    List<DocTagDAL> tagList;
+    List<DropdownBin> tagList;
 
 
-    public List<DocTagDAL> getLimitedResult() {
+    public List<DropdownBin> getLimitedResult() {
 
         Statement statement = null;
 
@@ -38,12 +36,12 @@ public class DropdownBL {
             tagList = new ArrayList<>();
 
             while (rs.next()) {
-                DocTagDAL docTagDAL = new DocTagDAL();
+                DropdownBin dropdownBin = new DropdownBin();
 
-                docTagDAL.setId(rs.getInt("Id"));
-                docTagDAL.setTag(rs.getString("Tag"));
+                dropdownBin.setId(rs.getInt("Id"));
+                dropdownBin.setTag(rs.getString("Tag"));
 
-                tagList.add(docTagDAL);
+                tagList.add(dropdownBin);
 
             }
 

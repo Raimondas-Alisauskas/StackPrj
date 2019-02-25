@@ -1,6 +1,6 @@
 package models;
 
-public class DocTagDAL {
+public class DropdownBin {
 
     private int Id;
     private String Tag;

@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -19,16 +18,13 @@ public class TopicController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        Search search = new Search();
-        //search.setSearchInput(req.getParameter("search_field"));
-        //search.setPageNumb(Integer.parseInt(req.getParameter("pageNum")));
-        //System.out.println(search.getSearchInput());
+        SearchBin searchBin = new SearchBin();
 
         String search_field = req.getParameter("search_field");
         if (search_field == null) {
             search_field = "";
         }
-        search.setSearchInput(search_field);
+        searchBin.setSearchInput(search_field);
 
         String pageNumStr = req.getParameter("pageNum");
         int pageNr;
@@ -37,21 +33,17 @@ public class TopicController extends HttpServlet {
         } else {
             pageNr = Integer.parseInt(pageNumStr);
         }
-        search.setPageNumb(pageNr);
+        searchBin.setPageNumb(pageNr);
 
-        //System.out.println("search_field " + req.getParameter("search_field"));
-        //System.out.println("pageNum " + req.getParameter("pageNum"));
+        TopicResults topicResult = TopicModel.getTopicsFromDB(searchBin);
 
-        TopicResults topicResult = TopicModel.getTopicsFromDB(search);
-
-        //ArrayList<TopicBin> topics = TopicModel.getTopicsFromDB(search);
         req.setAttribute("topicsList", topicResult.getTopicsList());
         req.setAttribute("numbOfRecords", topicResult.getNumbOfRecords());
         req.setAttribute("pageNumb", topicResult.getPageNumb());
         req.setAttribute("searchInput", topicResult.getSearchInput());
 
-        DropdownBL dropdownBL = new DropdownBL();
-        List<DocTagDAL> tagList = dropdownBL.getLimitedResult();
+        DropdownModel dropdownModel = new DropdownModel();
+        List<DropdownBin> tagList = dropdownModel.getLimitedResult();
         req.setAttribute("tagList", tagList);
 
         RequestDispatcher rd = req.getRequestDispatcher("index.jsp");

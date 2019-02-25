@@ -9,11 +9,11 @@ import java.util.List;
 
 public class TopicModel {
 
-    public static TopicResults getTopicsFromDB(Search search) {
+    public static TopicResults getTopicsFromDB(SearchBin searchBin) {
         List<TopicBin> topics = new ArrayList<>();
 
         int limitOfResults = 10;
-        int pageNumber = search.getPageNumb();
+        int pageNumber = searchBin.getPageNumb();
         int numbOfRecords = 0;
 
         Connection con = DBconnection.getConnection();
@@ -23,18 +23,18 @@ public class TopicModel {
                 Statement statement = con.createStatement();
                 statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
-                boolean isSearchInput = !search.getSearchInput().equals("");
+                boolean isSearchInput = !searchBin.getSearchInput().equals("");
 
                 PreparedStatement psCount;
 
                 String sql = "SELECT count(*) FROM Topics";
                 if (isSearchInput) {
                     sql = sql + " WHERE Title LIKE '%'||?||'%'";
-                    //psCount.setString(1, search.getSearchInput());
+                    //psCount.setString(1, searchBin.getSearchInput());
                 }
                 psCount = con.prepareStatement(sql);
                 if (isSearchInput) {
-                    psCount.setString(1, search.getSearchInput());
+                    psCount.setString(1, searchBin.getSearchInput());
                 }
 
                 ResultSet rsCount = psCount.executeQuery();
@@ -52,7 +52,7 @@ public class TopicModel {
                 PreparedStatement psTopic;
                 psTopic = con.prepareStatement(sql);
                 if (isSearchInput) {
-                    psTopic.setString(1, search.getSearchInput());
+                    psTopic.setString(1, searchBin.getSearchInput());
                 }
                 ResultSet rs = psTopic.executeQuery();
 
@@ -71,7 +71,7 @@ public class TopicModel {
             }
         }
 
-        return new TopicResults(topics, search.getSearchInput(), pageNumber, numbOfRecords);
+        return new TopicResults(topics, searchBin.getSearchInput(), pageNumber, numbOfRecords);
     }
 
 }
