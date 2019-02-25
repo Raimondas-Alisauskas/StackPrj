@@ -2,17 +2,19 @@ package models;
 
 import controllers.DBconnection;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class TopicModel {
 
-    public static ArrayList<TopicBin> getTopicsFromDB() {
-        ArrayList<TopicBin> topics = new ArrayList<>();
+    public static TopicResults getTopicsFromDB(Search search) {
+        List<TopicBin> topics = new ArrayList<>();
+
+        int limitOfResults = 10;
+        int pageNumber = search.getPageNumb();
+        int numbOfRecords = 0;
 
         Connection con = DBconnection.getConnection();
         if (con != null) {
@@ -21,7 +23,39 @@ public class TopicModel {
                 Statement statement = con.createStatement();
                 statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
-                ResultSet rs = statement.executeQuery("select Id, Title from Topics limit 8");
+                boolean isSearchInput = !search.getSearchInput().equals("");
+
+                PreparedStatement psCount;
+
+                String sql = "SELECT count(*) FROM Topics";
+                if (isSearchInput) {
+                    sql = sql + " WHERE Title LIKE '%'||?||'%'";
+                    //psCount.setString(1, search.getSearchInput());
+                }
+                psCount = con.prepareStatement(sql);
+                if (isSearchInput) {
+                    psCount.setString(1, search.getSearchInput());
+                }
+
+                ResultSet rsCount = psCount.executeQuery();
+                rsCount.next();
+                numbOfRecords = rsCount.getInt(1);
+
+
+                sql = "SELECT Id, Title FROM Topics";
+                if (isSearchInput) {
+                    sql = sql + " WHERE Title LIKE '%'||?||'%'";
+                }
+                sql = sql + " order by ViewCount desc limit " + ((pageNumber - 1) * limitOfResults) + ", " + limitOfResults;
+
+
+                PreparedStatement psTopic;
+                psTopic = con.prepareStatement(sql);
+                if (isSearchInput) {
+                    psTopic.setString(1, search.getSearchInput());
+                }
+                ResultSet rs = psTopic.executeQuery();
+
                 while (rs.next()) {
                     TopicBin topic = new TopicBin();
                     topic.setId(rs.getInt("Id"));
@@ -37,7 +71,7 @@ public class TopicModel {
             }
         }
 
-        return topics;
+        return new TopicResults(topics, search.getSearchInput(), pageNumber, numbOfRecords);
     }
 
 }
