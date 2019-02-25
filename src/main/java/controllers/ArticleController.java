@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 
 @WebServlet("/article")
 public class ArticleController extends HttpServlet {
@@ -17,9 +18,16 @@ public class ArticleController extends HttpServlet {
 
         Article article = new Article();
         article.setTitle(req.getParameter("title"));
+        String a = req.getParameter("id");
+        article.setId(Integer.parseInt(a));
 
-        Article selectedArticle = ArticleModel.getArticle(article);
-        selectedArticle.setTitle(article.getTitle());
+
+        ArrayList<Article> selectedArticle = ArticleModel.getArticle(article);
+        // pratesti su example gavimu
+
+
+//        selectedArticle.setTitle(article.getTitle());
+//        selectedArticle.setId(article.getId());
 
         req.setAttribute("article", selectedArticle);
         req.getRequestDispatcher("article.jsp").forward(req, resp);

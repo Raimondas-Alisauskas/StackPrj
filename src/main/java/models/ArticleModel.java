@@ -3,12 +3,14 @@ package models;
 import controllers.DBconnection;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class ArticleModel {
 
-    public static Article getArticle(Article selectedArticle) {
+    public static ArrayList<Article> getArticle(Article selectedArticle) {
 
-        Article article = new Article();
+
+        ArrayList<Article> examples = new ArrayList<>();
 
 
         Connection con = DBconnection.getConnection();
@@ -19,18 +21,19 @@ public class ArticleModel {
                 Statement statement = con.createStatement();
                 statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
-                String sql = "SELECT ViewCount FROM Topics WHERE Title = ?";
+                String sql = "SELECT BodyHtml FROM Examples WHERE DocTopicId = ?";
                 PreparedStatement ps;
                 ps = con.prepareStatement(sql);
-                ps.setString(1, selectedArticle.getTitle());
+                ps.setInt(1, selectedArticle.getId());
 
 
                 ResultSet rs;
                 rs = ps.executeQuery();
 
                 while (rs.next()) {
-
-                    article.setCreationDate(rs.getInt("ViewCount"));
+                    Article article = new Article();
+                    article.setExample(rs.getString("BodyHtml"));
+                    examples.add(article);
 
                 }
 
@@ -41,7 +44,7 @@ public class ArticleModel {
             }
         }
 
-        return article;
+        return examples;
 
 
     }
