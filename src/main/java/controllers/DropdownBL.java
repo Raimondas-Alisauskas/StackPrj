@@ -12,8 +12,6 @@ import java.util.List;
 public class DropdownBL {
     Connection currentCon = null;
     ResultSet rs = null;
-    int limitOfResults = 10;
-    String tag = "java";
     List<DocTagDAL> tagList;
 
 

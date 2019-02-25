@@ -9,7 +9,7 @@
              <%--scope="request"></jsp:useBean>--%>
 
 <body>
-
+<h1>Results</h1>
 <div class="middle">
     <% List<Result> results = (ArrayList) request.getAttribute("results");
         for (Result result : results) { %>

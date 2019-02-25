@@ -13,10 +13,12 @@ public class TopicBin {
     }
 
     public int getId() {
+
         return id;
     }
 
     public void setId(int id) {
+
         this.id = id;
     }
 
@@ -25,6 +27,7 @@ public class TopicBin {
     }
 
     public void setTitle(String title) {
+
         this.title = title;
     }
 }

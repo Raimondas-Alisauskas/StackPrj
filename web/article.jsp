@@ -13,9 +13,9 @@
     <div class="mid">
         <form action="result" method="get">
             <jsp:include page="jsp/headerResult.jsp"/>
-            <jsp:include page="jsp/mainResult.jsp"/>
+            <jsp:include page="jsp/mainArticle.jsp"/>
         </form>
-        <jsp:include page="jsp/footer.jsp"/>
+        <%--<jsp:include page="jsp/footer.jsp"/>--%>
 
     </div>
 </div>
