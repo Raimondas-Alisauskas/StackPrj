@@ -33,6 +33,7 @@ public class ArticleModel {
                 while (rs.next()) {
                     ArticleBin articleBin = new ArticleBin();
                     articleBin.setExample(rs.getString("BodyHtml"));
+//                    articleBin.setTitle(rs.getString("Title"));
                     examples.add(articleBin);
 
                 }

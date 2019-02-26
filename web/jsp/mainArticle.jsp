@@ -7,7 +7,7 @@
     <body>
         <% ArrayList<ArticleBin> articles = (ArrayList) request.getAttribute("article");%>
         <h1>Article description</h1>
-        <p>Article title: <%=articles.get(0).getTitle()%></p>
+        <p>Article title: <%=request.getAttribute("articleTitle")%></p>
         <div class="middle">
             <%for (ArticleBin articleBin2 : articles) { %>
             <div class="example">
