@@ -11,7 +11,7 @@
 <body>
 <div class="main">
     <div class="mid">
-        <%--<jsp:include page="header.jsp"/>--%>
+        <jsp:include page="header.jsp"/>
         <jsp:include page="mainArticle.jsp"/>
     </div>
 </div>

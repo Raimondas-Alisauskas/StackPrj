@@ -7,7 +7,7 @@
     <body>
 
         <div>
-            <form class="header" action="" method="get">
+            <form class="header" action="search" method="get">
                 <div class="drop">
                     <select id="lang" name="tagId">
                         <div label="select language">
