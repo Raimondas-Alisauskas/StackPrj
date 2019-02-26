@@ -4,16 +4,31 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
-
-
     <servlet>
-        <servlet-name>PaginationServlet</servlet-name>
-        <servlet-class>controllers.DropdownServlet</servlet-class>
+        <servlet-name>Initial</servlet-name>
+        <servlet-class>controllers.TopicController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>PaginationServlet</servlet-name>
-        <url-pattern>/pagination</url-pattern>
+        <servlet-name>Initial</servlet-name>
+        <url-pattern>/search</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Welcome</servlet-name>
+        <servlet-class>controllers.TopicController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Welcome</servlet-name>
+        <url-pattern></url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Article</servlet-name>
+        <servlet-class>controllers.ArticleController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Article</servlet-name>
+        <url-pattern>/article</url-pattern>
+    </servlet-mapping>
 
 </web-app>

@@ -6,14 +6,13 @@ import models.DropdownBin;
 import models.DropdownModel;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/article")
+//@WebServlet("/article")
 public class ArticleController extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -28,10 +27,7 @@ public class ArticleController extends HttpServlet {
 
         ArrayList<ArticleBin> selectedArticle = ArticleModel.getArticle(articleBin);
 
-
-
         // pratesti su example gavimu
-
 
 //        selectedArticle.setTitle(articleBin.getTitle());
 //        selectedArticle.setId(articleBin.getId());
@@ -46,6 +42,5 @@ public class ArticleController extends HttpServlet {
         req.getRequestDispatcher("jsp/article.jsp").forward(req, resp);
 
     }
-
 
 }
