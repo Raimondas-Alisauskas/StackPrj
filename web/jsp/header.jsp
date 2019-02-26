@@ -7,7 +7,7 @@
     <body>
 
         <div class="header">
-            <form action="" method="get">
+            <form action="search" method="get">
             <div class="drop">
                 <select id="lang" name="lang_name">
                     <div label="select language">
@@ -24,7 +24,7 @@
                 <input type="hidden"  name="pageNum" value="1">
             </div>
             <div class="searchButton">
-                <button type="submit" name="search_button"><i class="fa fa-search"></i></button>
+                <button type="submit"><i class="fa fa-search"></i></button>
             </div>
                 </form>
         </div>
