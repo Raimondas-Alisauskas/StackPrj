@@ -1,10 +1,13 @@
+<%@ page import="models.TopicResults" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <%
-        int numbOfRecords = (int) request.getAttribute("numbOfRecords");
-        int pageNumb = (int) request.getAttribute("pageNumb");
-        String searchInput = String.valueOf(request.getAttribute("searchInput"));
+        TopicResults topicResults = (TopicResults) request.getAttribute("topicResults");
+        String tagId = topicResults.getTagId();
+        String searchInput = topicResults.getSearchInput();
+        int numbOfRecords = topicResults.getNumbOfRecords();
+        int pageNumb = topicResults.getPageNumb();
     %>
 </head>
 <body>
@@ -13,7 +16,7 @@
             <div class="pagination">
                 <% if(pageNumb > 1 ){%>
                     <a
-                        href="<%=request.getContextPath()%>/?lang_name=android&search_field=<%=searchInput%>&pageNum=<%=pageNumb-1%>"
+                        href="<%=request.getContextPath()%>/?tagId=<%=tagId%>&search_field=<%=searchInput%>&pageNum=<%=pageNumb-1%>"
                        class="page">Previos
                     </a>
                 <% } %>
@@ -23,7 +26,7 @@
                 </span>
                 <% if(pageNumb <= numbOfRecords /10 ){%>
                 <a
-                    href="<%=request.getContextPath()%>/?lang_name=android&search_field=<%=searchInput%>&pageNum=<%=pageNumb+1%>"
+                    href="<%=request.getContextPath()%>/?tagId=<%=tagId%>&search_field=<%=searchInput%>&pageNum=<%=pageNumb+1%>"
                     class="page">Next
                 </a>
                 <% } %>

@@ -22,7 +22,7 @@ public class DropdownModel {
 
         String searchQuery = "select Id, Tag from DocTags order by TopicCount desc limit 10";
 
-        System.out.println("Query: " + searchQuery);
+//        System.out.println("Query: " + searchQuery);
 
         try {
             currentCon = DBconnection.getConnection();

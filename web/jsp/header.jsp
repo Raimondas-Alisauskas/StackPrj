@@ -6,27 +6,28 @@
     </head>
     <body>
 
-        <div class="header">
-            <form action="" method="get">
-            <div class="drop">
-                <select id="lang" name="lang_name">
-                    <div label="select language">
-                        <% ArrayList<DropdownBin> tagList = (ArrayList) request.getAttribute("tagList");
-                            for (DropdownBin tag : tagList) { %>
-                        <option value="<%=tag.getTag()%>"><%=tag.getTag()%>
-                        </option>
-                        <% } %>
-                    </div>
-                </select>
-            </div>
-            <div class="searchField">
-                <input type="text" placeholder="Search.." name="search_field">
-                <input type="hidden"  name="pageNum" value="1">
-            </div>
-            <div class="searchButton">
-                <button type="submit" name="search_button"><i class="fa fa-search"></i></button>
-            </div>
-                </form>
+        <div>
+            <form class="header" action="" method="get">
+                <div class="drop">
+                    <select id="lang" name="tagId">
+                        <div label="select language">
+                            <% ArrayList<DropdownBin> tagList = (ArrayList) request.getAttribute("tagList");
+                                for (DropdownBin tag : tagList) { %>
+                            <option
+                                    value="<%=tag.getId()%>"><%=tag.getTag()%>
+                            </option>
+                            <% } %>
+                        </div>
+                    </select>
+                </div>
+                <div class="searchField">
+                    <input type="text" placeholder="Search.." name="search_field">
+                    <input type="hidden"  name="pageNum" value="1">
+                </div>
+                <div class="searchButton">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </div>
+            </form>
         </div>
     </body>
 </html>

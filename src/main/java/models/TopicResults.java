@@ -5,12 +5,15 @@ import java.util.List;
 public class TopicResults {
 
     private List<TopicBin> topicsList;
+    private String tagId;
     private String searchInput;
     private int pageNumb;
     private int numbOfRecords;
 
-    public TopicResults(List<TopicBin> topicsList, String searchInput, int pageNumb, int numbOfRecords) {
+
+    public TopicResults(List<TopicBin> topicsList, String tagId, String searchInput, int pageNumb, int numbOfRecords) {
         this.topicsList = topicsList;
+        this.tagId = tagId;
         this.searchInput = searchInput;
         this.pageNumb = pageNumb;
         this.numbOfRecords = numbOfRecords;
@@ -46,5 +49,13 @@ public class TopicResults {
 
     public void setNumbOfRecords(int numbOfRecords) {
         this.numbOfRecords = numbOfRecords;
+    }
+
+    public String getTagId() {
+        return tagId;
+    }
+
+    public void setTagId(String tagId) {
+        this.tagId = tagId;
     }
 }
