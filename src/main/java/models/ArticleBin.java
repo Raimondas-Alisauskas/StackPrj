@@ -1,16 +1,16 @@
 package models;
 
-public class Article {
+public class ArticleBin {
 
     private int id;
     private String title;
     private int creationDate;
     private String example;
 
-    public Article() {
+    public ArticleBin() {
     }
 
-    public Article(int id, String title, int creationDate, String example) {
+    public ArticleBin(int id, String title, int creationDate, String example) {
         this.id = id;
         this.title = title;
         this.creationDate = creationDate;

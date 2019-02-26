@@ -7,10 +7,10 @@ import java.util.ArrayList;
 
 public class ArticleModel {
 
-    public static ArrayList<Article> getArticle(Article selectedArticle) {
+    public static ArrayList<ArticleBin> getArticle(ArticleBin selectedArticle) {
 
 
-        ArrayList<Article> examples = new ArrayList<>();
+        ArrayList<ArticleBin> examples = new ArrayList<>();
 
 
         Connection con = DBconnection.getConnection();
@@ -31,9 +31,10 @@ public class ArticleModel {
                 rs = ps.executeQuery();
 
                 while (rs.next()) {
-                    Article article = new Article();
-                    article.setExample(rs.getString("BodyHtml"));
-                    examples.add(article);
+                    ArticleBin articleBin = new ArticleBin();
+                    articleBin.setExample(rs.getString("BodyHtml"));
+//                    articleBin.setTitle(rs.getString("Title"));
+                    examples.add(articleBin);
 
                 }
 
