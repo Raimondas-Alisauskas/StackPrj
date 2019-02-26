@@ -8,6 +8,7 @@
         <% ArrayList<ArticleBin> articles = (ArrayList) request.getAttribute("article");%>
         <h1>Article description</h1>
         <p>Article title: <%=request.getAttribute("articleTitle")%></p>
+        <button type="button" class="button button--ghost button--ghost--green" onclick="history.back()">Go back to articles</button>
         <div class="middle">
             <%for (ArticleBin articleBin2 : articles) { %>
             <div class="example">
