@@ -1,38 +1,33 @@
-<%@ page import="models.DocTagDAL" %>
+<%@ page import="models.DropdownBin" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-</head>
-<body>
+    <head>
+    </head>
+    <body>
 
-<div class="header">
-    <div>
-        <img name="logo" src="" alt="Logo Stack Overflow Archive" class="logo">
-    </div>
-    <div class="searchWrapper">
-    <div class="drop">
-        <select id="lang" name="lang_name" class="drop">
-            <optgroup label="select language">
-                <% ArrayList<DocTagDAL> tagList = (ArrayList) request.getAttribute("tagList");
-                    for (DocTagDAL tag : tagList) { %>
-                <option value="<%=tag.getTag()%>"><%=tag.getTag()%>
-                </option>
-
-                <% } %>
-
-
-            </optgroup>
-        </select>
-    </div>
-    <div class="searchField">
-        <input type="text" placeholder="Search.." name="search_field" class="searchField">
-        <input type="hidden"  name="pageNum" value="1">
-    </div>
-
-        <button type="submit" name="search_button" class="searchButton">Search <i class="fa fa-search"></i></button>
-
-    </div>
-</div>
-</body>
+        <div>
+            <form class="header" action="search" method="get">
+                <div class="drop">
+                    <select id="lang" name="tagId">
+                        <div label="select language">
+                            <% ArrayList<DropdownBin> tagList = (ArrayList) request.getAttribute("tagList");
+                                for (DropdownBin tag : tagList) { %>
+                            <option
+                                    value="<%=tag.getId()%>"><%=tag.getTag()%>
+                            </option>
+                            <% } %>
+                        </div>
+                    </select>
+                </div>
+                <div class="searchField">
+                    <input type="text" placeholder="Search.." name="search_field">
+                    <input type="hidden"  name="pageNum" value="1">
+                </div>
+                <div class="searchButton">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </div>
+            </form>
+        </div>
+    </body>
 </html>

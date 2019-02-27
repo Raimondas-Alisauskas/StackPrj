@@ -1,20 +1,20 @@
 package models;
 
-public class Search {
+public class SearchBin {
 
     private String searchInput;
-    private String dropdownValue;
+    private String tagId;
     private int pageNumb;
 
-    public Search() {
+    public SearchBin() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-    public Search(String s, String d) {
+    public SearchBin(String s, String d) {
         super();
         searchInput = s;
-        dropdownValue = d;
+        tagId = d;
     }
 
     public String getSearchInput() {
@@ -27,13 +27,13 @@ public class Search {
         searchInput = s;
     }
 
-    public String getDropdownValue() {
-        return dropdownValue;
+    public String getTagId() {
+        return tagId;
     }
 
-    public void setDropdownValue(String d) {
+    public void setTagId(String d) {
 
-        dropdownValue = d;
+        tagId = d;
     }
 
     public int getPageNumb() {

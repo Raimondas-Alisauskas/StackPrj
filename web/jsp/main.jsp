@@ -2,30 +2,24 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="models.TopicBin" %>
 <%@ page import="controllers.ArticleController" %>
+<%@ page import="models.TopicResults" %>
 <html>
-<head>
-</head>
-<%--<jsp:useBean id="search" class="models.Search"--%>
-             <%--scope="request"></jsp:useBean>--%>
+    <head>
+    </head>
 
-<body>
-
-<div class="middle">
-    <form action="article" method="get">
-        <% ArrayList<TopicBin> topics = (ArrayList) request.getAttribute("Topics");
-            for (TopicBin topic : topics) { %>
-        <div class="article">
-            <div>
-                <Input type="hidden" name="id" id="id" value="<%=topic.getId()%>">
-                <Input type="hidden" name="title" id="title" value="<%=topic.getTitle()%>">
-                <a href="article?title=<%=topic.getTitle()%>&id=<%=topic.getId()%>" name="article_name"><h2><%=topic.getTitle()%>
-                </h2></a>
-            </div>
+    <body>
+        <div class="middle">
+                <%
+                    ArrayList<TopicBin> topics = (ArrayList<TopicBin>) ((TopicResults) request.getAttribute("topicResults")).getTopicsList();
+                    for (TopicBin topic : topics) {
+                %>
+                <div class="article">
+                    <div>
+                        <a href="article?title=<%=topic.getTitle()%>&id=<%=topic.getId()%>" name="article_name"><h2><%=topic.getTitle()%>
+                        </h2></a>
+                    </div>
+                </div>
+            <% } %>
         </div>
-    </form>
-    <% } %>
-
-</div>
-
-</body>
+    </body>
 </html>

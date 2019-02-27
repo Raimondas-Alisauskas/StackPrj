@@ -10,14 +10,9 @@
 </head>
 <body>
 <div class="main">
-
-        <form action="result" method="get">
-            <jsp:include page="jsp/headerResult.jsp"/>
-            <div class="mid">
-            <jsp:include page="jsp/mainArticle.jsp"/>
-        </form>
-        <%--<jsp:include page="jsp/footer.jsp"/>--%>
-
+    <div class="mid">
+        <jsp:include page="header.jsp"/>
+        <jsp:include page="mainArticle.jsp"/>
     </div>
 </div>
 </body>
