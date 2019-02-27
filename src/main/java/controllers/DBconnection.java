@@ -1,5 +1,7 @@
 package controllers;
 
+import utils.Constants;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -16,7 +18,7 @@ public class DBconnection {
             Class.forName("org.sqlite.JDBC");
 
             // create a database connection
-            connection = DriverManager.getConnection("jdbc:sqlite:/home/namai/Desktop/CodeBakers/Mokymasis/StackOverflowProject/StackPrj4/database/stackoverflow.db");
+            connection = DriverManager.getConnection(Constants.DB_CONNECTION_STR);
 
 
         } catch (SQLException | ClassNotFoundException e) {
