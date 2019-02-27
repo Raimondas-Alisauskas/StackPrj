@@ -3,44 +3,71 @@
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    /*border: 1px solid #ff0202;*/
+    /*border: 1px solid red;*/
 }
 
 body {
     font-family: 'Roboto', sans-serif;
     color: #384047;
-    background-color: bisque;
+    background-color: white;
+    margin: 0;
 }
 
 .main{
     min-height: 100vh;
-    max-height: 100%;
     max-width: 100%;
-    display: flex;
     justify-content: center;
 }
 
 .mid{
-    margin-top: 10px;
     width: 60%;
+    margin-left: 20%;
 }
 
 .header{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding: 25px;
+    padding-left: 10%;
+    padding-right: 10%;
+    background-color: #F5F8F8;
+    border-bottom: 3px solid #d4d4da;
+}
+
+.logo {
+    width: 150px;
+    height: 50px;
+}
+
+.searchWrapper {
+    display: flex;
 }
 
 h2 {
-    margin-bottom: 0;
-    text-effect: none;
+    margin: 0;
+    font-size: 1.2em;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #9AAFC7;
 }
 .searchField{
     display: flex;
     align-items: center;
+    width: 400px;
+    height: 50px;
+    padding-left: 10px;
 }
 
-.button button{
+.searchButton{
+    width:105px;
+    height: 50px;
     padding: 10px;
     background: #2196F3;
     color: white;
@@ -52,21 +79,28 @@ h2 {
 .drop{
     display: flex;
     align-content: center;
+    width:150px;
+    height: 50px;
+}
+
+select, input {
+    font-size: 1em;
 }
 
 .middle{
-    margin-top: 6em;
+    margin-top: 3em;
     flex-direction: column;
     justify-content: center;
     align-content: center;
     align-items: center;
     border: 3px solid black;
     border-radius: 5px;
+    padding-left: 15px;
+    padding-top: 15px;
 }
 
 .article{
-    margin-top: 5px;
-    margin: auto;
+    height: 50px;
 }
 
 .footer{
@@ -78,7 +112,6 @@ h2 {
 }
 
 #container {
-    width: 600px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -92,7 +125,6 @@ h2 {
 }
 
 .pagination {
-    background: bisque;
     padding: 10px;
     margin-bottom: 20px;
 }
@@ -108,7 +140,6 @@ h2 {
     font-size: .875em;
     font-weight: bold;
     text-decoration: none;
-    color: #717171;
     text-shadow: 0px 1px 0px rgba(255,255,255, 1);
 }
 

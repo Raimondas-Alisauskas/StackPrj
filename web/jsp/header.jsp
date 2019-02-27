@@ -24,9 +24,7 @@
                     <input type="text" placeholder="Search.." name="search_field">
                     <input type="hidden"  name="pageNum" value="1">
                 </div>
-                <div class="searchButton">
-                    <button type="submit"><i class="fa fa-search"></i></button>
-                </div>
+                    <button type="submit" class="searchButton"><i class="fa fa-search"></i></button>
             </form>
         </div>
     </body>
