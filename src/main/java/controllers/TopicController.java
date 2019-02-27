@@ -19,6 +19,9 @@ public class TopicController extends HttpServlet {
 
         SearchBin searchBin = new SearchBin();
 
+        String tagId = req.getParameter("tagId");
+        searchBin.setTagId(tagId);
+
         String search_field = req.getParameter("search_field");
         if (search_field == null) {
             search_field = "";
@@ -34,18 +37,15 @@ public class TopicController extends HttpServlet {
         }
         searchBin.setPageNumb(pageNr);
 
-        TopicResults topicResult = TopicModel.getTopicsFromDB(searchBin);
+        TopicResults topicResults = TopicModel.getTopicsFromDB(searchBin);
 
-        req.setAttribute("topicsList", topicResult.getTopicsList());
-        req.setAttribute("numbOfRecords", topicResult.getNumbOfRecords());
-        req.setAttribute("pageNumb", topicResult.getPageNumb());
-        req.setAttribute("searchInput", topicResult.getSearchInput());
+        req.setAttribute("topicResults", topicResults);
 
         DropdownModel dropdownModel = new DropdownModel();
         List<DropdownBin> tagList = dropdownModel.getLimitedResult();
         req.setAttribute("tagList", tagList);
 
-        RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("jsp/initialPage.jsp");
         rd.forward(req, resp);
     }
 }
