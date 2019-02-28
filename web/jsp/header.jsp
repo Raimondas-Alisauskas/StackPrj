@@ -7,7 +7,11 @@
 <body>
 
 <div>
-    <form class="header" action="search" method="get">
+    <form method="get" action="initialPage">
+        <button class="searchButton">Home</button>
+    </form>
+    <form class="header" action="initialPage" method="get">
+
         <div class="drop">
             <select id="lang" name="tagId">
                 <div label="select language">
@@ -21,7 +25,7 @@
             </select>
         </div>
         <div class="searchField">
-            <input type="text" placeholder="Search.." name="search_field">
+            <input type="text" placeholder="Search..." name="search_field" required="true">
             <input type="hidden" name="pageNum" value="1">
         </div>
         <button type="submit" class="searchButton"><i class="fa fa-search"></i></button>

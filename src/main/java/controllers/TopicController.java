@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.util.List;
 
 
-//@WebServlet("")
 public class TopicController extends HttpServlet {
 
     @Override
@@ -39,11 +38,15 @@ public class TopicController extends HttpServlet {
 
         TopicResults topicResults = TopicModel.getTopicsFromDB(searchBin);
 
+
+
         req.setAttribute("topicResults", topicResults);
 
         DropdownModel dropdownModel = new DropdownModel();
         List<DropdownBin> tagList = dropdownModel.getLimitedResult();
         req.setAttribute("tagList", tagList);
+
+        System.out.println();
 
         RequestDispatcher rd = req.getRequestDispatcher("jsp/initialPage.jsp");
         rd.forward(req, resp);

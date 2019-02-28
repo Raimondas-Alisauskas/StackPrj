@@ -5,12 +5,21 @@
          version="4.0">
 
     <servlet>
-        <servlet-name>Initial</servlet-name>
-        <servlet-class>controllers.TopicController</servlet-class>
-    </servlet>
+    <servlet-name>Initial</servlet-name>
+    <servlet-class>controllers.TopicController</servlet-class>
+</servlet>
     <servlet-mapping>
         <servlet-name>Initial</servlet-name>
         <url-pattern>/search</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Search</servlet-name>
+        <servlet-class>controllers.TopicController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Search</servlet-name>
+        <url-pattern>/initialPage</url-pattern>
     </servlet-mapping>
 
     <servlet>
