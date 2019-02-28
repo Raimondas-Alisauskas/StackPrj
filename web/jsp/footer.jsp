@@ -5,7 +5,7 @@
 <head>
     <%
         TopicResults topicResults = (TopicResults) request.getAttribute("topicResults");
-        String tagId = topicResults.getTagId();
+        int tagId = topicResults.getTagId();
         String searchInput = topicResults.getSearchInput();
         int numbOfRecords = topicResults.getNumbOfRecords();
         int pageNumb = topicResults.getPageNumb();

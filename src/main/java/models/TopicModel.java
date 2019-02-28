@@ -12,7 +12,7 @@ public class TopicModel {
 
     public static TopicResults getTopicsFromDB(SearchBin searchBin) {
         List<TopicBin> topics = new ArrayList<>();
-        String tagId = searchBin.getTagId();
+        int tagId = searchBin.getTagId();
         String SearchInput = searchBin.getSearchInput();
         int pageNumber = searchBin.getPageNumb();
         int numbOfTitles = Constants.SHOW_NUMB_OF_TITLES;
@@ -38,7 +38,7 @@ public class TopicModel {
                 psCount = con.prepareStatement(sql);
                 if (isSearchInput) {
                     psCount.setString(1, SearchInput);
-                    psCount.setString(2, tagId);
+                    psCount.setInt(2, tagId);
                 }
 
                 ResultSet rsCount = psCount.executeQuery();
