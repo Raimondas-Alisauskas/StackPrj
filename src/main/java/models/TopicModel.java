@@ -35,21 +35,26 @@ public class TopicModel {
 
                 String sql = "SELECT count(*) FROM Topics";
 
-                if (isSearchInput) {
+                if (isSearchInput && isDropDown) {
                     sql = sql + " WHERE Title LIKE '%'||?||'%'AND DocTagId = ?";
-                }
-
-                if (isDropDown) {
+                } else if (isSearchInput) {
+                    sql = sql + " WHERE Title LIKE '%'||?||'%'";
+                } else if (isDropDown) {
                     sql = sql + " WHERE DocTagId = ?";
                 }
 
                 PreparedStatement psCount;
                 psCount = con.prepareStatement(sql);
-                if (isSearchInput) {
+
+                if (isSearchInput && isDropDown) {
                     psCount.setString(1, searchInput);
                     psCount.setString(2, tagId);
                 }
-                if (isDropDown) {
+
+                else if (isSearchInput) {
+                    psCount.setString(1, searchInput);
+                }
+                else if (isDropDown) {
                     psCount.setString(1, tagId);
                 }
 
@@ -59,12 +64,15 @@ public class TopicModel {
 
                 sql = "SELECT Id, Title FROM Topics";
 
-
-                if (isSearchInput) {
+                if (isSearchInput && isDropDown) {
                     sql = sql + " WHERE Title LIKE '%" + searchInput + "%' AND DocTagId = " + tagId;
                 }
 
-                if (isDropDown) {
+                else if (isSearchInput) {
+                    sql = sql + " WHERE Title LIKE '%" + searchInput + "%'";
+                }
+
+                else if (isDropDown) {
                     sql = sql + " WHERE DocTagId = " + tagId;
                 }
 
