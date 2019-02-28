@@ -1,6 +1,7 @@
 package models;
 
 import controllers.DBconnection;
+import utils.Constants;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class TopicModel {
         String tagId = searchBin.getTagId();
         String SearchInput = searchBin.getSearchInput();
         int pageNumber = searchBin.getPageNumb();
-        int limitOfResults = 10;
+        int numbOfTitles = Constants.SHOW_NUMB_OF_TITLES;
         int numbOfRecords = 0;
 
 
@@ -52,7 +53,7 @@ public class TopicModel {
                     sql = sql + " WHERE Title LIKE '%" + SearchInput + "%' AND DocTagId = " + tagId;
                 }
 
-                sql = sql + " order by ViewCount desc limit " + ((pageNumber - 1) * limitOfResults) + ", " + limitOfResults;
+                sql = sql + " order by ViewCount desc limit " + ((pageNumber - 1) * numbOfTitles) + ", " + numbOfTitles;
 
                 ResultSet rs =  statement.executeQuery(sql);
 

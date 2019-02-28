@@ -1,4 +1,5 @@
 <%@ page import="models.TopicResults" %>
+<%@ page import="utils.Constants" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -8,6 +9,7 @@
         String searchInput = topicResults.getSearchInput();
         int numbOfRecords = topicResults.getNumbOfRecords();
         int pageNumb = topicResults.getPageNumb();
+        int numberOfTitles = Constants.SHOW_NUMB_OF_TITLES;
     %>
 </head>
 <body>
@@ -22,9 +24,9 @@
                 <% } %>
                 <span
                     class="page">
-                    <%=pageNumb%> of <%=numbOfRecords /10 + 1%>
+                    <%=pageNumb%> of <%=numbOfRecords / numberOfTitles + 1%>
                 </span>
-                <% if(pageNumb <= numbOfRecords /10 ){%>
+                <% if(pageNumb <= numbOfRecords / numberOfTitles){%>
                 <a
                     href="<%=request.getContextPath()%>/?tagId=<%=tagId%>&search_field=<%=searchInput%>&pageNum=<%=pageNumb+1%>"
                     class="page">Next
