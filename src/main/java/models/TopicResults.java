@@ -5,13 +5,13 @@ import java.util.List;
 public class TopicResults {
 
     private List<TopicBin> topicsList;
-    private int tagId;
+    private String tagId;
     private String searchInput;
     private int pageNumb;
     private int numbOfRecords;
 
 
-    public TopicResults(List<TopicBin> topicsList, int tagId, String searchInput, int pageNumb, int numbOfRecords) {
+    public TopicResults(List<TopicBin> topicsList, String tagId, String searchInput, int pageNumb, int numbOfRecords) {
         this.topicsList = topicsList;
         this.tagId = tagId;
         this.searchInput = searchInput;
@@ -51,11 +51,11 @@ public class TopicResults {
         this.numbOfRecords = numbOfRecords;
     }
 
-    public int getTagId() {
+    public String getTagId() {
         return tagId;
     }
 
-    public void setTagId(int tagId) {
+    public void setTagId(String tagId) {
         this.tagId = tagId;
     }
 }

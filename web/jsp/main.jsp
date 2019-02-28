@@ -15,7 +15,7 @@
                 %>
                 <div class="article">
                     <div>
-                        <a href="article?title=<%=topic.getTitle()%>&id=<%=topic.getId()%>" name="article_name"><h2><%=topic.getTitle()%>
+                        <a href="article?id=<%=topic.getId()%>" name="article_name"><h2><%=topic.getTitle()%>
                         </h2></a>
                     </div>
                 </div>

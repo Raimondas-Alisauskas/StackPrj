@@ -6,11 +6,14 @@
 <head>
     <%
         TopicResults topicResults = (TopicResults) request.getAttribute("topicResults");
-        int tagId = topicResults.getTagId();
-        String searchInput = topicResults.getSearchInput();
+        String tagId = "";
+        String searchInput = "";
+        if (topicResults != null){
+            tagId = topicResults.getTagId();
+            searchInput = topicResults.getSearchInput();
+        };
+
         ArrayList<DropdownBin> tagList = (ArrayList) request.getAttribute("tagList");
-
-
     %>
 </head>
 <body>
@@ -22,7 +25,7 @@
                 <div label="select language">
                     <option value="">--Choose the Tag--</option>
                     <% for (DropdownBin tag : tagList) { %>
-                        <option value="<%=tag.getId()%>" <% if (tag.getId() == tagId){%>
+                        <option value="<%=tag.getId()%>" <% if (tagId.equals(tag.getId())){%>
                                 selected<%}%>
                         >
                             <%=tag.getTag()%>
@@ -33,7 +36,6 @@
         </div>
         <div class="searchField">
             <input type="text" placeholder="Search.." name="search_field" value="<%=searchInput%>">
-            <%--<input type="hidden" name="pageNum" value="1">--%>
         </div>
         <button type="submit" class="searchButton"><i class="fa fa-search"></i></button>
     </form>

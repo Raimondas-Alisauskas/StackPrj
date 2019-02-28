@@ -3,7 +3,7 @@ package models;
 public class SearchBin {
 
     private String searchInput;
-    private int tagId;
+    private String tagId;
     private int pageNumb;
 
     public SearchBin() {
@@ -11,7 +11,7 @@ public class SearchBin {
         // TODO Auto-generated constructor stub
     }
 
-    public SearchBin(String s, int d) {
+    public SearchBin(String s, String d) {
         super();
         searchInput = s;
         tagId = d;
@@ -27,11 +27,11 @@ public class SearchBin {
         searchInput = s;
     }
 
-    public int getTagId() {
+    public String getTagId() {
         return tagId;
     }
 
-    public void setTagId(int d) {
+    public void setTagId(String d) {
 
         tagId = d;
     }

@@ -2,17 +2,17 @@ package models;
 
 public class DropdownBin {
 
-    private int Id;
+    private String Id;
     private String Tag;
     private String Title;
     private int HelloWorldDocTopicId;
     private int TopicCount;
 
-    public int getId() {
+    public String getId() {
         return Id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         Id = id;
     }
 

@@ -19,14 +19,13 @@ public class TopicController extends HttpServlet {
 
         SearchBin searchBin = new SearchBin();
 
-        String tagIdStr = req.getParameter("tagId");
+        String tagId = req.getParameter("tagId");
 
-        if (tagIdStr == null) {
-            int a =0;
-            searchBin.setTagId(a);
-        } else {
-            searchBin.setTagId(Integer.parseInt(tagIdStr));
+        if (tagId == null) {
+            tagId ="";
         }
+        searchBin.setTagId(tagId);
+
 
         String search_field = req.getParameter("search_field");
         if (search_field == null) {

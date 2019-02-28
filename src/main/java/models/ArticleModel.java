@@ -17,26 +17,37 @@ public class ArticleModel {
         if (con != null) {
             try {
 
-
                 Statement statement = con.createStatement();
                 statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
-                String sql = "SELECT BodyHtml FROM Examples WHERE DocTopicId = ?";
+                String sql_title = "SELECT Title FROM Topics WHERE Id = ?";
                 PreparedStatement ps;
-                ps = con.prepareStatement(sql);
+                ps = con.prepareStatement(sql_title);
                 ps.setInt(1, selectedArticle.getId());
-
-
                 ResultSet rs;
                 rs = ps.executeQuery();
 
-                while (rs.next()) {
-                    ArticleBin articleBin = new ArticleBin();
-                    articleBin.setExample(rs.getString("BodyHtml"));
-//                    articleBin.setTitle(rs.getString("Title"));
-                    examples.add(articleBin);
+                String title = null;
 
+                while (rs.next()) {
+                    title = rs.getString("Title");
                 }
+
+                String sql_example = "SELECT BodyHtml FROM Examples WHERE DocTopicId = ?";
+
+                ps = con.prepareStatement(sql_example);
+                ps.setInt(1, selectedArticle.getId());
+
+                rs = ps.executeQuery();
+
+                ArticleBin articleBin = new ArticleBin();
+
+                while (rs.next()) {
+                    articleBin.setExample(rs.getString("BodyHtml"));
+                    articleBin.setTitle(title);
+                    examples.add(articleBin);
+                }
+
 
             } catch (SQLException e) {
                 e.printStackTrace();
