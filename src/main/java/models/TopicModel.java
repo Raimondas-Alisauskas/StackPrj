@@ -32,8 +32,6 @@ public class TopicModel {
                 } else {
                     isDropDown = true;
                 }
-                System.out.println(isDropDown);
-
 
                 String sql = "SELECT count(*) FROM Topics";
 
@@ -59,7 +57,6 @@ public class TopicModel {
                 rsCount.next();
                 numbOfRecords = rsCount.getInt(1);
 
-
                 sql = "SELECT Id, Title FROM Topics";
 
 
@@ -72,9 +69,6 @@ public class TopicModel {
                 }
 
                 sql = sql + " order by ViewCount desc limit " + ((pageNumber - 1) * numbOfTitles) + ", " + numbOfTitles;
-
-                System.out.println(sql);
-//                System.out.println(isDropDown);
 
                 ResultSet rs = statement.executeQuery(sql);
 
