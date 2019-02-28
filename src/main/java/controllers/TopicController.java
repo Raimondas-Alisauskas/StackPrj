@@ -4,7 +4,6 @@ import models.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,13 +11,16 @@ import java.io.IOException;
 import java.util.List;
 
 
-@WebServlet("")
+//@WebServlet("")
 public class TopicController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         SearchBin searchBin = new SearchBin();
+
+        String tagId = req.getParameter("tagId");
+        searchBin.setTagId(tagId);
 
         String search_field = req.getParameter("search_field");
         if (search_field == null) {
@@ -35,18 +37,15 @@ public class TopicController extends HttpServlet {
         }
         searchBin.setPageNumb(pageNr);
 
-        TopicResults topicResult = TopicModel.getTopicsFromDB(searchBin);
+        TopicResults topicResults = TopicModel.getTopicsFromDB(searchBin);
 
-        req.setAttribute("topicsList", topicResult.getTopicsList());
-        req.setAttribute("numbOfRecords", topicResult.getNumbOfRecords());
-        req.setAttribute("pageNumb", topicResult.getPageNumb());
-        req.setAttribute("searchInput", topicResult.getSearchInput());
+        req.setAttribute("topicResults", topicResults);
 
         DropdownModel dropdownModel = new DropdownModel();
         List<DropdownBin> tagList = dropdownModel.getLimitedResult();
         req.setAttribute("tagList", tagList);
 
-        RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("jsp/initialPage.jsp");
         rd.forward(req, resp);
     }
 }

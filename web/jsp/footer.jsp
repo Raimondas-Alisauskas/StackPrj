@@ -1,10 +1,15 @@
+<%@ page import="models.TopicResults" %>
+<%@ page import="utils.Constants" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <%
-        int numbOfRecords = (int) request.getAttribute("numbOfRecords");
-        int pageNumb = (int) request.getAttribute("pageNumb");
-        String searchInput = String.valueOf(request.getAttribute("searchInput"));
+        TopicResults topicResults = (TopicResults) request.getAttribute("topicResults");
+        String tagId = topicResults.getTagId();
+        String searchInput = topicResults.getSearchInput();
+        int numbOfRecords = topicResults.getNumbOfRecords();
+        int pageNumb = topicResults.getPageNumb();
+        int numberOfTitles = Constants.SHOW_NUMB_OF_TITLES;
     %>
 </head>
 <body>
@@ -13,17 +18,17 @@
             <div class="pagination">
                 <% if(pageNumb > 1 ){%>
                     <a
-                        href="<%=request.getContextPath()%>/?lang_name=android&search_field=<%=searchInput%>&pageNum=<%=pageNumb-1%>"
+                        href="<%=request.getContextPath()%>/?tagId=<%=tagId%>&search_field=<%=searchInput%>&pageNum=<%=pageNumb-1%>"
                        class="page">Previos
                     </a>
                 <% } %>
                 <span
                     class="page">
-                    <%=pageNumb%> of <%=numbOfRecords /10 + 1%>
+                    <%=pageNumb%> of <%=numbOfRecords / numberOfTitles + 1%>
                 </span>
-                <% if(pageNumb <= numbOfRecords /10 ){%>
+                <% if(pageNumb <= numbOfRecords / numberOfTitles){%>
                 <a
-                    href="<%=request.getContextPath()%>/?lang_name=android&search_field=<%=searchInput%>&pageNum=<%=pageNumb+1%>"
+                    href="<%=request.getContextPath()%>/?tagId=<%=tagId%>&search_field=<%=searchInput%>&pageNum=<%=pageNumb+1%>"
                     class="page">Next
                 </a>
                 <% } %>

@@ -3,7 +3,7 @@ package models;
 public class SearchBin {
 
     private String searchInput;
-    private String dropdownValue;
+    private String tagId;
     private int pageNumb;
 
     public SearchBin() {
@@ -14,7 +14,7 @@ public class SearchBin {
     public SearchBin(String s, String d) {
         super();
         searchInput = s;
-        dropdownValue = d;
+        tagId = d;
     }
 
     public String getSearchInput() {
@@ -27,13 +27,13 @@ public class SearchBin {
         searchInput = s;
     }
 
-    public String getDropdownValue() {
-        return dropdownValue;
+    public String getTagId() {
+        return tagId;
     }
 
-    public void setDropdownValue(String d) {
+    public void setTagId(String d) {
 
-        dropdownValue = d;
+        tagId = d;
     }
 
     public int getPageNumb() {
