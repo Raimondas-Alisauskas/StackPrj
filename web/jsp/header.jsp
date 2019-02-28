@@ -10,7 +10,7 @@
     <form class="header" action="search" method="get">
         <div class="drop">
             <select id="lang" name="tagId">
-                <div label="select language">
+                <div class="down">
                     <% ArrayList<DropdownBin> tagList = (ArrayList) request.getAttribute("tagList");
                         for (DropdownBin tag : tagList) { %>
                     <option value="<%=tag.getId()%>">

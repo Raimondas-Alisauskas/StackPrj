@@ -82,6 +82,9 @@ a:hover {
     width:150px;
     height: 50px;
 }
+.down{
+    overflow:scroll;
+}
 
 select, input {
     font-size: 1em;
