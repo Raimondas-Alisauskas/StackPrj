@@ -7,7 +7,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class TopicModel {
 
     public static TopicResults getTopicsFromDB(SearchBin searchBin) {
@@ -27,10 +26,23 @@ public class TopicModel {
                 statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
                 boolean isSearchInput = !searchInput.equals("");
+                boolean isDropDown;
+                if (tagId == null) {
+                    isDropDown = false;
+                } else {
+                    isDropDown = true;
+                }
+                System.out.println(isDropDown);
+
 
                 String sql = "SELECT count(*) FROM Topics";
+
                 if (isSearchInput) {
                     sql = sql + " WHERE Title LIKE '%'||?||'%'AND DocTagId = ?";
+                }
+
+                if (isDropDown) {
+                    sql = sql + " WHERE DocTagId = ?";
                 }
 
                 PreparedStatement psCount;
@@ -39,20 +51,30 @@ public class TopicModel {
                     psCount.setString(1, searchInput);
                     psCount.setString(2, tagId);
                 }
+                if (isDropDown) {
+                    psCount.setString(1, tagId);
+                }
 
                 ResultSet rsCount = psCount.executeQuery();
-
                 rsCount.next();
                 numbOfRecords = rsCount.getInt(1);
 
 
                 sql = "SELECT Id, Title FROM Topics";
 
+
                 if (isSearchInput) {
                     sql = sql + " WHERE Title LIKE '%" + searchInput + "%' AND DocTagId = " + tagId;
                 }
 
+                if (isDropDown) {
+                    sql = sql + " WHERE DocTagId = " + tagId;
+                }
+
                 sql = sql + " order by ViewCount desc limit " + ((pageNumber - 1) * numbOfTitles) + ", " + numbOfTitles;
+
+                System.out.println(sql);
+//                System.out.println(isDropDown);
 
                 ResultSet rs = statement.executeQuery(sql);
 
@@ -60,7 +82,6 @@ public class TopicModel {
                     TopicBin topic = new TopicBin();
                     topic.setId(rs.getInt("Id"));
                     topic.setTitle(rs.getString("Title"));
-
                     topics.add(topic);
                 }
 

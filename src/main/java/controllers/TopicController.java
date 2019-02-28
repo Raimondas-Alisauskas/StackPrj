@@ -46,8 +46,6 @@ public class TopicController extends HttpServlet {
         List<DropdownBin> tagList = dropdownModel.getLimitedResult();
         req.setAttribute("tagList", tagList);
 
-        System.out.println();
-
         RequestDispatcher rd = req.getRequestDispatcher("jsp/initialPage.jsp");
         rd.forward(req, resp);
     }
