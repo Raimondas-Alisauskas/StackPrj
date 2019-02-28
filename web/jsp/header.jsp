@@ -13,9 +13,8 @@
                         <div label="select language">
                             <% ArrayList<DropdownBin> tagList = (ArrayList) request.getAttribute("tagList");
                                 for (DropdownBin tag : tagList) { %>
-                            <option
-                                    value="<%=tag.getId()%>"><%=tag.getTag()%>
-                            </option>
+                            <option   value="<%=tag.getId()%>">
+                                <%=tag.getTag()%></option>
                             <% } %>
                         </div>
                     </select>
