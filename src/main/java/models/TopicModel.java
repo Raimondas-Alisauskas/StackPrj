@@ -39,7 +39,12 @@ public class TopicModel {
                     sql = sql + " WHERE Title LIKE '%'||?||'%'AND DocTagId = ?";
                 } else if (isSearchInput) {
                     sql = sql + " WHERE Title LIKE '%'||?||'%'";
+                } else if (tagId == null) {
+
+
+
                 } else if (isDropDown) {
+
                     sql = sql + " WHERE DocTagId = ?";
                 }
 
@@ -49,12 +54,13 @@ public class TopicModel {
                 if (isSearchInput && isDropDown) {
                     psCount.setString(1, searchInput);
                     psCount.setString(2, tagId);
-                }
-
-                else if (isSearchInput) {
+                } else if (isSearchInput) {
                     psCount.setString(1, searchInput);
-                }
-                else if (isDropDown) {
+                } else if (tagId == null) {
+
+
+
+                } else if (isDropDown) {
                     psCount.setString(1, tagId);
                 }
 
@@ -66,19 +72,24 @@ public class TopicModel {
 
                 if (isSearchInput && isDropDown) {
                     sql = sql + " WHERE Title LIKE '%" + searchInput + "%' AND DocTagId = " + tagId;
-                }
-
-                else if (isSearchInput) {
+                } else if (isSearchInput) {
                     sql = sql + " WHERE Title LIKE '%" + searchInput + "%'";
+                } else if (tagId == null) {
+                    System.out.println("labas");
+                } else if (isDropDown) {
+                    if (tagId == null) {
+
+
+                    } else {
+                        sql = sql + " WHERE DocTagId = " + tagId;
+                    }
                 }
 
-                else if (isDropDown) {
-                    sql = sql + " WHERE DocTagId = " + tagId;
-                }
-
-                sql = sql + " order by ViewCount desc limit " + ((pageNumber - 1) * numbOfTitles) + ", " + numbOfTitles;
+                sql = sql + " order by ViewCount desc limit " + ((pageNumber - 1) * numbOfTitles) + ", " + (pageNumber * numbOfTitles);
 
                 ResultSet rs = statement.executeQuery(sql);
+
+                System.out.println(sql);
 
                 while (rs.next()) {
                     TopicBin topic = new TopicBin();
