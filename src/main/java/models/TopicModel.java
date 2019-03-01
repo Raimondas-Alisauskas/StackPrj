@@ -28,9 +28,10 @@ public class TopicModel {
                 statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
                 boolean isSearchInput = !SearchInput.equals("");
+                boolean isTagId = !tagId.equals("");
 
                 String sql = "SELECT count(*) FROM Topics";
-                if (isSearchInput) {
+                if (isSearchInput || isTagId) {
                     sql = sql + " WHERE Title LIKE '%'||?||'%'AND DocTagId = ?";
                 }
 
@@ -49,7 +50,7 @@ public class TopicModel {
 
                 sql = "SELECT Id, Title FROM Topics";
 
-                if (isSearchInput) {
+                if (isSearchInput || isTagId) {
                     sql = sql + " WHERE Title LIKE '%" + SearchInput + "%' AND DocTagId = " + tagId;
                 }
 
