@@ -20,7 +20,12 @@ public class TopicController extends HttpServlet {
         SearchBin searchBin = new SearchBin();
 
         String tagId = req.getParameter("tagId");
+
+        if (tagId == null) {
+            tagId ="";
+        }
         searchBin.setTagId(tagId);
+
 
         String search_field = req.getParameter("search_field");
         if (search_field == null) {

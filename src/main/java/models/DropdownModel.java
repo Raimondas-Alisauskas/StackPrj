@@ -40,7 +40,7 @@ public class DropdownModel {
             while (rs.next()) {
                 DropdownBin dropdownBin = new DropdownBin();
 
-                dropdownBin.setId(rs.getInt("Id"));
+                dropdownBin.setId(rs.getString("Id"));
                 dropdownBin.setTag(rs.getString("Tag"));
 
                 tagList.add(dropdownBin);
