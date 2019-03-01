@@ -22,7 +22,7 @@
     <form class="header" action="search" method="get">
         <div class="drop">
             <select id="lang" name="tagId">
-                <div label="select language">
+                <div class="down">
                     <option value="">--Choose the Tag--</option>
                     <% for (DropdownBin tag : tagList) { %>
                         <option value="<%=tag.getId()%>" <% if (tagId.equals(tag.getId())){%>
