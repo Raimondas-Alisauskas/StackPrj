@@ -19,7 +19,7 @@
                 <% if(pageNumb > 1 ){%>
                     <a
                         href="<%=request.getContextPath()%>/?tagId=<%=tagId%>&search_field=<%=searchInput%>&pageNum=<%=pageNumb-1%>"
-                       class="page">Previos
+                       class="page">Previous
                     </a>
                 <% } %>
                 <span
