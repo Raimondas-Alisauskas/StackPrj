@@ -26,24 +26,21 @@ public class TopicModel {
                 statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
                 boolean isSearchInput = !searchInput.equals("");
-                boolean isDropDown;
-                if (tagId == null) {
-                    isDropDown = false;
-                } else {
-                    isDropDown = true;
-                }
+                boolean isTagId = !tagId.equals("");
+
+                System.out.println(isTagId);
 
                 String sql = "SELECT count(*) FROM Topics";
 
-                if (isSearchInput && isDropDown) {
+                if (isSearchInput && isTagId) {
+
                     sql = sql + " WHERE Title LIKE '%'||?||'%'AND DocTagId = ?";
+
                 } else if (isSearchInput) {
+
                     sql = sql + " WHERE Title LIKE '%'||?||'%'";
-                } else if (tagId == null) {
 
-
-
-                } else if (isDropDown) {
+                } else if (isTagId) {
 
                     sql = sql + " WHERE DocTagId = ?";
                 }
@@ -51,17 +48,19 @@ public class TopicModel {
                 PreparedStatement psCount;
                 psCount = con.prepareStatement(sql);
 
-                if (isSearchInput && isDropDown) {
+                if (isSearchInput && isTagId) {
+
                     psCount.setString(1, searchInput);
                     psCount.setString(2, tagId);
+
                 } else if (isSearchInput) {
+
                     psCount.setString(1, searchInput);
-                } else if (tagId == null) {
 
+                } else if (isTagId) {
 
-
-                } else if (isDropDown) {
                     psCount.setString(1, tagId);
+
                 }
 
                 ResultSet rsCount = psCount.executeQuery();
@@ -70,19 +69,18 @@ public class TopicModel {
 
                 sql = "SELECT Id, Title FROM Topics";
 
-                if (isSearchInput && isDropDown) {
+                if (isSearchInput && isTagId) {
+
                     sql = sql + " WHERE Title LIKE '%" + searchInput + "%' AND DocTagId = " + tagId;
+
                 } else if (isSearchInput) {
+
                     sql = sql + " WHERE Title LIKE '%" + searchInput + "%'";
-                } else if (tagId == null) {
-                    System.out.println("labas");
-                } else if (isDropDown) {
-                    if (tagId == null) {
 
+                } else if (isTagId) {
 
-                    } else {
-                        sql = sql + " WHERE DocTagId = " + tagId;
-                    }
+                    sql = sql + " WHERE DocTagId = " + tagId;
+
                 }
 
                 sql = sql + " order by ViewCount desc limit " + ((pageNumber - 1) * numbOfTitles) + ", " + numbOfTitles;
