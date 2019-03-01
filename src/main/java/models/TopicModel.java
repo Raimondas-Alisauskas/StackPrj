@@ -85,7 +85,7 @@ public class TopicModel {
                     }
                 }
 
-                sql = sql + " order by ViewCount desc limit " + ((pageNumber - 1) * numbOfTitles) + ", " + (pageNumber * numbOfTitles);
+                sql = sql + " order by ViewCount desc limit " + ((pageNumber - 1) * numbOfTitles) + ", " + (numbOfTitles);
 
                 ResultSet rs = statement.executeQuery(sql);
 
