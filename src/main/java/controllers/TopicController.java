@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.util.List;
 
 
-//@WebServlet("")
 public class TopicController extends HttpServlet {
 
     @Override
@@ -43,6 +42,8 @@ public class TopicController extends HttpServlet {
         searchBin.setPageNumb(pageNr);
 
         TopicResults topicResults = TopicModel.getTopicsFromDB(searchBin);
+
+
 
         req.setAttribute("topicResults", topicResults);
 

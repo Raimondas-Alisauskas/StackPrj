@@ -7,17 +7,15 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class TopicModel {
 
     public static TopicResults getTopicsFromDB(SearchBin searchBin) {
         List<TopicBin> topics = new ArrayList<>();
         String tagId = searchBin.getTagId();
-        String SearchInput = searchBin.getSearchInput();
+        String searchInput = searchBin.getSearchInput();
         int pageNumber = searchBin.getPageNumb();
         int numbOfTitles = Constants.SHOW_NUMB_OF_TITLES;
         int numbOfRecords = 0;
-
 
 
         Connection con = DBconnection.getConnection();
@@ -27,46 +25,76 @@ public class TopicModel {
                 Statement statement = con.createStatement();
                 statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
-                boolean isSearchInput = !SearchInput.equals("");
-                boolean isTagId = !tagId.equals("");
+                boolean isSearchInput = !searchInput.equals("");
+                boolean isDropDown;
+                if (tagId == null) {
+                    isDropDown = false;
+                } else {
+                    isDropDown = true;
+                }
 
                 String sql = "SELECT count(*) FROM Topics";
-                if (isSearchInput || isTagId) {
+
+                if (isSearchInput && isDropDown) {
                     sql = sql + " WHERE Title LIKE '%'||?||'%'AND DocTagId = ?";
+                } else if (isSearchInput) {
+                    sql = sql + " WHERE Title LIKE '%'||?||'%'";
+                } else if (tagId == null) {
+
+
+
+                } else if (isDropDown) {
+
+                    sql = sql + " WHERE DocTagId = ?";
                 }
 
                 PreparedStatement psCount;
                 psCount = con.prepareStatement(sql);
-                if (isSearchInput) {
-                    psCount.setString(1, SearchInput);
+
+                if (isSearchInput && isDropDown) {
+                    psCount.setString(1, searchInput);
                     psCount.setString(2, tagId);
+                } else if (isSearchInput) {
+                    psCount.setString(1, searchInput);
+                } else if (tagId == null) {
+
+
+
+                } else if (isDropDown) {
+                    psCount.setString(1, tagId);
                 }
 
                 ResultSet rsCount = psCount.executeQuery();
-
                 rsCount.next();
                 numbOfRecords = rsCount.getInt(1);
 
-
                 sql = "SELECT Id, Title FROM Topics";
 
-                if (isSearchInput || isTagId) {
-                    sql = sql + " WHERE Title LIKE '%" + SearchInput + "%' AND DocTagId = " + tagId;
+                if (isSearchInput && isDropDown) {
+                    sql = sql + " WHERE Title LIKE '%" + searchInput + "%' AND DocTagId = " + tagId;
+                } else if (isSearchInput) {
+                    sql = sql + " WHERE Title LIKE '%" + searchInput + "%'";
+                } else if (tagId == null) {
+                    System.out.println("labas");
+                } else if (isDropDown) {
+                    if (tagId == null) {
+
+
+                    } else {
+                        sql = sql + " WHERE DocTagId = " + tagId;
+                    }
                 }
 
                 sql = sql + " order by ViewCount desc limit " + ((pageNumber - 1) * numbOfTitles) + ", " + numbOfTitles;
 
-                ResultSet rs =  statement.executeQuery(sql);
+                ResultSet rs = statement.executeQuery(sql);
 
-//                System.out.println("sql= " + sql);
-//                System.out.println("tagId= " + tagId);
-//                System.out.println("SearchInput= " + SearchInput);
+                System.out.println(sql);
 
                 while (rs.next()) {
                     TopicBin topic = new TopicBin();
                     topic.setId(rs.getInt("Id"));
                     topic.setTitle(rs.getString("Title"));
-
                     topics.add(topic);
                 }
 
@@ -77,7 +105,7 @@ public class TopicModel {
             }
         }
 
-        return new TopicResults(topics, tagId, SearchInput, pageNumber, numbOfRecords);
+        return new TopicResults(topics, tagId, searchInput, pageNumber, numbOfRecords);
     }
 
 }
