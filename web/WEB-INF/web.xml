@@ -5,9 +5,9 @@
          version="4.0">
 
     <servlet>
-        <servlet-name>Initial</servlet-name>
-        <servlet-class>controllers.TopicController</servlet-class>
-    </servlet>
+    <servlet-name>Initial</servlet-name>
+    <servlet-class>controllers.TopicController</servlet-class>
+</servlet>
     <servlet-mapping>
         <servlet-name>Initial</servlet-name>
         <url-pattern>/search</url-pattern>
@@ -30,5 +30,14 @@
         <servlet-name>Article</servlet-name>
         <url-pattern>/article</url-pattern>
     </servlet-mapping>
+
+    <error-page>
+    <exception-type>java.lang.Throwable</exception-type>
+    <location>/error.jsp</location>
+</error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error.jsp</location>
+    </error-page>
 
 </web-app>
