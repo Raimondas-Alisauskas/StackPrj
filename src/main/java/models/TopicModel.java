@@ -1,7 +1,7 @@
 package models;
 
 import controllers.DBconnection;
-import utils.Constants;
+import utils.ConfigurationProperties;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ public class TopicModel {
         String tagId = searchBin.getTagId();
         String searchInput = searchBin.getSearchInput();
         int pageNumber = searchBin.getPageNumb();
-        int numbOfTitles = Constants.SHOW_NUMB_OF_TITLES;
+        int numbOfTitles = ConfigurationProperties.SHOW_NUMB_OF_TITLES;
         int numbOfRecords = 0;
 
 

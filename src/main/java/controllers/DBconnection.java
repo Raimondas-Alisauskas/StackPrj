@@ -1,6 +1,6 @@
 package controllers;
 
-import utils.Constants;
+import utils.ConfigurationProperties;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,7 +18,7 @@ public class DBconnection {
             Class.forName("org.sqlite.JDBC");
 
             // create a database connection
-            connection = DriverManager.getConnection(Constants.DB_CONNECTION_STR);
+            connection = DriverManager.getConnection(ConfigurationProperties.DB_CONNECTION_STR);
 
 
         } catch (SQLException | ClassNotFoundException e) {
