@@ -1,16 +1,17 @@
-package models;
+package models.DAO;
 
+import models.beans.*;
 import controllers.DBconnection;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-public class ArticleModel {
+public class ArticleDAO {
 
-    public static ArrayList<ArticleBin> getArticle(ArticleBin selectedArticle) {
+    public static ArrayList<ArticleBean> getArticle(ArticleBean selectedArticle) {
 
 
-        ArrayList<ArticleBin> examples = new ArrayList<>();
+        ArrayList<ArticleBean> examples = new ArrayList<>();
 
 
         Connection con = DBconnection.getConnection();
@@ -40,12 +41,12 @@ public class ArticleModel {
 
                 rs = ps.executeQuery();
 
-                ArticleBin articleBin = new ArticleBin();
+                ArticleBean articleBean = new ArticleBean();
 
                 while (rs.next()) {
-                    articleBin.setExample(rs.getString("BodyHtml"));
-                    articleBin.setTitle(title);
-                    examples.add(articleBin);
+                    articleBean.setExample(rs.getString("BodyHtml"));
+                    articleBean.setTitle(title);
+                    examples.add(articleBean);
                 }
 
 

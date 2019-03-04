@@ -1,15 +1,15 @@
-<%@ page import="models.TopicResults" %>
-<%@ page import="utils.Constants" %>
+<%@ page import="models.DTO.TopicDTO" %>
+<%@ page import="utils.ConfigurationProperties" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <%
-        TopicResults topicResults = (TopicResults) request.getAttribute("topicResults");
-        String tagId = topicResults.getTagId();
-        String searchInput = topicResults.getSearchInput();
-        int numbOfRecords = topicResults.getNumbOfRecords();
-        int pageNumb = topicResults.getPageNumb();
-        int numberOfTitles = Constants.SHOW_NUMB_OF_TITLES;
+        TopicDTO topicDTO = (TopicDTO) request.getAttribute("topicDTO");
+        String tagId = topicDTO.getTagId();
+        String searchInput = topicDTO.getSearchInput();
+        int numbOfRecords = topicDTO.getNumbOfRecords();
+        int pageNumb = topicDTO.getPageNumb();
+        int numberOfTitles = ConfigurationProperties.SHOW_NUMB_OF_TITLES;
     %>
 </head>
 <body>

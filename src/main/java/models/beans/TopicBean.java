@@ -1,13 +1,13 @@
-package models;
+package models.beans;
 
-public class TopicBin {
+public class TopicBean {
     int id;
     String title;
 
-    public TopicBin() {
+    public TopicBean() {
     }
 
-    public TopicBin(int id, String title) {
+    public TopicBean(int id, String title) {
         this.id = id;
         this.title = title;
     }
