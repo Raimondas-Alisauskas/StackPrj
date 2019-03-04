@@ -1,5 +1,5 @@
 <%@ page import="models.TopicResults" %>
-<%@ page import="utils.Constants" %>
+<%@ page import="utils.ConfigurationProperties" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -9,7 +9,7 @@
         String searchInput = topicResults.getSearchInput();
         int numbOfRecords = topicResults.getNumbOfRecords();
         int pageNumb = topicResults.getPageNumb();
-        int numberOfTitles = Constants.SHOW_NUMB_OF_TITLES;
+        int numberOfTitles = ConfigurationProperties.SHOW_NUMB_OF_TITLES;
     %>
 </head>
 <body>

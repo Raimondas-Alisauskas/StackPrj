@@ -1,7 +1,7 @@
 package models;
 
 import controllers.DBconnection;
-import utils.Constants;
+import utils.ConfigurationProperties;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -14,7 +14,7 @@ public class DropdownModel {
     Connection currentCon = null;
     ResultSet rs = null;
     List<DropdownBin> tagList;
-    int numbOfTags = Constants.SHOW_NUMB_OF_TAGS;
+    int numbOfTags = ConfigurationProperties.SHOW_NUMB_OF_TAGS;
 
 
     public List<DropdownBin> getLimitedResult() {
