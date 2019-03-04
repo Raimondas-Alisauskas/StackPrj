@@ -1,6 +1,6 @@
-package models;
+package models.beans;
 
-public class DropdownBin {
+public class DropdownBean {
 
     private String Id;
     private String Tag;

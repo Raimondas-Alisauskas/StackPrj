@@ -1,19 +1,19 @@
-<%@ page import="models.DropdownBin" %>
+<%@ page import="models.beans.DropdownBean" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="models.TopicResults" %>
+<%@ page import="models.DTO.TopicDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <%
-        TopicResults topicResults = (TopicResults) request.getAttribute("topicResults");
+        TopicDTO topicDTO = (TopicDTO) request.getAttribute("topicDTO");
         String tagId = "";
         String searchInput = "";
-        if (topicResults != null){
-            tagId = topicResults.getTagId();
-            searchInput = topicResults.getSearchInput();
+        if (topicDTO != null){
+            tagId = topicDTO.getTagId();
+            searchInput = topicDTO.getSearchInput();
         };
 
-        ArrayList<DropdownBin> tagList = (ArrayList) request.getAttribute("tagList");
+        ArrayList<DropdownBean> tagList = (ArrayList) request.getAttribute("tagList");
     %>
 </head>
 <body>
@@ -27,7 +27,7 @@
             <select id="lang" name="tagId">
                 <div class="down">
                     <option value="">--Select a Tag--</option>
-                    <% for (DropdownBin tag : tagList) { %>
+                    <% for (DropdownBean tag : tagList) { %>
                     <option value="<%=tag.getId()%>" <% if (tagId.equals(tag.getId())){%>
                             selected<%}%>
                     >

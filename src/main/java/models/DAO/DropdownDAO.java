@@ -1,6 +1,7 @@
-package models;
+package models.DAO;
 
 import controllers.DBconnection;
+import models.beans.DropdownBean;
 import utils.ConfigurationProperties;
 
 import java.sql.Connection;
@@ -10,14 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class DropdownModel {
+public class DropdownDAO {
     Connection currentCon = null;
     ResultSet rs = null;
-    List<DropdownBin> tagList;
+    List<DropdownBean> tagList;
     int numbOfTags = ConfigurationProperties.SHOW_NUMB_OF_TAGS;
 
 
-    public List<DropdownBin> getLimitedResult() {
+    public List<DropdownBean> getLimitedResult() {
 
         Statement statement = null;
 
@@ -38,12 +39,12 @@ public class DropdownModel {
             tagList = new ArrayList<>();
 
             while (rs.next()) {
-                DropdownBin dropdownBin = new DropdownBin();
+                DropdownBean dropdownBean = new DropdownBean();
 
-                dropdownBin.setId(rs.getString("Id"));
-                dropdownBin.setTag(rs.getString("Tag"));
+                dropdownBean.setId(rs.getString("Id"));
+                dropdownBean.setTag(rs.getString("Tag"));
 
-                tagList.add(dropdownBin);
+                tagList.add(dropdownBean);
 
             }
 

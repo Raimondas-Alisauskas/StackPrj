@@ -1,19 +1,22 @@
-package models;
+package models.DAO;
 
 import controllers.DBconnection;
+import models.DTO.SearchDTO;
+import models.DTO.TopicDTO;
+import models.beans.*;
 import utils.ConfigurationProperties;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TopicModel {
+public class TopicDAO {
 
-    public static TopicResults getTopicsFromDB(SearchBin searchBin) {
-        List<TopicBin> topics = new ArrayList<>();
-        String tagId = searchBin.getTagId();
-        String searchInput = searchBin.getSearchInput();
-        int pageNumber = searchBin.getPageNumb();
+    public static TopicDTO getTopicsFromDB(SearchDTO searchDTO) {
+        List<TopicBean> topics = new ArrayList<>();
+        String tagId = searchDTO.getTagId();
+        String searchInput = searchDTO.getSearchInput();
+        int pageNumber = searchDTO.getPageNumb();
         int numbOfTitles = ConfigurationProperties.SHOW_NUMB_OF_TITLES;
         int numbOfRecords = 0;
 
@@ -24,7 +27,7 @@ public class TopicModel {
             Statement statement = con.createStatement();
             statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
-            String sqlWhere = createWhereSQL(searchBin);
+            String sqlWhere = createWhereSQL(searchDTO);
             int paramIndex;
 
             String sql = "SELECT count(*) FROM Topics";
@@ -32,7 +35,7 @@ public class TopicModel {
 
             PreparedStatement psCount;
             psCount = con.prepareStatement(sql);
-            paramIndex = fillParamsToSQL(searchBin, psCount);
+            paramIndex = fillParamsToSQL(searchDTO, psCount);
 
             ResultSet rsCount = psCount.executeQuery();
             rsCount.next();
@@ -45,7 +48,7 @@ public class TopicModel {
 
             PreparedStatement ps;
             ps = con.prepareStatement(sql);
-            paramIndex = fillParamsToSQL(searchBin, ps);
+            paramIndex = fillParamsToSQL(searchDTO, ps);
 
             //cia uzdedam limit parametrus
             ps.setInt(paramIndex, ((pageNumber - 1) * numbOfTitles));
@@ -54,7 +57,7 @@ public class TopicModel {
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                TopicBin topic = new TopicBin();
+                TopicBean topic = new TopicBean();
                 topic.setId(rs.getInt("Id"));
                 topic.setTitle(rs.getString("Title"));
                 topics.add(topic);
@@ -66,17 +69,17 @@ public class TopicModel {
             DBconnection.closeConnection(con);
         }
 
-        return new TopicResults(topics, tagId, searchInput, pageNumber, numbOfRecords);
+        return new TopicDTO(topics, tagId, searchInput, pageNumber, numbOfRecords);
     }
 
     /* padarom atskira metoda kuris sukurs SQL dali kuri atsako uz WHERE salygas
     jai salyga yra pridedam jos teksta
     */
-    private static String createWhereSQL(SearchBin searchBin) {
+    private static String createWhereSQL(SearchDTO searchDTO) {
         String sql = "";
 
-        String tagId = searchBin.getTagId();
-        String searchInput = searchBin.getSearchInput();
+        String tagId = searchDTO.getTagId();
+        String searchInput = searchDTO.getSearchInput();
 
         boolean isWhere = false;
 
@@ -104,9 +107,9 @@ public class TopicModel {
     /* cia idedam parametrus eiiskumo tvarka kaip dejom salygas
     ir grazinam sekancio parametro numeri
      */
-    private static int fillParamsToSQL(SearchBin searchBin, PreparedStatement ps) throws SQLException{
-        String tagId = searchBin.getTagId();
-        String searchInput = searchBin.getSearchInput();
+    private static int fillParamsToSQL(SearchDTO searchDTO, PreparedStatement ps) throws SQLException{
+        String tagId = searchDTO.getTagId();
+        String searchInput = searchDTO.getSearchInput();
 
         int x = 1;
 
