@@ -108,12 +108,7 @@ public class TopicDAO {
 
         searchDTO.setSearchWords(searchWords);
 
-
-
-//        if (!searchInput.equals("")) {
-
         for(String w : searchWords) {
-
 
             if (!isWhere) {    //if Where sitoj vietioj. T. Y. Jei WHERE dar nepanaudotas, idek ji. Jei WHERE jau panaudotas, idek AND.
                 sql = sql + " WHERE ";
