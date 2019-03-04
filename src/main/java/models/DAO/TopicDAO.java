@@ -20,6 +20,9 @@ public class TopicDAO {
         int numbOfTitles = ConfigurationProperties.SHOW_NUMB_OF_TITLES;
         int numbOfRecords = 0;
 
+        searchDTO.setPsNextIndex(0); //del apsaugos sau, kad neturime dar indexo
+
+
 
         Connection con = DBconnection.getConnection();
         if (con != null) try {
@@ -35,7 +38,7 @@ public class TopicDAO {
 
             PreparedStatement psCount;
             psCount = con.prepareStatement(sql);
-            paramIndex = fillParamsToSQL(searchDTO, psCount);
+            fillParamsToSQL(searchDTO, psCount);
 
             ResultSet rsCount = psCount.executeQuery();
             rsCount.next();
@@ -48,9 +51,10 @@ public class TopicDAO {
 
             PreparedStatement ps;
             ps = con.prepareStatement(sql);
-            paramIndex = fillParamsToSQL(searchDTO, ps);
+            fillParamsToSQL(searchDTO, ps);
+            paramIndex = searchDTO.getPsNextIndex(); //cia pasiimam index. cia del 58 eilutes, kad teisingai nustatyti
 
-            //cia uzdedam limit parametrus
+                    //cia uzdedam limit parametrus
             ps.setInt(paramIndex, ((pageNumber - 1) * numbOfTitles));
             paramIndex++;
             ps.setInt(paramIndex, numbOfTitles);
@@ -81,17 +85,37 @@ public class TopicDAO {
         String tagId = searchDTO.getTagId();
         String searchInput = searchDTO.getSearchInput();
 
-        boolean isWhere = false;
+        boolean isWhere = false; //kad dar nera salygos where, sql kodas tuscias
 
         if (!tagId.equals("")) {
             sql = sql + " WHERE ";
-            isWhere = true;
+            isWhere = true; //jau panaudojom WHERE todel i 94-95 eilutes nesettinsim WHERE
 
             sql = sql + "DocTagId = ?";
         }
 
-        if (!searchInput.equals("")) {
-            if (!isWhere) {
+        //skaidome eilute i zodziu lista, ji uzsetinsime i searchDTO, nes sita lista naudosime ir kitoje funkcijoj, ty fillParams
+
+        List<String> searchWords = new ArrayList<>(); //inicializavome
+        String word;
+        String[] Words = searchInput.split(" ");
+        for(int i = 0; i < Words.length; i++) {
+            word = Words[i]; //jei buvo daug tarpu ideta i search lauka, bus tuscios eilutes
+            if (!word.equals("")) {
+                searchWords.add(word);
+            }
+        }
+
+        searchDTO.setSearchWords(searchWords);
+
+
+
+//        if (!searchInput.equals("")) {
+
+        for(String w : searchWords) {
+
+
+            if (!isWhere) {    //if Where sitoj vietioj. T. Y. Jei WHERE dar nepanaudotas, idek ji. Jei WHERE jau panaudotas, idek AND.
                 sql = sql + " WHERE ";
                 isWhere = true;
             } else {
@@ -107,24 +131,30 @@ public class TopicDAO {
     /* cia idedam parametrus eiiskumo tvarka kaip dejom salygas
     ir grazinam sekancio parametro numeri
      */
-    private static int fillParamsToSQL(SearchDTO searchDTO, PreparedStatement ps) throws SQLException{
+    private static void fillParamsToSQL(SearchDTO searchDTO, PreparedStatement ps) throws SQLException{
         String tagId = searchDTO.getTagId();
-        String searchInput = searchDTO.getSearchInput();
 
-        int x = 1;
+        List<String> searchWords = searchDTO.getSearchWords();
+        //reikia perduoti Lista i ps
+//        String searchInput = searchDTO.getSearchInput();
 
-        //TagID yra integer bazeje todel reikia perduoti int o ne strong kad greitis butu
+        int index = 1; //sito x mums dar reikes veliau kad padaryti TITLE limitus, kad rodytu tik po 10 elementu.
+
+        //TagID yra integer bazeje todel reikia perduoti int o ne string kad greitis butu
         if (!tagId.equals("")) {
-            ps.setInt(x, Integer.parseInt(tagId));
-            x++;
+            ps.setInt(index, Integer.parseInt(tagId));
+            index++;
         }
 
-        if (!searchInput.equals("")) {
-            ps.setString(x, searchInput);
-            x++;
+//        if (!searchInput.equals("")) {
+
+        for (String word : searchWords) {
+//            ps.setString(index, searchInput);
+            ps.setString(index, word);
+            index++;
         }
 
-        return x;
+        searchDTO.setPsNextIndex(index); //cia settiname indexa, o pasiimsime ji kur 55 eilute
     }
 
 }
