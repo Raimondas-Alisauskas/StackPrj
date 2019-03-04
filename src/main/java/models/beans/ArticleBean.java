@@ -1,16 +1,16 @@
-package models;
+package models.beans;
 
-public class ArticleBin {
+public class ArticleBean {
 
     private int id;
     private String title;
     private int creationDate;
     private String example;
 
-    public ArticleBin() {
+    public ArticleBean() {
     }
 
-    public ArticleBin(int id, String title, int creationDate, String example) {
+    public ArticleBean(int id, String title, int creationDate, String example) {
         this.id = id;
         this.title = title;
         this.creationDate = creationDate;

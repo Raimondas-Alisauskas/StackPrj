@@ -1,17 +1,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="models.TopicBin" %>
+<%@ page import="models.beans.TopicBean" %>
 <%@ page import="controllers.ArticleController" %>
-<%@ page import="models.TopicResults" %>
+<%@ page import="models.DTO.TopicDTO" %>
 <html>
-    <head>
-    </head>
+<head>
+</head>
 
-    <body>
-        <div class="middle">
-                <%
-                    ArrayList<TopicBin> topics = (ArrayList<TopicBin>) ((TopicResults) request.getAttribute("topicResults")).getTopicsList();
-                    for (TopicBin topic : topics) {
+<body>
+<div class="middle">
+    <%
+                    ArrayList<TopicBean> topics = (ArrayList<TopicBean>) ((TopicDTO) request.getAttribute("topicDTO")).getTopicsList();
+                    for (TopicBean topic : topics) {
                 %>
                 <div class="article">
                     <div>

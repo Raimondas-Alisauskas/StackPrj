@@ -1,17 +1,17 @@
-package models;
+package models.DTO;
 
-public class SearchBin {
+public class SearchDTO {
 
     private String searchInput;
     private String tagId;
     private int pageNumb;
 
-    public SearchBin() {
+    public SearchDTO() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-    public SearchBin(String s, String d) {
+    public SearchDTO(String s, String d) {
         super();
         searchInput = s;
         tagId = d;

@@ -1,17 +1,19 @@
-package models;
+package models.DTO;
+
+import models.beans.TopicBean;
 
 import java.util.List;
 
-public class TopicResults {
+public class TopicDTO {
 
-    private List<TopicBin> topicsList;
+    private List<TopicBean> topicsList;
     private String tagId;
     private String searchInput;
     private int pageNumb;
     private int numbOfRecords;
 
 
-    public TopicResults(List<TopicBin> topicsList, String tagId, String searchInput, int pageNumb, int numbOfRecords) {
+    public TopicDTO(List<TopicBean> topicsList, String tagId, String searchInput, int pageNumb, int numbOfRecords) {
         this.topicsList = topicsList;
         this.tagId = tagId;
         this.searchInput = searchInput;
@@ -19,11 +21,11 @@ public class TopicResults {
         this.numbOfRecords = numbOfRecords;
     }
 
-    public List<TopicBin> getTopicsList() {
+    public List<TopicBean> getTopicsList() {
         return topicsList;
     }
 
-    public void setTopicsList(List<TopicBin> topicsList) {
+    public void setTopicsList(List<TopicBean> topicsList) {
         this.topicsList = topicsList;
     }
 
