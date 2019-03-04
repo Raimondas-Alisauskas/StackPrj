@@ -1,5 +1,6 @@
 package controllers.service;
 
+import controllers.service.interfaces.TopicServiceInterface;
 import models.DAO.DropdownDAO;
 import models.DAO.TopicDAO;
 import models.DTO.SearchDTO;

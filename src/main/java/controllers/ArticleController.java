@@ -1,7 +1,6 @@
 package controllers;
 
-import models.DAO.ArticleDAO;
-import models.DAO.DropdownDAO;
+import controllers.service.ArticleService;
 import models.beans.ArticleBean;
 import models.beans.DropdownBean;
 
@@ -17,17 +16,16 @@ public class ArticleController extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, java.io.IOException {
 
-        ArticleBean articleBean = new ArticleBean();
+        ArticleService articles = new ArticleService();
+        ArticleService dropdown = new ArticleService();
+
         String id = req.getParameter("id");
-        articleBean.setId(Integer.parseInt(id));
 
-        ArrayList<ArticleBean> selectedArticle = ArticleDAO.getArticle(articleBean);
-
-        DropdownDAO dropdownDAO = new DropdownDAO();
-        List<DropdownBean> tagList = dropdownDAO.getLimitedResult();
-        req.setAttribute("tagList", tagList);
-
+        ArrayList<ArticleBean> selectedArticle = articles.getArticle(id);
         req.setAttribute("article", selectedArticle);
+
+        List<DropdownBean> tagList = dropdown.getDropdown();
+        req.setAttribute("tagList", tagList);
 
         req.getRequestDispatcher("jsp/article.jsp").forward(req, resp);
 

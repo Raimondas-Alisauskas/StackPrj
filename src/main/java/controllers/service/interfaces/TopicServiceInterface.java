@@ -1,4 +1,4 @@
-package controllers.service;
+package controllers.service.interfaces;
 
 import models.DTO.TopicDTO;
 import models.beans.DropdownBean;
