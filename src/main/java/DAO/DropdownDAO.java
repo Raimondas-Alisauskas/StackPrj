@@ -1,7 +1,7 @@
-package models.DAO;
+package DAO;
 
 import controllers.DBconnection;
-import models.beans.DropdownBean;
+import beans.DropdownBean;
 import utils.ConfigurationProperties;
 
 import java.sql.Connection;

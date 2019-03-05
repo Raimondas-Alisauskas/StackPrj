@@ -1,7 +1,7 @@
-package controllers.service;
+package service;
 
-import models.DTO.TopicDTO;
-import models.beans.DropdownBean;
+import DTO.TopicDTO;
+import beans.DropdownBean;
 
 import java.util.List;
 

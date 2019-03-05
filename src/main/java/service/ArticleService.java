@@ -1,9 +1,9 @@
-package controllers.service;
+package service;
 
-import models.DAO.ArticleDAO;
-import models.DAO.DropdownDAO;
-import models.beans.ArticleBean;
-import models.beans.DropdownBean;
+import DAO.ArticleDAO;
+import DAO.DropdownDAO;
+import beans.ArticleBean;
+import beans.DropdownBean;
 
 import java.util.ArrayList;
 import java.util.List;

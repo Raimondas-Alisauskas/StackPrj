@@ -1,4 +1,4 @@
-package models.beans;
+package beans;
 
 public class ArticleBean {
 

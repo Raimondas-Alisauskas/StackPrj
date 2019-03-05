@@ -1,9 +1,9 @@
 package controllers;
 
-import controllers.service.ArticleService;
-import controllers.service.IArticleService;
-import models.beans.ArticleBean;
-import models.beans.DropdownBean;
+import service.ArticleService;
+import service.IArticleService;
+import beans.ArticleBean;
+import beans.DropdownBean;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

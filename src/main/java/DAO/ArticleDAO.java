@@ -1,6 +1,6 @@
-package models.DAO;
+package DAO;
 
-import models.beans.*;
+import beans.*;
 import controllers.DBconnection;
 
 import java.sql.*;

@@ -1,9 +1,9 @@
 package controllers;
 
-import controllers.service.ITopicService;
-import controllers.service.TopicService;
-import models.DTO.TopicDTO;
-import models.beans.DropdownBean;
+import service.ITopicService;
+import service.TopicService;
+import DTO.TopicDTO;
+import beans.DropdownBean;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

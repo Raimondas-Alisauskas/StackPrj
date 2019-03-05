@@ -1,7 +1,7 @@
-package controllers.service;
+package service;
 
-import models.beans.ArticleBean;
-import models.beans.DropdownBean;
+import beans.ArticleBean;
+import beans.DropdownBean;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,9 +1,9 @@
-package models.DAO;
+package DAO;
 
 import controllers.DBconnection;
-import models.DTO.SearchDTO;
-import models.DTO.TopicDTO;
-import models.beans.*;
+import DTO.SearchDTO;
+import DTO.TopicDTO;
+import beans.*;
 import utils.ConfigurationProperties;
 
 import java.sql.*;

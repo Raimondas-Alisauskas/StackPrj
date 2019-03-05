@@ -1,8 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="models.beans.TopicBean" %>
+<%@ page import="beans.TopicBean" %>
 <%@ page import="controllers.ArticleController" %>
-<%@ page import="models.DTO.TopicDTO" %>
+<%@ page import="DTO.TopicDTO" %>
 <html>
 <head>
 </head>

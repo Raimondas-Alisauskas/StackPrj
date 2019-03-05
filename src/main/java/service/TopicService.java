@@ -1,10 +1,10 @@
-package controllers.service;
+package service;
 
-import models.DAO.DropdownDAO;
-import models.DAO.TopicDAO;
-import models.DTO.SearchDTO;
-import models.DTO.TopicDTO;
-import models.beans.DropdownBean;
+import DAO.DropdownDAO;
+import DAO.TopicDAO;
+import DTO.SearchDTO;
+import DTO.TopicDTO;
+import beans.DropdownBean;
 
 import java.util.List;
 
