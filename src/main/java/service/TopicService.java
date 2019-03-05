@@ -10,6 +10,7 @@ import java.util.List;
 
 public class TopicService implements ITopicService {
 
+    @Override
     public TopicDTO getTopics(String tagID, String search_field, String page_num) {
 
         SearchDTO searchDTO = new SearchDTO();
@@ -35,14 +36,6 @@ public class TopicService implements ITopicService {
         TopicDTO topicDTO = TopicDAO.getTopicsFromDB(searchDTO);
 
         return topicDTO;
-    }
-
-    public List<DropdownBean> getDropdown() {
-
-        DropdownDAO dropdownDAO = new DropdownDAO();
-        List<DropdownBean> tagList = dropdownDAO.getLimitedResult();
-
-        return tagList;
     }
 
 }

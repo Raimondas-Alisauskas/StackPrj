@@ -10,6 +10,4 @@ public interface IArticleService {
 
     ArrayList<ArticleBean> getArticle(String id);
 
-    List<DropdownBean> getDropdown();
-
 }
