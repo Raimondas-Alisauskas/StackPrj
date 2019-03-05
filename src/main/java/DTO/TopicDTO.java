@@ -1,6 +1,6 @@
-package models.DTO;
+package DTO;
 
-import models.beans.TopicBean;
+import beans.TopicBean;
 
 import java.util.List;
 
