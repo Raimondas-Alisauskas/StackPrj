@@ -1,6 +1,7 @@
 package controllers;
 
 import controllers.service.ArticleService;
+import controllers.service.IArticleService;
 import models.beans.ArticleBean;
 import models.beans.DropdownBean;
 
@@ -16,8 +17,8 @@ public class ArticleController extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, java.io.IOException {
 
-        ArticleService articles = new ArticleService();
-        ArticleService dropdown = new ArticleService();
+        IArticleService articles = new ArticleService();
+        IArticleService dropdown = new ArticleService();
 
         String id = req.getParameter("id");
 

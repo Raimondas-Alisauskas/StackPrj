@@ -1,5 +1,6 @@
 package controllers;
 
+import controllers.service.ITopicService;
 import controllers.service.TopicService;
 import models.DTO.TopicDTO;
 import models.beans.DropdownBean;
@@ -18,8 +19,8 @@ public class TopicController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        TopicService topicService = new TopicService();
-        TopicService dropdown = new TopicService();
+        ITopicService topicService = new TopicService();
+        ITopicService dropdown = new TopicService();
 
         String tagId = req.getParameter("tagId");
 

@@ -1,6 +1,5 @@
 package controllers.service;
 
-import controllers.service.interfaces.ArticleServiceInterface;
 import models.DAO.ArticleDAO;
 import models.DAO.DropdownDAO;
 import models.beans.ArticleBean;
@@ -9,7 +8,7 @@ import models.beans.DropdownBean;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArticleService implements ArticleServiceInterface {
+public class ArticleService implements IArticleService {
 
     public ArrayList<ArticleBean> getArticle(String id) {
 

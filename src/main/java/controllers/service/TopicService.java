@@ -1,6 +1,5 @@
 package controllers.service;
 
-import controllers.service.interfaces.TopicServiceInterface;
 import models.DAO.DropdownDAO;
 import models.DAO.TopicDAO;
 import models.DTO.SearchDTO;
@@ -9,7 +8,7 @@ import models.beans.DropdownBean;
 
 import java.util.List;
 
-public class TopicService implements TopicServiceInterface {
+public class TopicService implements ITopicService {
 
     public TopicDTO getTopics(String tagID, String search_field, String page_num) {
 

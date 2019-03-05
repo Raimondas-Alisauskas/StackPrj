@@ -1,11 +1,11 @@
-package controllers.service.interfaces;
+package controllers.service;
 
 import models.DTO.TopicDTO;
 import models.beans.DropdownBean;
 
 import java.util.List;
 
-public interface TopicServiceInterface {
+public interface ITopicService {
 
     TopicDTO getTopics(String tagID, String search_field, String page_num);
 
