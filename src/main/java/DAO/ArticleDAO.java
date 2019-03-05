@@ -1,5 +1,6 @@
 package DAO;
 
+import DTO.DBConnectionDTO;
 import beans.*;
 import controllers.DBconnection;
 
@@ -8,13 +9,15 @@ import java.util.ArrayList;
 
 public class ArticleDAO {
 
-    public static ArrayList<ArticleBean> getArticle(ArticleBean selectedArticle) {
+    public ArrayList<ArticleBean> getArticle(ArticleBean selectedArticle) {
 
 
         ArrayList<ArticleBean> examples = new ArrayList<>();
 
 
-        Connection con = DBconnection.getConnection();
+        DBconnection dBconnection = new DBconnection();
+        DBConnectionDTO dbConnectionDTO = dBconnection.getConnection();
+        Connection con = dbConnectionDTO.connection;
         if (con != null) {
             try {
 
@@ -53,7 +56,7 @@ public class ArticleDAO {
             } catch (SQLException e) {
                 e.printStackTrace();
             } finally {
-                DBconnection.closeConnection(con);
+                dBconnection.closeConnection(con);
             }
         }
 

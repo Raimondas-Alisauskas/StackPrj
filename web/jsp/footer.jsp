@@ -5,12 +5,11 @@
 <head>
     <%
         TopicDTO topicDTO = (TopicDTO) request.getAttribute("topicDTO");
-        String tagId = topicDTO.getTagId();
-        String searchInput = topicDTO.getSearchInput();
         int numbOfRecords = topicDTO.getNumbOfRecords();
         int pageNumb = topicDTO.getPageNumb();
         int numberOfTitles = ConfigurationProperties.SHOW_NUMB_OF_TITLES;
     %>
+
 </head>
 <body>
     <div class="footer">
@@ -18,7 +17,7 @@
             <div class="pagination">
                 <% if(pageNumb > 1 ){%>
                     <a
-                        href="<%=request.getContextPath()%>/?tagId=<%=tagId%>&search_field=<%=searchInput%>&pageNum=<%=pageNumb-1%>"
+                        href="<%=request.getContextPath()%>/?tagId=<%=topicDTO.getTagId()%>&search_field=<%=topicDTO.getSearchInput()%>&pageNum=<%=pageNumb-1%>"
                        class="page">Previous
                     </a>
                 <% } %>
@@ -28,7 +27,7 @@
                 </span>
                 <% if(pageNumb <= numbOfRecords / numberOfTitles){%>
                 <a
-                    href="<%=request.getContextPath()%>/?tagId=<%=tagId%>&search_field=<%=searchInput%>&pageNum=<%=pageNumb+1%>"
+                    href="<%=request.getContextPath()%>/?tagId=<%=topicDTO.getTagId()%>&search_field=<%=topicDTO.getSearchInput()%>&pageNum=<%=pageNumb+1%>"
                     class="page">Next
                 </a>
                 <% } %>

@@ -1,5 +1,6 @@
 package DAO;
 
+import DTO.DBConnectionDTO;
 import controllers.DBconnection;
 import beans.DropdownBean;
 import utils.ConfigurationProperties;
@@ -12,7 +13,7 @@ import java.util.List;
 
 
 public class DropdownDAO {
-    Connection currentCon = null;
+    Connection con = null;
     ResultSet rs = null;
     List<DropdownBean> tagList;
     int numbOfTags = ConfigurationProperties.SHOW_NUMB_OF_TAGS;
@@ -26,11 +27,14 @@ public class DropdownDAO {
         String searchQuery = "select Id, Tag from DocTags order by TopicCount desc limit " + numbOfTags;
 
 //        System.out.println("Query: " + searchQuery);
+        DBconnection dBconnection = new DBconnection();
 
         try {
-            currentCon = DBconnection.getConnection();
 
-            statement = currentCon.createStatement();
+            DBConnectionDTO dbConnectionDTO = dBconnection.getConnection();
+            con = dbConnectionDTO.connection;
+
+            statement = con.createStatement();
 
 
             rs = statement.executeQuery(searchQuery);
@@ -67,14 +71,7 @@ public class DropdownDAO {
                 statement = null;
             }
 
-            if (currentCon != null) {
-                try {
-                    currentCon.close();
-                } catch (Exception e) {
-                }
-
-                currentCon = null;
-            }
+            dBconnection.closeConnection(con);
         }
 
         return tagList;

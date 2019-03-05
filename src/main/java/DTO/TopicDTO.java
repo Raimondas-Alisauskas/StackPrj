@@ -11,14 +11,16 @@ public class TopicDTO {
     private String searchInput;
     private int pageNumb;
     private int numbOfRecords;
+    public DBConnectionDTO dbConnectionDTO;
 
 
-    public TopicDTO(List<TopicBean> topicsList, String tagId, String searchInput, int pageNumb, int numbOfRecords) {
+    public TopicDTO(List<TopicBean> topicsList, String tagId, String searchInput, int pageNumb, int numbOfRecords, DBConnectionDTO dbConnectionDTO) {
         this.topicsList = topicsList;
         this.tagId = tagId;
         this.searchInput = searchInput;
         this.pageNumb = pageNumb;
         this.numbOfRecords = numbOfRecords;
+        this.dbConnectionDTO = dbConnectionDTO;
     }
 
     public List<TopicBean> getTopicsList() {

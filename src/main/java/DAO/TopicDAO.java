@@ -1,5 +1,6 @@
 package DAO;
 
+import DTO.DBConnectionDTO;
 import controllers.DBconnection;
 import DTO.SearchDTO;
 import DTO.TopicDTO;
@@ -23,8 +24,9 @@ public class TopicDAO {
         searchDTO.setPsNextIndex(0); //del apsaugos sau, kad neturime dar indexo
 
 
-
-        Connection con = DBconnection.getConnection();
+        DBconnection dBconnection = new DBconnection();
+        DBConnectionDTO dbConnectionDTO = dBconnection.getConnection();
+        Connection con = dbConnectionDTO.connection;
         if (con != null) try {
 
             Statement statement = con.createStatement();
@@ -70,10 +72,10 @@ public class TopicDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            DBconnection.closeConnection(con);
+            dBconnection.closeConnection(con);
         }
 
-        return new TopicDTO(topics, tagId, searchInput, pageNumber, numbOfRecords);
+        return new TopicDTO(topics, tagId, searchInput, pageNumber, numbOfRecords, dbConnectionDTO);
     }
 
     /* padarom atskira metoda kuris sukurs SQL dali kuri atsako uz WHERE salygas

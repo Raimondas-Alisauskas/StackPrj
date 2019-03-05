@@ -14,7 +14,8 @@ public class ArticleService implements IArticleService {
 
         ArticleBean articleBean = new ArticleBean();
         articleBean.setId(Integer.parseInt(id));
-        ArrayList<ArticleBean> selectedArticle = ArticleDAO.getArticle(articleBean);
+        ArticleDAO articleDAO = new ArticleDAO();
+        ArrayList<ArticleBean> selectedArticle = articleDAO.getArticle(articleBean);
 
         return selectedArticle;
 

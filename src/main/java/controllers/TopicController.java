@@ -23,15 +23,18 @@ public class TopicController extends HttpServlet {
         ITopicService dropdown = new TopicService();
 
         String tagId = req.getParameter("tagId");
-
         String search_field = req.getParameter("search_field");
-
         String pageNumStr = req.getParameter("pageNum");
-
 
         TopicDTO topicDTO = topicService.getTopics(tagId,search_field,pageNumStr);
 
         req.setAttribute("topicDTO", topicDTO);
+
+        if(topicDTO.dbConnectionDTO.errorType != null) {
+            RequestDispatcher rd = req.getRequestDispatcher("jsp/errorInfo.jsp");
+            rd.forward(req, resp);
+        return;
+        }
 
         List<DropdownBean> tagList = dropdown.getDropdown();
 
