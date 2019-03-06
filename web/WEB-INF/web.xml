@@ -6,7 +6,7 @@
 
     <servlet>
     <servlet-name>Initial</servlet-name>
-    <servlet-class>controllers.TopicController</servlet-class>
+    <servlet-class>controller.TopicController</servlet-class>
 </servlet>
     <servlet-mapping>
         <servlet-name>Initial</servlet-name>
@@ -15,7 +15,7 @@
 
     <servlet>
         <servlet-name>Welcome</servlet-name>
-        <servlet-class>controllers.TopicController</servlet-class>
+        <servlet-class>controller.TopicController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Welcome</servlet-name>
@@ -24,7 +24,7 @@
 
     <servlet>
         <servlet-name>Article</servlet-name>
-        <servlet-class>controllers.ArticleController</servlet-class>
+        <servlet-class>controller.ArticleController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Article</servlet-name>

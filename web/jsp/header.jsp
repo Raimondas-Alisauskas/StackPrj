@@ -1,6 +1,6 @@
-<%@ page import="beans.DropdownBean" %>
+<%@ page import="model.beans.DropdownBean" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="DTO.TopicDTO" %>
+<%@ page import="model.DTO.TopicDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
