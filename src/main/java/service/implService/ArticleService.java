@@ -1,5 +1,6 @@
 package service.implService;
 
+import service.database.DAO.IDAO.IArticleDAO;
 import service.database.DAO.implDAO.ArticleDAO;
 import model.beans.ArticleBean;
 import service.IService.IArticleService;
@@ -13,7 +14,9 @@ public class ArticleService implements IArticleService {
 
         ArticleBean articleBean = new ArticleBean();
         articleBean.setId(Integer.parseInt(id));
-        ArrayList<ArticleBean> selectedArticle = ArticleDAO.getArticle(articleBean);
+
+        IArticleDAO articleDAO = new ArticleDAO();
+        ArrayList<ArticleBean> selectedArticle = articleDAO.getArticle(articleBean);
 
         return selectedArticle;
 

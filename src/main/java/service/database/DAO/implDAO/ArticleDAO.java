@@ -1,14 +1,15 @@
 package service.database.DAO.implDAO;
 
 import model.beans.*;
+import service.database.DAO.IDAO.IArticleDAO;
 import service.database.DBconnection;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-public class ArticleDAO {
+public class ArticleDAO implements IArticleDAO {
 
-    public static ArrayList<ArticleBean> getArticle(ArticleBean selectedArticle) {
+    public ArrayList<ArticleBean> getArticle(ArticleBean selectedArticle) {
 
 
         ArrayList<ArticleBean> examples = new ArrayList<>();
