@@ -13,7 +13,7 @@
             searchInput = topicDTO.getSearchInput();
         };
 
-        ArrayList<DropdownBean> tagList = (ArrayList) request.getAttribute("tagList");
+        ArrayList<DropdownBean> tagList = (ArrayList) session.getAttribute("tagList");
     %>
 </head>
 <body>

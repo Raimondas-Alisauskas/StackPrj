@@ -9,6 +9,4 @@ public interface ITopicService {
 
     TopicDTO getTopics(String tagID, String search_field, String page_num);
 
-    List<DropdownBean> getDropdown();
-
 }

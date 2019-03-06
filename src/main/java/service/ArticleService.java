@@ -10,6 +10,7 @@ import java.util.List;
 
 public class ArticleService implements IArticleService {
 
+    @Override
     public ArrayList<ArticleBean> getArticle(String id) {
 
         ArticleBean articleBean = new ArticleBean();
@@ -17,14 +18,6 @@ public class ArticleService implements IArticleService {
         ArrayList<ArticleBean> selectedArticle = ArticleDAO.getArticle(articleBean);
 
         return selectedArticle;
-
-    }
-
-    public List<DropdownBean> getDropdown() {
-
-        DropdownDAO dropdownDAO = new DropdownDAO();
-        List<DropdownBean> tagList = dropdownDAO.getLimitedResult();
-        return tagList;
 
     }
 
