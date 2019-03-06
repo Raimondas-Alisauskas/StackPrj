@@ -1,8 +1,8 @@
 package service.database.DAO.implDAO;
 
-import service.database.DBconnection;
 import model.beans.DropdownBean;
-import utils.properties.ConfigurationProperties;
+import service.database.DAO.IDAO.IDropdownDAO;
+import service.database.DBconnection;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -11,12 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class DropdownDAO {
+public class DropdownDAO implements IDropdownDAO {
     Connection currentCon = null;
     ResultSet rs = null;
     List<DropdownBean> tagList;
-    int numbOfTags = ConfigurationProperties.SHOW_NUMB_OF_TAGS;
-
 
     public List<DropdownBean> getLimitedResult() {
 
