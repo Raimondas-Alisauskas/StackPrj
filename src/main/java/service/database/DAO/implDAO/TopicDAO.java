@@ -1,18 +1,19 @@
 package service.database.DAO.implDAO;
 
-import service.database.DBconnection;
 import model.DTO.SearchDTO;
 import model.DTO.TopicDTO;
-import model.beans.*;
+import model.beans.TopicBean;
+import service.database.DAO.IDAO.ITopicDAO;
+import service.database.DBconnection;
 import utils.properties.ConfigurationProperties;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TopicDAO {
+public class TopicDAO implements ITopicDAO {
 
-    public static TopicDTO getTopicsFromDB(SearchDTO searchDTO) {
+    public TopicDTO getTopicsFromDB(SearchDTO searchDTO) {
         List<TopicBean> topics = new ArrayList<>();
         String tagId = searchDTO.getTagId();
         String searchInput = searchDTO.getSearchInput();
@@ -21,8 +22,6 @@ public class TopicDAO {
         int numbOfRecords = 0;
 
         searchDTO.setPsNextIndex(0); //del apsaugos sau, kad neturime dar indexo
-
-
 
         Connection con = DBconnection.getConnection();
         if (con != null) try {
@@ -44,7 +43,6 @@ public class TopicDAO {
             rsCount.next();
             numbOfRecords = rsCount.getInt(1);
 
-
             sql = "SELECT Id, Title FROM Topics";
             sql = sql + sqlWhere;
             sql = sql + " ORDER BY ViewCount DESC LIMIT ?, ?";
@@ -52,9 +50,8 @@ public class TopicDAO {
             PreparedStatement ps;
             ps = con.prepareStatement(sql);
             fillParamsToSQL(searchDTO, ps);
-            paramIndex = searchDTO.getPsNextIndex(); //cia pasiimam index. cia del 58 eilutes, kad teisingai nustatyti
+            paramIndex = searchDTO.getPsNextIndex();
 
-                    //cia uzdedam limit parametrus
             ps.setInt(paramIndex, ((pageNumber - 1) * numbOfTitles));
             paramIndex++;
             ps.setInt(paramIndex, numbOfTitles);
@@ -76,31 +73,26 @@ public class TopicDAO {
         return new TopicDTO(topics, tagId, searchInput, pageNumber, numbOfRecords);
     }
 
-    /* padarom atskira metoda kuris sukurs SQL dali kuri atsako uz WHERE salygas
-    jai salyga yra pridedam jos teksta
-    */
-    private static String createWhereSQL(SearchDTO searchDTO) {
+    public String createWhereSQL(SearchDTO searchDTO) {
         String sql = "";
 
         String tagId = searchDTO.getTagId();
         String searchInput = searchDTO.getSearchInput();
 
-        boolean isWhere = false; //kad dar nera salygos where, sql kodas tuscias
+        boolean isWhere = false;
 
         if (!tagId.equals("")) {
             sql = sql + " WHERE ";
-            isWhere = true; //jau panaudojom WHERE todel i 94-95 eilutes nesettinsim WHERE
+            isWhere = true;
 
             sql = sql + "DocTagId = ?";
         }
 
-        //skaidome eilute i zodziu lista, ji uzsetinsime i searchDTO, nes sita lista naudosime ir kitoje funkcijoj, ty fillParams
-
-        List<String> searchWords = new ArrayList<>(); //inicializavome
+        List<String> searchWords = new ArrayList<>();
         String word;
         String[] Words = searchInput.split(" ");
-        for(int i = 0; i < Words.length; i++) {
-            word = Words[i]; //jei buvo daug tarpu ideta i search lauka, bus tuscios eilutes
+        for (int i = 0; i < Words.length; i++) {
+            word = Words[i];
             if (!word.equals("")) {
                 searchWords.add(word);
             }
@@ -108,48 +100,36 @@ public class TopicDAO {
 
         searchDTO.setSearchWords(searchWords);
 
-        for(String w : searchWords) {
-
-            if (!isWhere) {    //if Where sitoj vietioj. T. Y. Jei WHERE dar nepanaudotas, idek ji. Jei WHERE jau panaudotas, idek AND.
+        for (String w : searchWords) {
+            if (!isWhere) {
                 sql = sql + " WHERE ";
                 isWhere = true;
             } else {
                 sql = sql + " AND ";
             }
-
             sql = sql + "Title LIKE '%'||?||'%'";
         }
-
         return sql;
     }
 
-    /* cia idedam parametrus eiiskumo tvarka kaip dejom salygas
-    ir grazinam sekancio parametro numeri
-     */
-    private static void fillParamsToSQL(SearchDTO searchDTO, PreparedStatement ps) throws SQLException{
+    public void fillParamsToSQL(SearchDTO searchDTO, PreparedStatement ps) throws SQLException {
         String tagId = searchDTO.getTagId();
 
         List<String> searchWords = searchDTO.getSearchWords();
-        //reikia perduoti Lista i ps
-//        String searchInput = searchDTO.getSearchInput();
 
-        int index = 1; //sito x mums dar reikes veliau kad padaryti TITLE limitus, kad rodytu tik po 10 elementu.
+        int index = 1;
 
-        //TagID yra integer bazeje todel reikia perduoti int o ne string kad greitis butu
         if (!tagId.equals("")) {
             ps.setInt(index, Integer.parseInt(tagId));
             index++;
         }
 
-//        if (!searchInput.equals("")) {
-
         for (String word : searchWords) {
-//            ps.setString(index, searchInput);
             ps.setString(index, word);
             index++;
         }
 
-        searchDTO.setPsNextIndex(index); //cia settiname indexa, o pasiimsime ji kur 55 eilute
+        searchDTO.setPsNextIndex(index);
     }
 
 }

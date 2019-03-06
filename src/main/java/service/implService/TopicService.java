@@ -1,5 +1,6 @@
 package service.implService;
 
+import service.database.DAO.IDAO.ITopicDAO;
 import service.database.DAO.implDAO.TopicDAO;
 import model.DTO.SearchDTO;
 import model.DTO.TopicDTO;
@@ -30,7 +31,8 @@ public class TopicService implements ITopicService {
         }
         searchDTO.setPageNumb(pageNr);
 
-        TopicDTO topicDTO = TopicDAO.getTopicsFromDB(searchDTO);
+        ITopicDAO topicDAO = new TopicDAO();
+        TopicDTO topicDTO = topicDAO.getTopicsFromDB(searchDTO);
 
         return topicDTO;
     }

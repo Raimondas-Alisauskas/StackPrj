@@ -11,9 +11,7 @@ public class ArticleDAO implements IArticleDAO {
 
     public ArrayList<ArticleBean> getArticle(ArticleBean selectedArticle) {
 
-
         ArrayList<ArticleBean> examples = new ArrayList<>();
-
 
         Connection con = DBconnection.getConnection();
         if (con != null) {
