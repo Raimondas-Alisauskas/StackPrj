@@ -8,8 +8,44 @@
 <body>
 <% ArticleDTO articleDTO = (ArticleDTO) request.getAttribute("articleDTO");%>
 <h1>Article description</h1>
-<p>Article title: <%=articleDTO.getTitle()%>
-</p>
+<p>Article title: <%=articleDTO.getTitle()%></p>
+<% String introductionHtml = articleDTO.getIntroductionHtml();
+    if (!introductionHtml.isEmpty()){
+%>
+    <div>
+        <p>introductionHtml</p>
+        <%=introductionHtml%>
+    </div>
+<% } %>
+
+<% String remarksHtml = articleDTO.getRemarksHtml();
+    if (!remarksHtml.isEmpty()){
+%>
+    <div>
+        <p>remarksHtml</p>
+        <%=remarksHtml%>
+    </div>
+<% } %>
+
+<% String parametersHtml = articleDTO.getParametersHtml();
+    if (!parametersHtml.isEmpty()){
+%>
+    <div>
+        <p>parametersHtml</p>
+        <%=parametersHtml%>
+    </div>
+<% } %>
+
+<% String syntaxHtml = articleDTO.getSyntaxHtml();
+    if (!syntaxHtml.isEmpty()){
+%>
+    <div>
+        <p>syntaxHtml</p>
+        <%=syntaxHtml%>
+    </div>
+<% } %>
+
+
 <button type="button" class="button button--ghost button--ghost--green" onclick="history.back()">Go back to articles
 </button>
 <div class="middle">

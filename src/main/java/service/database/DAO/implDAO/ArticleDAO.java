@@ -16,6 +16,10 @@ public class ArticleDAO implements IArticleDAO {
         List<ArticleBean> examples = new ArrayList<>();
 
         String title = "";
+        String introductionHtml = "";
+        String remarksHtml = "";
+        String parametersHtml = "";
+        String syntaxHtml = "";
 
         Connection con = DBconnection.getConnection();
         if (con != null) {
@@ -24,7 +28,7 @@ public class ArticleDAO implements IArticleDAO {
                 Statement statement = con.createStatement();
                 statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
-                String sql_title = "SELECT Title FROM Topics WHERE Id = ?";
+                String sql_title = "SELECT Title, SyntaxHtml, RemarksHtml, ParametersHtml, introductionHtml FROM Topics WHERE Id = ?";
                 PreparedStatement ps;
                 ps = con.prepareStatement(sql_title);
                 ps.setInt(1, articleId);
@@ -33,6 +37,10 @@ public class ArticleDAO implements IArticleDAO {
 
                 if (rs.next()) {
                     title = rs.getString("Title");
+                    introductionHtml = rs.getString("introductionHtml");
+                    remarksHtml = rs.getString("RemarksHtml");
+                    parametersHtml = rs.getString("ParametersHtml");
+                    syntaxHtml = rs.getString("SyntaxHtml");
                 }
 
                 String sql_example = "SELECT Title, BodyHtml, BodyMarkdown FROM Examples WHERE DocTopicId = ? ORDER BY Id";
@@ -52,7 +60,7 @@ public class ArticleDAO implements IArticleDAO {
             }
         }
 
-        return new ArticleDTO(examples, articleId, title);
+        return new ArticleDTO(examples, articleId, title, introductionHtml, remarksHtml, parametersHtml, syntaxHtml);
     }
 
 }
