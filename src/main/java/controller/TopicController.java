@@ -31,7 +31,7 @@ public class TopicController extends HttpServlet {
         String pageNumStr = req.getParameter("pageNum");
 
 
-        TopicDTO topicDTO = topicService.getTopics(tagId,search_field,pageNumStr);
+        TopicDTO topicDTO = topicService.getTopics(tagId, search_field, pageNumStr);
 
         req.setAttribute("topicDTO", topicDTO);
 
