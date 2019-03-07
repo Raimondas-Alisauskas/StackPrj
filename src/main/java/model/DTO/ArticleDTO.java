@@ -15,7 +15,7 @@ public class ArticleDTO {
     private String parametersHtml;
     private String syntaxHtml;
 
-    public ArticleDTO(List<ArticleBean> articleList, int id, String title, String introductionHtml, String remarksHtml, String parametersHtml, String syntaxHtml) {
+    public ArticleDTO(List<ArticleBean> articleList, int id, String title, String introductionHtml, String remarksHtml, String parametersHtml, String syntaxHtml, String tabName) {
         this.articleList = articleList;
         this.id = id;
         this.title = title;
@@ -23,6 +23,7 @@ public class ArticleDTO {
         this.remarksHtml = remarksHtml;
         this.parametersHtml = parametersHtml;
         this.syntaxHtml = syntaxHtml;
+        this.tabName = tabName;
     }
 
     public List<ArticleBean> getArticleList() {
@@ -52,5 +53,7 @@ public class ArticleDTO {
     public String getSyntaxHtml() {
         return syntaxHtml;
     }
+
+    public String getTabName() { return tabName; }
 
 }

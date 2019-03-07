@@ -4,6 +4,7 @@ import model.DTO.ArticleDTO;
 import model.beans.*;
 import service.database.DAO.IDAO.IArticleDAO;
 import service.database.DBconnection;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,7 @@ public class ArticleDAO implements IArticleDAO {
         String remarksHtml = "";
         String parametersHtml = "";
         String syntaxHtml = "";
+        String tabName = "";
 
         Connection con = DBconnection.getConnection();
         if (con != null) {
@@ -28,7 +30,7 @@ public class ArticleDAO implements IArticleDAO {
                 Statement statement = con.createStatement();
                 statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
-                String sql_title = "SELECT Title, SyntaxHtml, RemarksHtml, ParametersHtml, introductionHtml FROM Topics WHERE Id = ?";
+                String sql_title = "SELECT Title, SyntaxHtml, RemarksHtml, ParametersHtml, introductionHtml, DocTagId FROM Topics WHERE Id = ?";
                 PreparedStatement ps;
                 ps = con.prepareStatement(sql_title);
                 ps.setInt(1, articleId);
@@ -41,6 +43,16 @@ public class ArticleDAO implements IArticleDAO {
                     remarksHtml = rs.getString("RemarksHtml");
                     parametersHtml = rs.getString("ParametersHtml");
                     syntaxHtml = rs.getString("SyntaxHtml");
+                    tabName = rs.getString("DocTagId");
+                }
+
+                String sql_tagId = "SELECT Title FROM DocTags where Id = ?";
+                ps = con.prepareStatement(sql_tagId);
+                ps.setString(1, tabName);
+                rs = ps.executeQuery();
+
+                while (rs.next()) {
+                    tabName = rs.getString("Title");
                 }
 
                 String sql_example = "SELECT Title, BodyHtml, BodyMarkdown FROM Examples WHERE DocTopicId = ? ORDER BY Id";
@@ -59,8 +71,7 @@ public class ArticleDAO implements IArticleDAO {
                 DBconnection.closeConnection(con);
             }
         }
-
-        return new ArticleDTO(examples, articleId, title, introductionHtml, remarksHtml, parametersHtml, syntaxHtml);
+        return new ArticleDTO(examples, articleId, title, introductionHtml, remarksHtml, parametersHtml, syntaxHtml, tabName);
     }
 
 }
