@@ -1,7 +1,6 @@
 package model.DTO;
 
 import model.beans.ArticleBean;
-
 import java.util.List;
 
 public class ArticleDTO {

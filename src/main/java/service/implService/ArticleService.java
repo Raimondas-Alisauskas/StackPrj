@@ -18,9 +18,7 @@ public class ArticleService implements IArticleService {
         }
 
         IArticleDAO articleDAO = new ArticleDAO();
-        ArticleDTO articleDTO = articleDAO.getArticle(articleId);
-
-        return articleDTO;
+        return articleDAO.getArticle(articleId);
 
     }
 

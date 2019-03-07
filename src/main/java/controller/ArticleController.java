@@ -18,6 +18,7 @@ import java.util.List;
 
 public class ArticleController extends HttpServlet {
 
+    @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, java.io.IOException {
 

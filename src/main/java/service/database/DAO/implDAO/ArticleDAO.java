@@ -4,7 +4,6 @@ import model.DTO.ArticleDTO;
 import model.beans.*;
 import service.database.DAO.IDAO.IArticleDAO;
 import service.database.DBconnection;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,16 +35,14 @@ public class ArticleDAO implements IArticleDAO {
                     title = rs.getString("Title");
                 }
 
-                String sql_example = "SELECT BodyHtml FROM Examples WHERE DocTopicId = ? ORDER BY Id";
+                String sql_example = "SELECT Title, BodyHtml, BodyMarkdown FROM Examples WHERE DocTopicId = ? ORDER BY Id";
 
                 ps = con.prepareStatement(sql_example);
                 ps.setInt(1, articleId);
                 rs = ps.executeQuery();
 
                 while (rs.next()) {
-                    ArticleBean articleBean = new ArticleBean();
-                    articleBean.setExample(rs.getString("BodyHtml"));
-                    examples.add(articleBean);
+                    examples.add(new ArticleBean(rs.getString("BodyHtml"), rs.getString("Title"), rs.getString("BodyMarkdown")));
                 }
 
             } catch (SQLException e) {

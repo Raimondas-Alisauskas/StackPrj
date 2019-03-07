@@ -16,8 +16,14 @@
     <% List<ArticleBean> articles = articleDTO.getArticleList();%>
     <%for (ArticleBean article : articles) { %>
     <div class="example">
-        <div>
+        <div class="articleTitle">
+            <h3><%=article.getTitle()%></h3>
+        </div>
+        <div class="articleBH">
             <%=article.getExample()%>
+        </div>
+        <div class="articleMD">
+            <%=article.getBodyMarkdown()%>
         </div>
     </div>
     <% } %>
