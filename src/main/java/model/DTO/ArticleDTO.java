@@ -1,12 +1,14 @@
 package model.DTO;
 
 import model.beans.ArticleBean;
+
 import java.util.List;
 
 public class ArticleDTO {
     private List<ArticleBean> articleList;
     private int id;
     private String title;
+    private String tabName;
 
     private String introductionHtml;
     private String remarksHtml;
@@ -50,4 +52,5 @@ public class ArticleDTO {
     public String getSyntaxHtml() {
         return syntaxHtml;
     }
+
 }

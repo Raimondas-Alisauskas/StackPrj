@@ -64,5 +64,6 @@ public class SearchDTO {
     public void setPageNumb(int pageNumb) {
         this.pageNumb = pageNumb;
     }
+    
 }
 
