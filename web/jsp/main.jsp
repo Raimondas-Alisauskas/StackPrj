@@ -8,18 +8,18 @@
 </head>
 
 <body>
-<div class="middle">
+<div class="card-body">
+    <div class="list-group">
     <%
                     ArrayList<TopicBean> topics = (ArrayList<TopicBean>) ((TopicDTO) request.getAttribute("topicDTO")).getTopicsList();
                     for (TopicBean topic : topics) {
                 %>
-                <div class="article">
-                    <div>
-                        <a href="article?id=<%=topic.getId()%>" name="article_name"><h2><%=topic.getTitle()%>
-                        </h2></a>
-                    </div>
-                </div>
+
+                        <a class="list-group-item list-group-item-action" href="article?id=<%=topic.getId()%>" name="article_name"><%=topic.getTitle()%>
+                        </a>
+
             <% } %>
-        </div>
+    </div>
+    </div>
     </body>
 </html>
