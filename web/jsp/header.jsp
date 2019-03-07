@@ -22,7 +22,7 @@
 <div class="card-header">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand " href="<%=request.getContextPath()%>/search">
-            <img src="https://cdn.sstatic.net/Sites/stackoverflow/company/img/logos/so/so-logo.svg?v=a010291124bf"
+            <img src="<%=request.getContextPath()%>/images/stack_Overflow_logo.png" ;
                  height="30" alt="">
         </a>
         <button class="navbar-toggler mb-1" type="button" data-toggle="collapse" data-target="#navbarToggler"
