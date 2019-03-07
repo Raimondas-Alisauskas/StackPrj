@@ -1,17 +1,25 @@
 package service.database.DAO.implDAO;
 
+import model.DTO.ArticleDTO;
 import model.beans.*;
 import service.database.DAO.IDAO.IArticleDAO;
 import service.database.DBconnection;
-
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ArticleDAO implements IArticleDAO {
 
-    public ArrayList<ArticleBean> getArticle(ArticleBean selectedArticle) {
+    @Override
+    public ArticleDTO getArticle(int articleId) {
 
-        ArrayList<ArticleBean> examples = new ArrayList<>();
+        List<ArticleBean> examples = new ArrayList<>();
+
+        String title = "";
+        String introductionHtml = "";
+        String remarksHtml = "";
+        String parametersHtml = "";
+        String syntaxHtml = "";
 
         Connection con = DBconnection.getConnection();
         if (con != null) {
@@ -20,34 +28,30 @@ public class ArticleDAO implements IArticleDAO {
                 Statement statement = con.createStatement();
                 statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
-                String sql_title = "SELECT Title FROM Topics WHERE Id = ?";
+                String sql_title = "SELECT Title, SyntaxHtml, RemarksHtml, ParametersHtml, introductionHtml FROM Topics WHERE Id = ?";
                 PreparedStatement ps;
                 ps = con.prepareStatement(sql_title);
-                ps.setInt(1, selectedArticle.getId());
+                ps.setInt(1, articleId);
                 ResultSet rs;
                 rs = ps.executeQuery();
 
-                String title = null;
-
-                while (rs.next()) {
+                if (rs.next()) {
                     title = rs.getString("Title");
+                    introductionHtml = rs.getString("introductionHtml");
+                    remarksHtml = rs.getString("RemarksHtml");
+                    parametersHtml = rs.getString("ParametersHtml");
+                    syntaxHtml = rs.getString("SyntaxHtml");
                 }
 
-                String sql_example = "SELECT BodyHtml FROM Examples WHERE DocTopicId = ?";
+                String sql_example = "SELECT Title, BodyHtml, BodyMarkdown FROM Examples WHERE DocTopicId = ? ORDER BY Id";
 
                 ps = con.prepareStatement(sql_example);
-                ps.setInt(1, selectedArticle.getId());
-
+                ps.setInt(1, articleId);
                 rs = ps.executeQuery();
 
-                ArticleBean articleBean = new ArticleBean();
-
                 while (rs.next()) {
-                    articleBean.setExample(rs.getString("BodyHtml"));
-                    articleBean.setTitle(title);
-                    examples.add(articleBean);
+                    examples.add(new ArticleBean(rs.getString("BodyHtml"), rs.getString("Title"), rs.getString("BodyMarkdown")));
                 }
-
 
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -56,9 +60,7 @@ public class ArticleDAO implements IArticleDAO {
             }
         }
 
-        return examples;
-
-
+        return new ArticleDTO(examples, articleId, title, introductionHtml, remarksHtml, parametersHtml, syntaxHtml);
     }
 
 }

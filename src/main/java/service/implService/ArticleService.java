@@ -1,24 +1,24 @@
 package service.implService;
 
+import model.DTO.ArticleDTO;
 import service.database.DAO.IDAO.IArticleDAO;
 import service.database.DAO.implDAO.ArticleDAO;
-import model.beans.ArticleBean;
 import service.IService.IArticleService;
-
-import java.util.ArrayList;
 
 public class ArticleService implements IArticleService {
 
     @Override
-    public ArrayList<ArticleBean> getArticle(String id) {
+    public ArticleDTO getArticle(String id) {
 
-        ArticleBean articleBean = new ArticleBean();
-        articleBean.setId(Integer.parseInt(id));
+        int articleId;
+        if (id == null || id.isEmpty()) {
+            articleId = 0;
+        } else {
+            articleId = (Integer.parseInt(id));
+        }
 
         IArticleDAO articleDAO = new ArticleDAO();
-        ArrayList<ArticleBean> selectedArticle = articleDAO.getArticle(articleBean);
-
-        return selectedArticle;
+        return articleDAO.getArticle(articleId);
 
     }
 

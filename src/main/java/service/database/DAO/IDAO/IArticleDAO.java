@@ -1,11 +1,9 @@
 package service.database.DAO.IDAO;
 
-import model.beans.ArticleBean;
-
-import java.util.ArrayList;
+import model.DTO.ArticleDTO;
 
 public interface IArticleDAO {
 
-    ArrayList<ArticleBean> getArticle(ArticleBean selectedArticle);
+    ArticleDTO getArticle(int articleId);
 
 }

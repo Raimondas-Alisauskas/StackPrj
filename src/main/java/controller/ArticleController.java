@@ -1,5 +1,6 @@
 package controller;
 
+import model.DTO.ArticleDTO;
 import service.implService.ArticleService;
 import service.implService.DropdownService;
 import service.IService.IArticleService;
@@ -17,6 +18,7 @@ import java.util.List;
 
 public class ArticleController extends HttpServlet {
 
+    @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, java.io.IOException {
 
@@ -24,8 +26,8 @@ public class ArticleController extends HttpServlet {
 
         String id = req.getParameter("id");
 
-        ArrayList<ArticleBean> selectedArticle = articles.getArticle(id);
-        req.setAttribute("article", selectedArticle);
+        ArticleDTO articleDTO = articles.getArticle(id);
+        req.setAttribute("articleDTO", articleDTO);
 
         HttpSession session = req.getSession();
         IDropdownService dropdown = new DropdownService();
