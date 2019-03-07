@@ -22,7 +22,9 @@
         ">
             <a class="page-link"
                href="<%=request.getContextPath()%>/?tagId=<%=tagId%>&search_field=<%=searchInput%>&pageNum=<%=pageNumb-1%>"
-            >Previous</a>
+            >
+                Previous
+            </a>
         </li>
         <li class="page-item">
             <span class="page-link">
@@ -32,37 +34,15 @@
         <li class="page-item
                 <% if(pageNumb > numbOfRecords / numberOfTitles){%>disabled<% } %>
         ">
-            <a class="page-link" href="<%=request.getContextPath()%>/?tagId=<%=tagId%>&search_field=<%=searchInput%>&pageNum=<%=pageNumb+1%>">Next</a>
+            <a class="page-link"
+               href="<%=request.getContextPath()%>/?tagId=<%=tagId%>&search_field=<%=searchInput%>&pageNum=<%=pageNumb+1%>"
+            >
+                Next
+            </a>
         </li>
     </ul>
 
 </div>
 
-
-
-
-
-    <%--<div class="footer">--%>
-        <%--<div id="container">--%>
-            <%--<div class="pagination">--%>
-                <%--<% if(pageNumb > 1 ){%>--%>
-                    <%--<a--%>
-                        <%--href="<%=request.getContextPath()%>/?tagId=<%=tagId%>&search_field=<%=searchInput%>&pageNum=<%=pageNumb-1%>"--%>
-                       <%--class="page">Previous--%>
-                    <%--</a>--%>
-                <%--<% } %>--%>
-                <%--<span--%>
-                    <%--class="page">--%>
-                    <%--<%=pageNumb%> of <%=numbOfRecords / numberOfTitles + 1%>--%>
-                <%--</span>--%>
-                <%--<% if(pageNumb <= numbOfRecords / numberOfTitles){%>--%>
-                <%--<a--%>
-                    <%--href="<%=request.getContextPath()%>/?tagId=<%=tagId%>&search_field=<%=searchInput%>&pageNum=<%=pageNumb+1%>"--%>
-                    <%--class="page">Next--%>
-                <%--</a>--%>
-                <%--<% } %>--%>
-              <%--</div>--%>
-        <%--</div>--%>
-    <%--</div>--%>
 </body>
 </html>
