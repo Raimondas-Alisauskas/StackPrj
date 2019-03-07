@@ -6,7 +6,7 @@
 <% ArticleDTO articleDTO = (ArticleDTO) request.getAttribute("articleDTO");%>
 <head>
 
-    <title><%=articleDTO.getTitle()%>
+    <title><%=articleDTO.getTabName()%> - <%=articleDTO.getTitle()%>
     </title>>
 </head>
 <body>
