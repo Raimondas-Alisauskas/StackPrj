@@ -11,6 +11,7 @@
         <%
         TopicDTO tabName = (TopicDTO) request.getAttribute("topicDTO");%>
     <title><%=tabName.getTabName()%></title>
+    <link rel="shortcut icon" href="<%=request.getContextPath()%>/images/favicon.ico"/>
 </head>
 <body>
 <div class="jumbotron d-flex justify-content-center">
