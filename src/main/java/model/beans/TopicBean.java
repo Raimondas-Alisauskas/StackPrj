@@ -1,8 +1,8 @@
 package model.beans;
 
 public class TopicBean {
-    int id;
-    String title;
+    private int id;
+    private String title;
 
     public TopicBean() {
     }

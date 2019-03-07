@@ -1,11 +1,12 @@
 package service.IService;
 
+import model.DTO.ArticleDTO;
 import model.beans.ArticleBean;
 
 import java.util.ArrayList;
 
 public interface IArticleService {
 
-    ArrayList<ArticleBean> getArticle(String id);
+    ArticleDTO getArticle(String id);
 
 }
