@@ -1,21 +1,23 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="model.beans.ArticleBean" %>
-<%@ page import="java.util.ArrayList" %>
+<%@ page import="model.DTO.ArticleDTO" %>
+<%@ page import="java.util.List" %>
 <html>
 <head>
 </head>
 <body>
-<% ArrayList<ArticleBean> articles = (ArrayList) request.getAttribute("article");%>
+<% ArticleDTO articleDTO = (ArticleDTO) request.getAttribute("articleDTO");%>
 <h1>Article description</h1>
-<p>Article title: <%=articles.get(0).getTitle()%>
+<p>Article title: <%=articleDTO.getTitle()%>
 </p>
 <button type="button" class="button button--ghost button--ghost--green" onclick="history.back()">Go back to articles
 </button>
 <div class="middle">
-    <%for (ArticleBean articleBean2 : articles) { %>
+    <% List<ArticleBean> articles = articleDTO.getArticleList();%>
+    <%for (ArticleBean article : articles) { %>
     <div class="example">
         <div>
-            <%=articleBean2.getExample()%>
+            <%=article.getExample()%>
         </div>
     </div>
     <% } %>
