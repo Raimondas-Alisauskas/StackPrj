@@ -11,7 +11,17 @@ public class TopicDTO {
     private String searchInput;
     private int pageNumb;
     private int numbOfRecords;
+    private String tabName;
 
+
+    public TopicDTO(List<TopicBean> topicsList, String tagId, String searchInput, int pageNumb, int numbOfRecords, String tabName) {
+        this.topicsList = topicsList;
+        this.tagId = tagId;
+        this.searchInput = searchInput;
+        this.pageNumb = pageNumb;
+        this.numbOfRecords = numbOfRecords;
+        this.tabName = tabName;
+    }
 
     public TopicDTO(List<TopicBean> topicsList, String tagId, String searchInput, int pageNumb, int numbOfRecords) {
         this.topicsList = topicsList;
@@ -59,5 +69,13 @@ public class TopicDTO {
 
     public void setTagId(String tagId) {
         this.tagId = tagId;
+    }
+
+    public String getTabName() {
+        return tabName;
+    }
+
+    public void setTabName(String tabName) {
+        this.tabName = tabName;
     }
 }

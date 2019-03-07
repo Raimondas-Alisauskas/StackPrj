@@ -1,19 +1,17 @@
 package controller;
 
 import model.DTO.ArticleDTO;
+import model.beans.DropdownBean;
+import service.IService.IArticleService;
+import service.IService.IDropdownService;
 import service.implService.ArticleService;
 import service.implService.DropdownService;
-import service.IService.IArticleService;
-import model.beans.ArticleBean;
-import model.beans.DropdownBean;
-import service.IService.IDropdownService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ArticleController extends HttpServlet {
