@@ -4,12 +4,10 @@ public class ArticleBean {
 
     private String example;
     private String title;
-    private String bodyMarkdown;
 
-    public ArticleBean(String example, String title, String bodyMarkdown) {
+    public ArticleBean(String example, String title) {
         this.example = example;
         this.title = title;
-        this.bodyMarkdown = bodyMarkdown;
     }
 
     public String getExample() {
@@ -18,10 +16,6 @@ public class ArticleBean {
 
     public String getTitle() {
         return title;
-    }
-
-    public String getBodyMarkdown() {
-        return bodyMarkdown;
     }
 
 }
