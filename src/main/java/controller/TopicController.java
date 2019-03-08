@@ -37,8 +37,11 @@ public class TopicController extends HttpServlet {
 
         HttpSession session = req.getSession();
         IDropdownService dropdown = new DropdownService();
-        List<DropdownBean> tagList = dropdown.getDropdown((List<DropdownBean>) session.getAttribute("tagList"));
-        session.setAttribute("tagList", tagList);
+        List<DropdownBean> tagList = (List<DropdownBean>) session.getAttribute("tagList");
+        if (tagList == null || tagList.isEmpty()) {
+            tagList = dropdown.getDropdown();
+            session.setAttribute("tagList", tagList);
+        }
 
         RequestDispatcher rd = req.getRequestDispatcher("jsp/initialPage.jsp");
         rd.forward(req, resp);

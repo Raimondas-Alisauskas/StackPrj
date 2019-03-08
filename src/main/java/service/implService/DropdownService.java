@@ -9,15 +9,9 @@ import java.util.List;
 public class DropdownService implements IDropdownService {
 
     @Override
-    public List<DropdownBean> getDropdown(List<DropdownBean> tags) {
+    public List<DropdownBean> getDropdown() {
 
-        if (tags == null || tags.isEmpty()) {
-            DropdownDAO dropdownDAO = new DropdownDAO();
-            return dropdownDAO.getLimitedResult();
-
-        } else {
-            return tags;
-        }
-
+        DropdownDAO dropdownDAO = new DropdownDAO();
+        return dropdownDAO.getLimitedResult();
     }
 }
