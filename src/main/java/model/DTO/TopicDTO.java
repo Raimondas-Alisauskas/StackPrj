@@ -12,6 +12,7 @@ public class TopicDTO {
     private int pageNumb;
     private int numbOfRecords;
     private String tabName;
+    private ErrorDTO errorDTO;
 
 
     public TopicDTO(List<TopicBean> topicsList, String tagId, String searchInput, int pageNumb, int numbOfRecords, String tabName) {
@@ -77,5 +78,13 @@ public class TopicDTO {
 
     public void setTabName(String tabName) {
         this.tabName = tabName;
+    }
+
+    public ErrorDTO getErrorDTO() {
+        return errorDTO;
+    }
+
+    public void setErrorDTO(ErrorDTO errorDTO) {
+        this.errorDTO = errorDTO;
     }
 }
