@@ -5,16 +5,10 @@
 <html>
 <head>
     <%
-        TopicDTO topicDTO = (TopicDTO) request.getAttribute("topicDTO");
-        String tagId = "";
-        String searchInput = "";
-        if (topicDTO != null) {
-            tagId = topicDTO.getTagId();
-            searchInput = topicDTO.getSearchInput();
-        }
-        ;
-
-        ArrayList<DropdownBean> tagList = (ArrayList) session.getAttribute("tagList");
+    TopicDTO topicDTO = (TopicDTO) request.getAttribute("topicDTO");
+    String tagId = topicDTO.getTagId();
+    String searchInput = topicDTO.getSearchInput();
+    ArrayList<DropdownBean> tagList = (ArrayList) session.getAttribute("tagList");
     %>
 </head>
 <body>

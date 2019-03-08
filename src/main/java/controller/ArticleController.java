@@ -1,6 +1,7 @@
 package controller;
 
 import model.DTO.ArticleDTO;
+import model.DTO.TopicDTO;
 import model.beans.DropdownBean;
 import service.IService.IArticleService;
 import service.IService.IDropdownService;
@@ -26,6 +27,8 @@ public class ArticleController extends HttpServlet {
 
         ArticleDTO articleDTO = articles.getArticle(id);
         req.setAttribute("articleDTO", articleDTO);
+        TopicDTO topicDTO = new TopicDTO("","");
+        req.setAttribute("topicDTO", topicDTO);
 
         HttpSession session = req.getSession();
         IDropdownService dropdown = new DropdownService();

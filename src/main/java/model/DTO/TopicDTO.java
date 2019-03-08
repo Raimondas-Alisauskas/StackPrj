@@ -32,6 +32,11 @@ public class TopicDTO {
         this.numbOfRecords = numbOfRecords;
     }
 
+    public TopicDTO(String tagId, String searchInput) {
+         this.tagId = tagId;
+        this.searchInput = searchInput;
+    }
+
     public List<TopicBean> getTopicsList() {
         return topicsList;
     }
