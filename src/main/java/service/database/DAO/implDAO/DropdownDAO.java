@@ -6,35 +6,23 @@ import service.database.DBconnection;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class DropdownDAO implements IDropdownDAO {
-    Connection currentCon = null;
-    ResultSet rs = null;
-    List<DropdownBean> tagList;
 
     public List<DropdownBean> getLimitedResult() {
 
-        Statement statement = null;
+        List<DropdownBean> tagList = new ArrayList<>();
 
+        Connection con = DBconnection.getConnection();
+        if (con != null) try {
+            Statement statement = con.createStatement();
 
-        String searchQuery = "select Id, Tag from DocTags order by TopicCount desc limit " + numbOfTags;
-
-//        System.out.println("Query: " + searchQuery);
-
-        try {
-            currentCon = DBconnection.getConnection();
-
-            statement = currentCon.createStatement();
-
-
-            rs = statement.executeQuery(searchQuery);
-
-
-            tagList = new ArrayList<>();
+            String searchQuery = "select Id, Tag from DocTags order by TopicCount desc limit " + numbOfTags;
+            ResultSet rs = statement.executeQuery(searchQuery);
 
             while (rs.next()) {
                 DropdownBean dropdownBean = new DropdownBean();
@@ -43,39 +31,14 @@ public class DropdownDAO implements IDropdownDAO {
                 dropdownBean.setTag(rs.getString("Tag"));
 
                 tagList.add(dropdownBean);
-
             }
 
-        } catch (Exception ex) {
-            System.out.println("Log In failed: An Exception has occurred! " + ex);
+        } catch (SQLException e) {
+            e.printStackTrace();
         } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (Exception e) {
-                }
-                rs = null;
-            }
-
-            if (statement != null) {
-                try {
-                    statement.close();
-                } catch (Exception e) {
-                }
-                statement = null;
-            }
-
-            if (currentCon != null) {
-                try {
-                    currentCon.close();
-                } catch (Exception e) {
-                }
-
-                currentCon = null;
-            }
+            DBconnection.closeConnection(con);
         }
 
         return tagList;
-
     }
 }
