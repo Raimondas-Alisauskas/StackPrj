@@ -7,14 +7,14 @@
 <%@ page import="utils.constants.ErrorType" %>
 <html>
 <head>
+    <% TopicDTO topicDTO = (TopicDTO) request.getAttribute("topicDTO");%>
 </head>
 
 <body>
     <div class="card-body">
         <div class="list-group">
-        <% TopicDTO topicDTO = (TopicDTO) request.getAttribute("topicDTO");%>
-           <% if(topicDTO.getErrorDTO() != null && topicDTO.getErrorDTO().errorType == ErrorType.EMPTY_SEARCH_RESULT){
-                %><p class ="list-group-item"> No data found. Please use another search terms.</p><%
+           <% if(topicDTO.getErrorDTO() != null && topicDTO.getErrorDTO().isError){
+                %><p class ="list-group-item bg-info text-white"> <%=topicDTO.getErrorDTO().message%> </p><%
             }else{%>
 
             <% List<TopicBean> topics = topicDTO.getTopicsList();
