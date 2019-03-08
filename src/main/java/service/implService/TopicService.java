@@ -38,14 +38,12 @@ public class TopicService implements ITopicService {
         TopicDTO topicDTO = topicDAO.getTopicsFromDB(searchDTO);
 
         if (search_field == "") {
-
             topicDTO.setTabName("Stack Overflow - Where Developers Learn, Share, & Build Careers");
         } else {
-
             topicDTO.setTabName("Newest '" + search_field + "' Questions - Stack Overflow");
         }
 
-        if (topicDTO.getNumbOfRecords() == 0){
+        if (topicDTO.getErrorDTO() == null && topicDTO.getNumbOfRecords() == 0){
             ErrorDTO errorDTO = new ErrorDTO(ErrorType.EMPTY_SEARCH_RESULT);
             errorDTO.message = "No data found. Please use another search terms.";
             topicDTO.setErrorDTO(errorDTO);
