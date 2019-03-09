@@ -12,13 +12,17 @@
         TopicDTO tabName = (TopicDTO) request.getAttribute("topicDTO");%>
     <title><%=tabName.getTabName()%></title>
     <link rel="shortcut icon" href="<%=request.getContextPath()%>/images/favicon.ico"/>
+
 </head>
 <body>
 <div class="jumbotron d-flex justify-content-center">
     <div class="card w-75">
         <jsp:include page="header.jsp"/>
         <jsp:include page="main.jsp"/>
-        <jsp:include page="footer.jsp"/>
+        <% TopicDTO topicDTO = (TopicDTO) request.getAttribute("topicDTO");%>
+        <% if (topicDTO.getErrorDTO() == null){%>
+            <jsp:include page="footer.jsp"/>
+        <%}%>
     </div>
 </div>
 

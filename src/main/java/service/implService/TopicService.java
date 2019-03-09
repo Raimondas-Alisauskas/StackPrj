@@ -1,10 +1,12 @@
 package service.implService;
 
+import model.DTO.ErrorDTO;
 import service.database.DAO.IDAO.ITopicDAO;
 import service.database.DAO.implDAO.TopicDAO;
 import model.DTO.SearchDTO;
 import model.DTO.TopicDTO;
 import service.IService.ITopicService;
+import utils.constants.ErrorType;
 
 public class TopicService implements ITopicService {
 
@@ -36,11 +38,15 @@ public class TopicService implements ITopicService {
         TopicDTO topicDTO = topicDAO.getTopicsFromDB(searchDTO);
 
         if (search_field == "") {
-
             topicDTO.setTabName("Stack Overflow - Where Developers Learn, Share, & Build Careers");
         } else {
-
             topicDTO.setTabName("Newest '" + search_field + "' Questions - Stack Overflow");
+        }
+
+        if (topicDTO.getErrorDTO() == null && topicDTO.getNumbOfRecords() == 0){
+            String message = "No data found. Please use another search terms.";
+            ErrorDTO errorDTO = new ErrorDTO(ErrorType.EMPTY_SEARCH_RESULT, message);
+            topicDTO.setErrorDTO(errorDTO);
         }
 
         return topicDTO;

@@ -21,13 +21,15 @@
         <% if(pageNumb < 2 ){%>disabled<% } %>
         ">
             <a class="page-link"
-               href="<%=request.getContextPath()%>/?tagId=<%=tagId%>&search_field=<%=searchInput%>&pageNum=<%=pageNumb-1%>"
+               href="<%=request.getContextPath()%>/search?tagId=<%=tagId%>&search_field=<%=searchInput%>&pageNum=<%=pageNumb-1%>"
+               aria-label="Previous"
             >
-                Previous
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
             </a>
         </li>
-        <li class="page-item">
-            <span class="page-link">
+        <li class="page-item disabled">
+            <span class="page-link ">
                 <%=pageNumb%> of <%=numbOfRecords / numberOfTitles + 1%>
             </span>
         </li>
@@ -35,9 +37,11 @@
                 <% if(pageNumb > numbOfRecords / numberOfTitles){%>disabled<% } %>
         ">
             <a class="page-link"
-               href="<%=request.getContextPath()%>/?tagId=<%=tagId%>&search_field=<%=searchInput%>&pageNum=<%=pageNumb+1%>"
+               href="<%=request.getContextPath()%>/search?tagId=<%=tagId%>&search_field=<%=searchInput%>&pageNum=<%=pageNumb+1%>"
+               aria-label="Next"
             >
-                Next
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
             </a>
         </li>
     </ul>

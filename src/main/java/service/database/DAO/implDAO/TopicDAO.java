@@ -1,10 +1,12 @@
 package service.database.DAO.implDAO;
 
+import model.DTO.ErrorDTO;
 import model.DTO.SearchDTO;
 import model.DTO.TopicDTO;
 import model.beans.TopicBean;
 import service.database.DAO.IDAO.ITopicDAO;
 import service.database.DBconnection;
+import utils.constants.ErrorType;
 import utils.properties.ConfigurationProperties;
 
 import java.sql.*;
@@ -24,53 +26,61 @@ public class TopicDAO implements ITopicDAO {
         searchDTO.setPsNextIndex(0); //del apsaugos sau, kad neturime dar indexo
 
         Connection con = DBconnection.getConnection();
-        if (con != null) try {
+        if (con == null){
+            String message = "No connection to database. Please check.";
+            ErrorDTO errorDTO = new ErrorDTO(ErrorType.NO_CONNECTION_TO_DATABASE, message);
+            return new TopicDTO("", "", errorDTO);
+        }else {
+            try {
 
-            Statement statement = con.createStatement();
-            statement.setQueryTimeout(30);  // set timeout to 30 sec.
+                Statement statement = con.createStatement();
+                statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
-            String sqlWhere = createWhereSQL(searchDTO);
-            int paramIndex;
+                String sqlWhere = createWhereSQL(searchDTO);
+                int paramIndex;
 
-            String sql = "SELECT count(*) FROM Topics";
-            sql = sql + sqlWhere;
+                String sql = "SELECT count(*) FROM Topics";
+                sql = sql + sqlWhere;
 
-            PreparedStatement psCount;
-            psCount = con.prepareStatement(sql);
-            fillParamsToSQL(searchDTO, psCount);
+                PreparedStatement psCount;
+                psCount = con.prepareStatement(sql);
+                fillParamsToSQL(searchDTO, psCount);
 
-            ResultSet rsCount = psCount.executeQuery();
-            rsCount.next();
-            numbOfRecords = rsCount.getInt(1);
+                ResultSet rsCount = psCount.executeQuery();
+                rsCount.next();
+                numbOfRecords = rsCount.getInt(1);
 
-            sql = "SELECT Id, Title FROM Topics";
-            sql = sql + sqlWhere;
-            sql = sql + " ORDER BY ViewCount DESC LIMIT ?, ?";
+                sql = "SELECT Id, Title FROM Topics";
+                sql = sql + sqlWhere;
+                sql = sql + " ORDER BY ViewCount DESC LIMIT ?, ?";
 
-            PreparedStatement ps;
-            ps = con.prepareStatement(sql);
-            fillParamsToSQL(searchDTO, ps);
-            paramIndex = searchDTO.getPsNextIndex();
+                PreparedStatement ps;
+                ps = con.prepareStatement(sql);
+                fillParamsToSQL(searchDTO, ps);
+                paramIndex = searchDTO.getPsNextIndex();
 
-            ps.setInt(paramIndex, ((pageNumber - 1) * numbOfTitles));
-            paramIndex++;
-            ps.setInt(paramIndex, numbOfTitles);
+                ps.setInt(paramIndex, ((pageNumber - 1) * numbOfTitles));
+                paramIndex++;
+                ps.setInt(paramIndex, numbOfTitles);
 
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                TopicBean topic = new TopicBean();
-                topic.setId(rs.getInt("Id"));
-                topic.setTitle(rs.getString("Title"));
-                topics.add(topic);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    TopicBean topic = new TopicBean();
+                    topic.setId(rs.getInt("Id"));
+                    topic.setTitle(rs.getString("Title"));
+                    topics.add(topic);
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                DBconnection.closeConnection(con);
             }
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            DBconnection.closeConnection(con);
+            return new TopicDTO(topics, tagId, searchInput, pageNumber, numbOfRecords);
         }
 
-        return new TopicDTO(topics, tagId, searchInput, pageNumber, numbOfRecords);
+
     }
 
     public String createWhereSQL(SearchDTO searchDTO) {

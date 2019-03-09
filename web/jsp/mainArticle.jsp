@@ -11,7 +11,7 @@
 
     <body>
         <button type="button" class="btn btn-outline-info"
-                onclick="history.back()">Go back Neimantas feature
+                onclick="history.back()">Neimantas feature
         </button>
 
         <div>

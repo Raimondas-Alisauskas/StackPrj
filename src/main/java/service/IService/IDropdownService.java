@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface IDropdownService {
 
-    List<DropdownBean> getDropdown(List<DropdownBean> tagList);
+    List<DropdownBean> getDropdown();
 }

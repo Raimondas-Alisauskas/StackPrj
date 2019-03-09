@@ -5,23 +5,17 @@
 <html>
 <head>
     <%
-        TopicDTO topicDTO = (TopicDTO) request.getAttribute("topicDTO");
-        String tagId = "";
-        String searchInput = "";
-        if (topicDTO != null) {
-            tagId = topicDTO.getTagId();
-            searchInput = topicDTO.getSearchInput();
-        }
-        ;
-
-        ArrayList<DropdownBean> tagList = (ArrayList) session.getAttribute("tagList");
+    TopicDTO topicDTO = (TopicDTO) request.getAttribute("topicDTO");
+    String tagId = topicDTO.getTagId();
+    String searchInput = topicDTO.getSearchInput();
+    ArrayList<DropdownBean> tagList = (ArrayList) session.getAttribute("tagList");
     %>
 </head>
 <body>
 
 <div class="card-header">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand " href="<%=request.getContextPath()%>/search">
+        <a class="navbar-brand " href="<%=request.getContextPath()%>/welcome">
             <img src="<%=request.getContextPath()%>/images/stack_Overflow_logo.png" ;
                  height="30" alt="">
         </a>
