@@ -15,7 +15,7 @@
 
 <div class="card-header">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand " href="<%=request.getContextPath()%>/search">
+        <a class="navbar-brand " href="<%=request.getContextPath()%>/welcome">
             <img src="<%=request.getContextPath()%>/images/stack_Overflow_logo.png" ;
                  height="30" alt="">
         </a>

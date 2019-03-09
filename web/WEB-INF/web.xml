@@ -5,9 +5,9 @@
          version="4.0">
 
     <servlet>
-    <servlet-name>Initial</servlet-name>
-    <servlet-class>controller.TopicController</servlet-class>
-</servlet>
+        <servlet-name>Initial</servlet-name>
+        <servlet-class>controller.TopicController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Initial</servlet-name>
         <url-pattern>/search</url-pattern>
@@ -19,7 +19,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Welcome</servlet-name>
-        <url-pattern></url-pattern>
+        <url-pattern>/welcome</url-pattern>
     </servlet-mapping>
 
     <servlet>
