@@ -7,8 +7,9 @@ public class ErrorDTO {
     public ErrorType errorType;
     public String message;
 
-    public ErrorDTO(ErrorType _errorType) {
+    public ErrorDTO(ErrorType _errorType, String _message) {
         isError = true;
         errorType = _errorType;
+        message = _message;
     }
 }

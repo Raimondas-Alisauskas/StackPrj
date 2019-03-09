@@ -27,8 +27,8 @@ public class TopicDAO implements ITopicDAO {
 
         Connection con = DBconnection.getConnection();
         if (con == null){
-            ErrorDTO errorDTO = new ErrorDTO(ErrorType.NO_CONNECTION_TO_DATABASE);
-            errorDTO.message = "No connection to database. Please check.";
+            String message = "No connection to database. Please check.";
+            ErrorDTO errorDTO = new ErrorDTO(ErrorType.NO_CONNECTION_TO_DATABASE, message);
             return new TopicDTO("", "", errorDTO);
         }else {
             try {

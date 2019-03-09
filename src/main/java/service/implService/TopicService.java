@@ -44,8 +44,8 @@ public class TopicService implements ITopicService {
         }
 
         if (topicDTO.getErrorDTO() == null && topicDTO.getNumbOfRecords() == 0){
-            ErrorDTO errorDTO = new ErrorDTO(ErrorType.EMPTY_SEARCH_RESULT);
-            errorDTO.message = "No data found. Please use another search terms.";
+            String message = "No data found. Please use another search terms.";
+            ErrorDTO errorDTO = new ErrorDTO(ErrorType.EMPTY_SEARCH_RESULT, message);
             topicDTO.setErrorDTO(errorDTO);
         }
 
