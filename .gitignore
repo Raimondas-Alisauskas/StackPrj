@@ -3,6 +3,5 @@
 *.iml
 /target
 /classes
-/database
 /log
 /utils
