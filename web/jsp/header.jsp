@@ -4,6 +4,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="style/styles.css">
     <%
         TopicDTO topicDTO = (TopicDTO) request.getAttribute("topicDTO");
         String tagId = topicDTO.getTagId();
@@ -43,15 +44,17 @@
                            value="<%=searchInput%>">
                 </div>
                 <div class="col-2 d-flex justify-content-end">
-                    <button class="btn btn-primary" type="submit">Search</button>
+                    <button class="btn btn-success" type="submit">Search</button>
                 </div>
             </form>
             <div class="input-group w-25 pl-4">
                 <div class="d-flex">
-                    <button type="button" class="btn btn-outline-success">Log In</button>
+                    <a href="login.jsp">
+                        <button class="btn btn-outline-primary">Log In</button>
+                    </a>
                 </div>
                 <div class="d-flex pl-4">
-                    <button type="button" class="btn btn-success">Sign Up</button>
+                    <button type="button" class="btn btn-primary">Sign Up</button>
                 </div>
             </div>
         </div>
