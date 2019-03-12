@@ -5,10 +5,10 @@
 <html>
 <head>
     <%
-    TopicDTO topicDTO = (TopicDTO) request.getAttribute("topicDTO");
-    String tagId = topicDTO.getTagId();
-    String searchInput = topicDTO.getSearchInput();
-    ArrayList<DropdownBean> tagList = (ArrayList) session.getAttribute("tagList");
+        TopicDTO topicDTO = (TopicDTO) request.getAttribute("topicDTO");
+        String tagId = topicDTO.getTagId();
+        String searchInput = topicDTO.getSearchInput();
+        ArrayList<DropdownBean> tagList = (ArrayList) session.getAttribute("tagList");
     %>
 </head>
 <body>
@@ -25,8 +25,8 @@
         </button>
 
         <div class="collapse navbar-collapse row" id="navbarToggler">
-            <form class="input-group mb-0 " action="search" method="get">
-                <div class="col-4">
+            <form class="input-group mb-0 w-75" action="search" method="get">
+                <div class="col-3">
                     <select class="custom-select" id="lang" name="tagId">
                         <option selected value="">Select a Tag</option>
                         <% for (DropdownBean tag : tagList) { %>
@@ -38,16 +38,25 @@
                         <% } %>
                     </select>
                 </div>
-                <div class="col-6">
-                    <input type="text" class="form-control " placeholder="Search.." name="search_field"
+                <div class="col-5">
+                    <input type="text" class="form-control" placeholder="Search.." name="search_field"
                            value="<%=searchInput%>">
                 </div>
                 <div class="col-2 d-flex justify-content-end">
-                    <button class="btn btn-outline-success ml-auto" type="submit">Search</button>
+                    <button class="btn btn-primary" type="submit">Search</button>
                 </div>
             </form>
+            <div class="input-group w-25 pl-4">
+                <div class="d-flex">
+                    <button type="button" class="btn btn-outline-success">Log In</button>
+                </div>
+                <div class="d-flex pl-4">
+                    <button type="button" class="btn btn-success">Sign Up</button>
+                </div>
+            </div>
         </div>
     </nav>
 </div>
 </body>
 </html>
+
