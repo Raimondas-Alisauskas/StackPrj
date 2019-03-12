@@ -14,6 +14,7 @@
     <div class="card w-75" >
         <jsp:include page="header.jsp"/>
         <jsp:include page="mainArticle.jsp"/>
+        <jsp:include page="comment.jsp"/>
     </div>
 </div>
 
