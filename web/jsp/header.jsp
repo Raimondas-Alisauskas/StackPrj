@@ -96,16 +96,16 @@
                         <div class="modal-body">
                             <form action="" method="post">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="name" placeholder="Display name"
-                                           required="required">
+                                    <input type="text" class="form-control" name="regName" placeholder="Display name"
+                                           required="required" maxlength="25">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" name="email"
+                                    <input type="email" class="form-control" name="regEmail"
                                            placeholder="Email (required, but never shown)"
                                            required="required">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" name="password" placeholder="Password"
+                                    <input type="password" class="form-control" name="regPassword" placeholder="Password"
                                            required="required">
                                 </div>
                                 <div class="form-group">
