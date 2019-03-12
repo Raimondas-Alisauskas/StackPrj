@@ -13,6 +13,7 @@ public class DBconnection {
     public static Connection getConnection() {
 
         Connection connection = null;
+
         try {
 
             Class.forName("org.sqlite.JDBC");

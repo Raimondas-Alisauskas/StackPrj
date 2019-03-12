@@ -1,5 +1,7 @@
 package controller;
 
+import service.database.DAO.IDAO.IDeleteDAO;
+import service.database.DAO.implDAO.DeleteDAO;
 import service.implService.DropdownService;
 import service.IService.IDropdownService;
 import service.IService.ITopicService;
@@ -45,6 +47,9 @@ public class TopicController extends HttpServlet {
 
         RequestDispatcher rd = req.getRequestDispatcher("jsp/initialPage.jsp");
         rd.forward(req, resp);
+
+        IDeleteDAO deleteDAO = new DeleteDAO();
+        deleteDAO.deleteTopic(1);
     }
 }
 
