@@ -94,7 +94,7 @@
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
-                            <form action="" method="post    ">
+                            <form action="" method="post">
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="name" placeholder="Display name"
                                            required="required">
