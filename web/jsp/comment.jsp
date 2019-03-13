@@ -9,9 +9,12 @@
 <html>
 <head>
     <title>Comment</title>
+    <link rel="stylesheet" type="text/css" href="style/styles.css">
 </head>
 <body>
-<hr width="6">
+<div>
+    <h2 class="text-center">Commentary</h2>
+</div>
 <div>
     <div class="form">
 
@@ -21,7 +24,7 @@
                     <button class="btn btn-link" type="button" data-toggle="collapse"
                             data-target="#collapseIntroduction"
                             aria-expanded="false" aria-controls="collapseIntroduction">
-                        Comments
+                        Show comments
                     </button>
                 </h2>
             </div>
@@ -36,7 +39,7 @@
                 Leave a comment here...
              "></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-info">Submit</button>
                     </form>
                 </div>
             </div>
