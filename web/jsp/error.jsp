@@ -14,10 +14,16 @@
 <div class="jumbotron d-flex justify-content-center">
     <div class="card w-75">
         <jsp:include page="header.jsp"/>
-        <h1> Oh no... an error have been occured</h1>
-        <h2>Your error code is - <%= request.getAttribute("javax.servlet.error.status_code")%>
-        </h2>
-        <h2>We suggest you to go back</h2> <br>
+        <% if (request.getAttribute("javax.servlet.error.status_code").equals(404)) {
+        %>
+        <h1> Error is occured</h1>
+        <h2> You're error code is 404</h2>
+        <h2> We suggest you go back</h2><%
+    } else if (request.getAttribute("javax.servlet.error.status_code").equals(500)) {%>
+        <h1> Error is occured</h1>
+        <h2> You're error code is 500</h2>
+        <h2> We suggest you go back</h2>
+        <%}%>
         <div>
             <button type="button" class="btn btn-primary" id="back" onclick="history.back()">Back
             </button>
