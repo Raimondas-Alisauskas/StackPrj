@@ -1,5 +1,7 @@
 package controller;
 
+import service.database.DAO.IDAO.IArticleDAO;
+import service.database.DAO.implDAO.ArticleDAO;
 import service.implService.DropdownService;
 import service.IService.IDropdownService;
 import service.IService.ITopicService;
@@ -42,6 +44,10 @@ public class TopicController extends HttpServlet {
             tagList = dropdown.getDropdown();
             session.setAttribute("tagList", tagList);
         }
+
+//        IArticleDAO articleDAO = new ArticleDAO();
+//        articleDAO.updateArticle(14, "IntroductionHtml", "ddd");
+
 
         RequestDispatcher rd = req.getRequestDispatcher("jsp/initialPage.jsp");
         rd.forward(req, resp);

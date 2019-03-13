@@ -74,4 +74,33 @@ public class ArticleDAO implements IArticleDAO {
         return new ArticleDTO(examples, articleId, title, introductionHtml, remarksHtml, parametersHtml, syntaxHtml, tabName);
     }
 
+    @Override
+    public int updateArticle(String articleId, String field, String updText) {
+
+        int result = 0;
+
+        Connection con = DBconnection.getConnection();
+
+        if (con != null) try {
+
+            Statement statement = con.createStatement();
+            statement.setQueryTimeout(30);
+
+
+            String updateArticle = "UPDATE Topics SET " + field + "= ? WHERE Id = ?";
+
+            PreparedStatement ps;
+            ps = con.prepareStatement(updateArticle);
+            ps.setString(1, updText);
+            ps.setString(2, articleId);
+
+            result = ps.executeUpdate();
+            System.out.println(result);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
 }
