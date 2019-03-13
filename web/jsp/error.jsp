@@ -13,7 +13,7 @@
 <body>
 <div class="jumbotron d-flex justify-content-center">
     <div class="card w-75">
-        <%--<jsp:include page="header.jsp"/>--%>
+        <jsp:include page="header.jsp"/>
         <h1> Oh no... an error have been occured</h1>
         <h2>Your error code is - <%= request.getAttribute("javax.servlet.error.status_code")%>
         </h2>
