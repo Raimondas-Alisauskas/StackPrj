@@ -11,7 +11,7 @@
     <title>Comment</title>
 </head>
 <body>
-<hr width="6">
+<hr width="5">
 <div>
     <div class="form">
 
