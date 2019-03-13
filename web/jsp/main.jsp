@@ -19,8 +19,11 @@
 
             <% List<TopicBean> topics = topicDTO.getTopicsList();
                 for (TopicBean topic : topics) { %>
+            <div>
                     <a class="list-group-item list-group-item-action" href="article?id=<%=topic.getId()%>" name="article_name"><%=topic.getTitle()%>
                     </a>
+            <button type="button" class="btn btn-danger">Delete</button>
+            </div>
                 <% }%>
          <% }%>
 
