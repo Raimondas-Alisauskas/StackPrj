@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Vartotojas
-  Date: 12-Mar-19
-  Time: 11:38
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -32,7 +26,7 @@
             <div id="collapseIntroduction" class="collapse" aria-labelledby="headingIntroduction"
                  data-parent="#accordionTitle">
                 <div class="card-body">
-                    <form action="/html/tags/html_form_tag_action.cfm" method="post">
+                    <form action="" method="post">
                         <div class="form-group">
                             <label for="exampleFormControlTextarea3"></label>
                             <textarea class="form-control" id="exampleFormControlTextarea3" rows="12" placeholder="
