@@ -8,8 +8,12 @@
     <link rel="stylesheet" type="text/css" href="style/styles.css">
     <%
         TopicDTO topicDTO = (TopicDTO) request.getAttribute("topicDTO");
-        String tagId = topicDTO.getTagId();
-        String searchInput = topicDTO.getSearchInput();
+        String tagId = "";
+        String searchInput = "";
+            if (topicDTO != null) {
+                tagId = topicDTO.getTagId();
+                searchInput = topicDTO.getSearchInput();
+            }
         ArrayList<DropdownBean> tagList = (ArrayList) session.getAttribute("tagList");
     %>
 </head>
