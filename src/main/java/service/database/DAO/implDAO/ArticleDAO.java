@@ -95,7 +95,6 @@ public class ArticleDAO implements IArticleDAO {
             ps.setString(2, articleId);
 
             result = ps.executeUpdate();
-            System.out.println(result);
 
         } catch (SQLException e) {
             e.printStackTrace();

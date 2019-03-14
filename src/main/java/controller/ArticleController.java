@@ -32,7 +32,7 @@ public class ArticleController extends HttpServlet {
     }
 
     @Override
-    public void doPut(HttpServletRequest req, HttpServletResponse resp) {
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) {
 
         String articleId = req.getParameter("id");
         String field = req.getParameter("field");

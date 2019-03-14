@@ -29,24 +29,51 @@
                                 aria-expanded="true" aria-controls="collapseIntroduction">
                             Introduction
                         </button>
-
-                        <form class="btn-group float-right" action ="/article" method="get">
-                            <input type="text" name="name" value="value">
-                        <button type="button"
-                                class="btn btn-secondary "
-                                type = "submit"
-                                value = "submit"
-                                <%--value = "id = <%=articleDTO.getId()%>"--%>
-                                <%--value = "aa"--%>
-                        >Modify</button>
-                        </form>
+                        <button type="button " class="btn btn-primary float-right" data-toggle="modal" data-target="#modifyModal">
+                            Modify
+                        </button>
                     </h2>
                 </div>
 
                 <div id="collapseIntroduction" class="collapse show" aria-labelledby="headingIntroduction" data-parent="#accordionTitle">
                     <div class="card-body">
-                        <%=introductionHtml%>
+                            <div><%=introductionHtml%></>
+
                     </div>
+
+
+
+                    <div class="modal fade" id="modifyModal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Modify</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form action ="article" method="post">
+                                    <input type="hidden" name="id" value="<%=articleDTO.getId()%>">
+                                    <input type="hidden" name="field" value="introductionHtml">
+                                    <div class="modal-body" >
+                                            <textarea class="form-control" name="updText" style = "height: 50vh">
+                                                <%=introductionHtml%>
+                                            </textarea>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
                 </div>
             </div>
             <%

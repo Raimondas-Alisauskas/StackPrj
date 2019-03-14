@@ -25,8 +25,8 @@
         </button>
 
         <div class="collapse navbar-collapse row" id="navbarToggler">
-            <form class="input-group mb-0 w-75" action="search" method="get">
-                <div class="col-3">
+            <form class="col-8 form-group mb-0 row" action="search" method="get">
+                <div class="col-5">
                     <select class="custom-select" id="lang" name="tagId">
                         <option selected value="">Select a Tag</option>
                         <% for (DropdownBean tag : tagList) { %>
@@ -42,20 +42,20 @@
                     <input type="text" class="form-control" placeholder="Search.." name="search_field"
                            value="<%=searchInput%>">
                 </div>
-                <div class="col-2 d-flex justify-content-end">
+                <div class="col-2 ml-auto">
                     <button class="btn btn-success" type="submit">Search</button>
                 </div>
             </form>
-            <div class="input-group w-25 pl-4">
-                <div class="d-flex">
+            <div class="col-4  mb-0 ml-auto row">
+                <div class="col-6">
                     <a href="#logIn" class="trigger-btn" data-toggle="modal">
-                        <button class="btn btn-outline-primary" data-toggle="modal">Log In</button>
+                        <button class="btn btn-outline-primary" data-toggle="modal">LogIn</button>
                     </a>
                 </div>
-                <div class="d-flex pl-4">
+                <div class="col-6">
                     <a href="#signUp" class="trigger-btn" data-toggle="modal">
                         <button type="button" class="btn btn-primary" data-toggle="modal">
-                            Sign Up
+                            SignUp
                         </button>
                     </a>
                 </div>
