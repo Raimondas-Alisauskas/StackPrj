@@ -14,16 +14,40 @@
 <div class="jumbotron d-flex justify-content-center">
     <div class="card w-75">
         <jsp:include page="header.jsp"/>
-        <% if (request.getAttribute("javax.servlet.error.status_code").equals(404)) {
-        %>
-        <h1> Error is occured</h1>
-        <h2> You're error code is 404</h2>
-        <h2> We suggest you go back</h2><%
-    } else if (request.getAttribute("javax.servlet.error.status_code").equals(500)) {%>
-        <h1> Error is occured</h1>
-        <h2> You're error code is 500</h2>
-        <h2> We suggest you go back</h2>
-        <%}%>
+        <h1  id="error-mes">Error have been occured</h1>
+        <h2 id="error-mes"> Error code is <%= request.getAttribute("javax.servlet.error.status_code")%></h2>
+            <%switch ((request.getAttribute("javax.servlet.error.status_code")).toString()) {
+                case "400":
+        %> <h2 id="error-mes"> Bad request error, go back and try again </h2><%
+                break;
+            case "403":
+        %> <h2 id="error-mes"> This action is forbidden, please go back and try again</h2><%
+                break;
+            case "404":
+        %><h2 id="error-mes"> Page not found, go back and try again </h2><%
+                break;
+            case "405":
+        %><h2 id="error-mes"> This function is not allowed, go back and try again</h2><%
+                break;
+            case "408":
+        %><h2 id="error-mes"> Request timeout, server haven't got information about a resource</h2><%
+                break;
+            case "500":
+        %><h2 id="error-mes"> Server error, that is our fault</h2>
+            <h2 id="error-mes"> We are very sorry, please go back and try again </h2><%
+                    break;
+                case "501":
+            %> <h2 id="error-mes">Function not implemented yet, we are working on it </h2>
+            <h2 id="error-mes"> We are very sorry, please go back and try again </h2><%
+            break;
+        case "503":
+            %> <h2 id="error-mes"> Service not available at this moment</h2>
+            <h2 id="error-mes"> We are very sorry, please go back and try again </h2><%
+            break;
+        default:
+            break;
+            }
+    %>
         <div>
             <button type="button" class="btn btn-primary" id="back" onclick="history.back()">Back
             </button>
