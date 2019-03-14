@@ -26,13 +26,24 @@
                 <div class="card-header" id="headingIntroduction">
                     <h2 class="mb-0">
                         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseIntroduction"
-                                aria-expanded="false" aria-controls="collapseIntroduction">
+                                aria-expanded="true" aria-controls="collapseIntroduction">
                             Introduction
                         </button>
+
+                        <form class="btn-group float-right" action ="/article" method="get">
+                            <input type="text" name="name" value="value">
+                        <button type="button"
+                                class="btn btn-secondary "
+                                type = "submit"
+                                value = "submit"
+                                <%--value = "id = <%=articleDTO.getId()%>"--%>
+                                <%--value = "aa"--%>
+                        >Modify</button>
+                        </form>
                     </h2>
                 </div>
 
-                <div id="collapseIntroduction" class="collapse" aria-labelledby="headingIntroduction" data-parent="#accordionTitle">
+                <div id="collapseIntroduction" class="collapse show" aria-labelledby="headingIntroduction" data-parent="#accordionTitle">
                     <div class="card-body">
                         <%=introductionHtml%>
                     </div>
@@ -49,13 +60,13 @@
                 <div class="card-header" id="headingRemarks">
                     <h2 class="mb-0">
                         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseRemarks"
-                                aria-expanded="false" aria-controls="collapseRemarks">
+                                aria-expanded="true" aria-controls="collapseRemarks">
                             Remarks
                         </button>
                     </h2>
                 </div>
 
-                <div id="collapseRemarks" class="collapse" aria-labelledby="headingRemarks" data-parent="#accordionTitle">
+                <div id="collapseRemarks" class="collapse show" aria-labelledby="headingRemarks" data-parent="#accordionTitle">
                     <div class="card-body">
                         <%=remarksHtml%>
                     </div>
@@ -72,13 +83,13 @@
                 <div class="card-header" id="headingParameters">
                     <h2 class="mb-0">
                         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseParameters"
-                                aria-expanded="false" aria-controls="collapseParameters">
+                                aria-expanded="true" aria-controls="collapseParameters">
                             Parameters
                         </button>
                     </h2>
                 </div>
 
-                <div id="collapseParameters" class="collapse" aria-labelledby="headingParameters" data-parent="#accordionTitle">
+                <div id="collapseParameters" class="collapse show" aria-labelledby="headingParameters" data-parent="#accordionTitle">
                     <div class="card-body">
                         <%=parametersHtml%>
                     </div>
@@ -95,13 +106,13 @@
                 <div class="card-header" id="headingSyntax">
                     <h2 class="mb-0">
                         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseSyntax"
-                                aria-expanded="false" aria-controls="collapseSyntax">
+                                aria-expanded="true" aria-controls="collapseSyntax">
                             Syntax
                         </button>
                     </h2>
                 </div>
 
-                <div id="collapseSyntax" class="collapse" aria-labelledby="headingSyntax" data-parent="#accordionTitle">
+                <div id="collapseSyntax" class="collapse show" aria-labelledby="headingSyntax" data-parent="#accordionTitle">
                     <div class="card-body">
                         <%=syntaxHtml%>
                     </div>

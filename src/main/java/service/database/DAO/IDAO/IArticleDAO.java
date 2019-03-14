@@ -6,4 +6,6 @@ public interface IArticleDAO {
 
     ArticleDTO getArticle(int articleId);
 
+    int updateArticle(String articleId, String field, String updText);
+
 }
