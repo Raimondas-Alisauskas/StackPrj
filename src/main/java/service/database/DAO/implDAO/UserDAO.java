@@ -17,7 +17,7 @@ public class UserDAO implements IUserDAO {
                 Statement statement = con.createStatement();
                 statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
-                String sql = "INSERT INTO Users (FirstName, Email, Password, IsAdmin) VALUES (?,?,?, true)";
+                String sql = "INSERT INTO Users (FirstName, Email, Password, IsAdmin) VALUES (?,?,?, false)";
                 PreparedStatement ps;
                 ps = con.prepareStatement(sql);
                 ps.setString(1, userDTO.name);
