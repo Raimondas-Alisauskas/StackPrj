@@ -13,22 +13,38 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.List;
 
 public class ArticleController extends HttpServlet {
 
-    @Override
-    public void doGet(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, java.io.IOException {
+    IArticleService articleService = new ArticleService();
 
-        IArticleService articles = new ArticleService();
+    @Override
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) {
 
         String id = req.getParameter("id");
 
-        ArticleDTO articleDTO = articles.getArticle(id);
-        req.setAttribute("articleDTO", articleDTO);
-        TopicDTO topicDTO = new TopicDTO("","");
-        req.setAttribute("topicDTO", topicDTO);
+        ArticleDTO articleDTO = articleService.getArticle(id);
+
+        loadArticle(req, resp, articleDTO);
+
+    }
+
+    @Override
+    public void doPut(HttpServletRequest req, HttpServletResponse resp) {
+
+        String articleId = req.getParameter("id");
+        String field = req.getParameter("field");
+        String updText = req.getParameter("updText");
+
+        ArticleDTO articleDTO = articleService.updateArticle(articleId, field, updText);
+
+        loadArticle(req, resp, articleDTO);
+
+    }
+
+    private void loadArticle (HttpServletRequest req, HttpServletResponse resp, ArticleDTO articleDTO){
 
         HttpSession session = req.getSession();
         IDropdownService dropdown = new DropdownService();
@@ -38,8 +54,18 @@ public class ArticleController extends HttpServlet {
             session.setAttribute("tagList", tagList);
         }
 
-        req.getRequestDispatcher("jsp/article.jsp").forward(req, resp);
+        req.setAttribute("articleDTO", articleDTO);
+        TopicDTO topicDTO = new TopicDTO("","");
+        req.setAttribute("topicDTO", topicDTO);
 
+        try {
+            req.getRequestDispatcher("jsp/article.jsp").forward(req, resp);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 
 }
