@@ -33,15 +33,11 @@ public class ArticleController extends HttpServlet {
     }
 
     @Override
-    public void doPost(HttpServletRequest req, HttpServletResponse resp) {
+    public void doPut(HttpServletRequest req, HttpServletResponse resp) {
 
-//       String articleId = req.getParameter("id");
-//       String field = req.getParameter("field");
-//       String updText = req.getParameter("updText");
-
-        String articleId = "14";
-        String field = "IntroductionHtml";
-        String updText = "fff";
+        String articleId = req.getParameter("id");
+        String field = req.getParameter("field");
+        String updText = req.getParameter("updText");
 
         ArticleDTO articleDTO = articleService.updateArticle(articleId, field, updText);
 
