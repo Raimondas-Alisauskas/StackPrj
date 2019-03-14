@@ -27,7 +27,6 @@ public class ArticleController extends HttpServlet {
 
         ArticleDTO articleDTO = articleService.getArticle(id);
 
-
         loadArticle(req, resp, articleDTO);
 
     }
@@ -42,7 +41,6 @@ public class ArticleController extends HttpServlet {
         ArticleDTO articleDTO = articleService.updateArticle(articleId, field, updText);
 
         loadArticle(req, resp, articleDTO);
-
 
     }
 
