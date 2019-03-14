@@ -15,7 +15,7 @@
     <div class="card w-75">
         <jsp:include page="header.jsp"/>
         <h1  id="error-mes">Error have been occured</h1>
-        <h2 id="error-mes"> Error code is <%= request.getAttribute("javax.servlet.error.status_code")%></h2>
+        <h2 id="error-mes"> Error code is: <p id="error-code"><%= request.getAttribute("javax.servlet.error.status_code")%></p></h2>
             <%switch ((request.getAttribute("javax.servlet.error.status_code")).toString()) {
                 case "400":
         %> <h2 id="error-mes"> Bad request error, go back and try again </h2><%

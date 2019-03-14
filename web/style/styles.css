@@ -12,3 +12,6 @@
 #error-mes{
     margin: 5px;
 }
+#error-code{
+    color:red;
+}
