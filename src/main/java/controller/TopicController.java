@@ -52,6 +52,13 @@ public class TopicController extends HttpServlet {
         RequestDispatcher rd = req.getRequestDispatcher("jsp/initialPage.jsp");
         rd.forward(req, resp);
     }
+
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        doGet(req,resp);
+
+    }
+
 }
 
 

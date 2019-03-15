@@ -14,12 +14,13 @@ public class UserDTO {
 
         }
 
-        public UserDTO(String _name, String _email) {
 
-            this.name = _name;
-            this.email = _email;
+    public UserDTO(String _email, String _password) {
 
-        }
+        this.email = _email;
+        this.password = _password;
+
+    }
 
 
 

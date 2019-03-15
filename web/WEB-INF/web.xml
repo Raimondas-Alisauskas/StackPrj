@@ -31,6 +31,24 @@
         <url-pattern>/article</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Registration</servlet-name>
+        <servlet-class>controller.RegistrationController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Registration</servlet-name>
+        <url-pattern>/registration</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>controller.LoginController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/logged</url-pattern>
+    </servlet-mapping>
+
     <error-page>
         <error-code>400</error-code>
         <location>/jsp/error.jsp</location>

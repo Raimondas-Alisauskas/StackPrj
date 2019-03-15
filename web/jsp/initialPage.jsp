@@ -8,9 +8,10 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
 
-        <%
+    <%
         TopicDTO tabName = (TopicDTO) request.getAttribute("topicDTO");%>
-    <title><%=tabName.getTabName()%></title>
+    <title><%=tabName.getTabName()%>
+    </title>
     <link rel="shortcut icon" href="<%=request.getContextPath()%>/images/favicon.ico"/>
 
 </head>
@@ -20,8 +21,8 @@
         <jsp:include page="header.jsp"/>
         <jsp:include page="main.jsp"/>
         <% TopicDTO topicDTO = (TopicDTO) request.getAttribute("topicDTO");%>
-        <% if (topicDTO.getErrorDTO() == null){%>
-            <jsp:include page="footer.jsp"/>
+        <% if (topicDTO.getErrorDTO() == null) {%>
+        <jsp:include page="footer.jsp"/>
         <%}%>
     </div>
 </div>
