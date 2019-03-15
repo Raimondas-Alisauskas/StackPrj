@@ -34,4 +34,40 @@ public class UserDAO implements IUserDAO {
 
     }
 
+    public UserDTO checkUser(UserDTO userDTO) {
+
+        String name = "";
+
+        Connection con = DBconnection.getConnection();
+        if (con != null) {
+            try {
+
+                Statement statement = con.createStatement();
+                statement.setQueryTimeout(30);  // set timeout to 30 sec.
+
+                String sql = "SELECT FirstName FROM Users WHERE Email=? AND Password=?";
+                PreparedStatement ps;
+                ps = con.prepareStatement(sql);
+                ps.setString(1, userDTO.email);
+                ps.setString(2, userDTO.password);
+                ResultSet rs = ps.executeQuery();
+                boolean more = rs.next();
+
+                if (more) {
+                    name = rs.getString("FirstName");
+                } else {
+                    return new UserDTO(null, null, null);
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                DBconnection.closeConnection(con);
+            }
+
+        }
+
+        return new UserDTO(name, userDTO.email, userDTO.password);
+
+    }
 }

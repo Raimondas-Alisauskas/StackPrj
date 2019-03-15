@@ -81,7 +81,7 @@
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
-                            <form action="" method="post">
+                            <form action="logged" method="post">
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="email" placeholder="Email"
                                            required="required">
@@ -95,6 +95,12 @@
                                     </button>
                                 </div>
                             </form>
+
+
+                            <%if (session.getAttribute("name") == null) {%>
+                            <%}%>
+
+
                         </div>
                     </div>
                 </div>
